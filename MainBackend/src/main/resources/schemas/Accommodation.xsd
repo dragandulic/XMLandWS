@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/accommodation"
+    xmlns:ac="http://www.travel.com/accommodation" xmlns:us="http://www.travel.com/user"
+    xmlns:revi="http://www.travel.com/review" xmlns:age="http://www.travel.com/agent">
+    
+    <xs:element name="Accommodation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Type" type="xs:string"/>
+                <xs:element ref="ac:Location"/>
+                <xs:element name="Description" type="xs:string"/>
+                <xs:element name="Rating" type="xs:int" default="5"/>
+                <xs:element name="Free" type="xs:boolean" default="true"/>               
+                <xs:element ref="ac:AdditionalServices"/>
+                <xs:element name="Category" default="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minInclusive value="0"/>
+                            <xs:maxInclusive value="5"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="ac:PricePlan"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Location">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Country" type="xs:string"/>
+                <xs:element name="City" type="xs:string"/>
+                <xs:element name="Address" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AdditionalServices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="WiFi" type="xs:boolean" default="false"/>
+                <xs:element name="TV" type="xs:boolean" default="false"/>
+                <xs:element name="Parking" type="xs:boolean" default="false"/>
+                <xs:element name="Kitchen" type="xs:boolean" default="false"/>
+                <xs:element name="Breakfast" type="xs:boolean" default="false"/>
+                <xs:element name="HalfBoard" type="xs:boolean" default="false"/>
+                <xs:element name="FullBoard" type="xs:boolean" default="false"/>
+                <xs:element name="Bathroom" type="xs:boolean" default="false"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PricePlan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="RoomType" type="xs:int" default="2"/>
+                <xs:element maxOccurs="12" minOccurs="0" name="Price" type="xs:int" default="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

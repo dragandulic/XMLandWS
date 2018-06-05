@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/room" xmlns:ac="http://www.travel.com/accommodation"
+    xmlns:roo="http://www.travel.com/room">
+
+    <xs:import namespace="http://www.travel.com/accommodation" schemaLocation="Accommodation.xsd"/>
+    <xs:element name="Room">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element default="2" name="NumberOfBed" type="xs:int"/>
+                <xs:element default="true" name="Free" type="xs:boolean"/>
+                <xs:element ref="ac:Accommodation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

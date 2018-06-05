@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/admin" xmlns:adm="http://www.travel.com/admin"
+    xmlns:revi="http://www.travel.com/review" xmlns:com="http://www.travel.com/comment">
+    <xs:element name="Admin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Surname" type="xs:string"/>
+                <xs:element name="Email" type="xs:string"/>
+                <xs:element name="Password" type="xs:string"/>
+                <xs:element name="Address" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

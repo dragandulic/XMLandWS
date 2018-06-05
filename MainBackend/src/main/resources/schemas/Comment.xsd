@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/comment" xmlns:com="http://www.travel.com/comment">
+
+    <xs:element name="Comment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Content" type="xs:string"/>
+                <xs:element default="false" name="Approved" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

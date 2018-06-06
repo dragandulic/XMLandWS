@@ -9,6 +9,7 @@
     <xs:element name="Accommodation">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Type" type="xs:string"/>
                 <xs:element ref="ac:Location"/>
@@ -33,6 +34,7 @@
     <xs:element name="Location">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Country" type="xs:string"/>
                 <xs:element name="City" type="xs:string"/>
                 <xs:element name="Address" type="xs:string"/>
@@ -42,6 +44,7 @@
     <xs:element name="AdditionalServices">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="WiFi" type="xs:boolean" default="false"/>
                 <xs:element name="TV" type="xs:boolean" default="false"/>
                 <xs:element name="Parking" type="xs:boolean" default="false"/>
@@ -56,8 +59,13 @@
     <xs:element name="PricePlan">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="RoomType" type="xs:int" default="2"/>
-                <xs:element maxOccurs="12" minOccurs="0" name="Price" type="xs:int" default="0"/>
+                <xs:element name="Price" type="xs:int"/>
+                <xs:element name="Month" type="xs:int"/>
+                <xs:element ref="ac:Accommodation"/>
+                
+                
             </xs:sequence>
         </xs:complexType>
     </xs:element>

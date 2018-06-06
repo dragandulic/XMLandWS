@@ -10,11 +10,23 @@ package com.travel.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+
+
 
 
 /**
@@ -68,28 +80,48 @@ import javax.xml.bind.annotation.XmlType;
     "pricePlan"
 })
 @XmlRootElement(name = "Accommodation")
+@Entity
 public class Accommodation {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id")
+    protected long id;
 
     @XmlElement(name = "Name", required = true)
     protected String name;
     @XmlElement(name = "Type", required = true)
     protected String type;
+    
+    @OneToOne
+    @JoinColumn(name = "location_id")
     @XmlElement(name = "Location", required = true)
     protected Location location;
+
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
     @XmlElement(name = "Agent", namespace = "http://www.travel.com/agent", required = true)
     protected Agent agent;
+    
+    @OneToMany(mappedBy = "accommodation")
     @XmlElement(name = "Review", namespace = "http://www.travel.com/review")
     protected List<Review> review;
+
     @XmlElement(name = "Description", required = true)
     protected String description;
     @XmlElement(name = "Rating", defaultValue = "5")
     protected int rating;
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
-    @XmlElement(name = "AdditionalServices", required = true)
+    
+    @OneToOne
+    @JoinColumn(name = "additional_services_Id")
+    @XmlElement(name = "AdditionalServices")
     protected AdditionalServices additionalServices;
     @XmlElement(name = "Category", defaultValue = "0")
     protected int category;
+    
+    @OneToMany(mappedBy = "accommodation")
     @XmlElement(name = "PricePlan")
     protected List<PricePlan> pricePlan;
 
@@ -101,11 +133,26 @@ public class Accommodation {
      *     {@link String }
      *     
      */
+    
+    
+    
     public String getName() {
         return name;
     }
 
-    /**
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+
+	
+
+	/**
      * Sets the value of the name property.
      * 
      * @param value
@@ -211,12 +258,7 @@ public class Accommodation {
      * 
      * 
      */
-    public List<Review> getReview() {
-        if (review == null) {
-            review = new ArrayList<Review>();
-        }
-        return this.review;
-    }
+  
 
     /**
      * Gets the value of the description property.
@@ -314,6 +356,20 @@ public class Accommodation {
         this.category = value;
     }
 
+	
+
+	public List<Review> getReview() {
+		return review;
+	}
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
+	
+	
+	
+
     /**
      * Gets the value of the pricePlan property.
      * 
@@ -336,11 +392,8 @@ public class Accommodation {
      * 
      * 
      */
-    public List<PricePlan> getPricePlan() {
-        if (pricePlan == null) {
-            pricePlan = new ArrayList<PricePlan>();
-        }
-        return this.pricePlan;
-    }
+    
+    
+    
 
 }

@@ -5,6 +5,7 @@
     <xs:element name="Comment">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Content" type="xs:string"/>
                 <xs:element default="false" name="Approved" type="xs:boolean"/>
             </xs:sequence>

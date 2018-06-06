@@ -5,6 +5,7 @@
     <xs:element name="Agent">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>

@@ -8,6 +8,10 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -43,7 +47,14 @@ import javax.xml.bind.annotation.XmlType;
     "address"
 })
 @XmlRootElement(name = "Location")
+@Entity
 public class Location {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id")
+    protected long id;
+
 
     @XmlElement(name = "Country", required = true)
     protected String country;
@@ -123,5 +134,15 @@ public class Location {
     public void setAddress(String value) {
         this.address = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
+    
 
 }

@@ -8,11 +8,20 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+
 
 
 /**
@@ -43,14 +52,31 @@ import javax.xml.bind.annotation.XmlType;
     "comment"
 })
 @XmlRootElement(name = "Review", namespace = "http://www.travel.com/review")
+@Entity
 public class Review {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/review")
+    protected long id;
+
 
     @XmlElement(name = "Rating", namespace = "http://www.travel.com/review", defaultValue = "5")
     protected int rating;
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
+    @ManyToOne
+    @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
     @XmlElement(name = "Comment", namespace = "http://www.travel.com/comment", required = true)
+    @OneToOne
+    @JoinColumn(name = "comment_id")
     protected Comment comment;
+    
+   
+    @XmlElement(name = "Accommodation", required = true)
+    @ManyToOne
+   	@JoinColumn(name="accommodation")
+    protected Accommodation accommodation;
 
     /**
      * Gets the value of the rating property.
@@ -115,5 +141,23 @@ public class Review {
     public void setComment(Comment value) {
         this.comment = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Accommodation getAccommodation() {
+		return accommodation;
+	}
+
+	public void setAccommodation(Accommodation accommodation) {
+		this.accommodation = accommodation;
+	}
+    
+    
 
 }

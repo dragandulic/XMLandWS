@@ -8,6 +8,10 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,7 +55,14 @@ import javax.xml.bind.annotation.XmlType;
     "approved"
 })
 @XmlRootElement(name = "Agent", namespace = "http://www.travel.com/agent")
+@Entity
 public class Agent {
+	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/agent")
+    protected long id;
 
     @XmlElement(name = "Name", namespace = "http://www.travel.com/agent", required = true)
     protected String name;
@@ -227,5 +238,15 @@ public class Agent {
     public void setApproved(boolean value) {
         this.approved = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
+    
 
 }

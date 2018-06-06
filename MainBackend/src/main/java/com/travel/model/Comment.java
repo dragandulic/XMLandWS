@@ -8,6 +8,10 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,7 +45,14 @@ import javax.xml.bind.annotation.XmlType;
     "approved"
 })
 @XmlRootElement(name = "Comment", namespace = "http://www.travel.com/comment")
+@Entity
 public class Comment {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/comment")
+    protected long id;
+
 
     @XmlElement(name = "Content", namespace = "http://www.travel.com/comment", required = true)
     protected String content;
@@ -87,5 +98,15 @@ public class Comment {
     public void setApproved(boolean value) {
         this.approved = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
+    
 
 }

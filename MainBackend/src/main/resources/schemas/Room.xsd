@@ -7,6 +7,7 @@
     <xs:element name="Room">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element default="2" name="NumberOfBed" type="xs:int"/>
                 <xs:element default="true" name="Free" type="xs:boolean"/>
                 <xs:element ref="ac:Accommodation"/>

@@ -8,6 +8,12 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,16 +61,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "regUser"
 })
 @XmlRootElement(name = "Reservation", namespace = "http://www.travel.com/reservation")
+@Entity
 public class Reservation {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/reservation")
+    protected long id;
 
     @XmlElement(name = "Price", namespace = "http://www.travel.com/reservation", defaultValue = "0")
     protected int price;
     @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar startDate;
+    protected String startDate;
     @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar endDate;
+    protected String endDate;
     @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
     protected String name;
     @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation", required = true)
@@ -72,8 +84,12 @@ public class Reservation {
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
     @XmlElement(name = "Room", namespace = "http://www.travel.com/room", required = true)
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     protected Room room;
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
+    @ManyToOne
+    @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
 
     /**
@@ -100,9 +116,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getStartDate() {
-        return startDate;
-    }
+   
 
     /**
      * Sets the value of the startDate property.
@@ -112,9 +126,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setStartDate(XMLGregorianCalendar value) {
-        this.startDate = value;
-    }
+    
 
     /**
      * Gets the value of the endDate property.
@@ -124,11 +136,21 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getEndDate() {
-        return endDate;
-    }
+   
 
-    /**
+    public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	/**
      * Sets the value of the endDate property.
      * 
      * @param value
@@ -136,9 +158,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setEndDate(XMLGregorianCalendar value) {
-        this.endDate = value;
-    }
+  
 
     /**
      * Gets the value of the name property.
@@ -259,5 +279,15 @@ public class Reservation {
     public void setRegUser(RegUser value) {
         this.regUser = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
+    
 
 }

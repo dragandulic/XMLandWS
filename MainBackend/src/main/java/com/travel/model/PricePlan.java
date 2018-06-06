@@ -10,11 +10,19 @@ package com.travel.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
 
 
 /**
@@ -43,12 +51,27 @@ import javax.xml.bind.annotation.XmlType;
     "price"
 })
 @XmlRootElement(name = "PricePlan")
+@Entity
 public class PricePlan {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id")
+    protected long id;
 
     @XmlElement(name = "RoomType", defaultValue = "2")
     protected int roomType;
-    @XmlElement(name = "Price", type = Integer.class, defaultValue = "0")
-    protected List<Integer> price;
+    
+    @XmlElement(name = "Price")
+    protected int price;
+    @XmlElement(name = "Month")
+    protected int month;
+    
+    @XmlElement(name = "Accommodation", required = true)
+    @ManyToOne
+   	@JoinColumn(name="accommodation")
+    protected Accommodation accommodation;
+
 
     /**
      * Gets the value of the roomType property.
@@ -88,11 +111,40 @@ public class PricePlan {
      * 
      * 
      */
-    public List<Integer> getPrice() {
-        if (price == null) {
-            price = new ArrayList<Integer>();
-        }
-        return this.price;
-    }
+   
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public Accommodation getAccommodation() {
+		return accommodation;
+	}
+
+	public void setAccommodation(Accommodation accommodation) {
+		this.accommodation = accommodation;
+	}
+
+    
+    
 }

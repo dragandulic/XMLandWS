@@ -8,6 +8,13 @@
 
 package com.travel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -43,13 +50,22 @@ import javax.xml.bind.annotation.XmlType;
     "accommodation"
 })
 @XmlRootElement(name = "Room", namespace = "http://www.travel.com/room")
+@Entity
 public class Room {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/room")
+    protected long id;
+
 
     @XmlElement(name = "NumberOfBed", namespace = "http://www.travel.com/room", defaultValue = "2")
     protected int numberOfBed;
     @XmlElement(name = "Free", namespace = "http://www.travel.com/room", defaultValue = "true")
     protected boolean free;
     @XmlElement(name = "Accommodation", required = true)
+    @OneToOne
+    @JoinColumn(name = "accommodation_id")
     protected Accommodation accommodation;
 
     /**
@@ -107,5 +123,15 @@ public class Room {
     public void setAccommodation(Accommodation value) {
         this.accommodation = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
+    
 
 }

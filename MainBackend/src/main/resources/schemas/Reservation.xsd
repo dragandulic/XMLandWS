@@ -9,9 +9,10 @@
     <xs:element name="Reservation">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Price" type="xs:int" default="0"/>
-                <xs:element name="StartDate" type="xs:date"/>
-                <xs:element name="EndDate" type="xs:date"/>
+                <xs:element name="StartDate" type="xs:string"/>
+                <xs:element name="EndDate" type="xs:string"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>

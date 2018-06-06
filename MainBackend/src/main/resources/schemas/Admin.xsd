@@ -5,6 +5,7 @@
     <xs:element name="Admin">
         <xs:complexType>
             <xs:sequence>
+            	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>
@@ -22,5 +23,14 @@
         </xs:complexType>
      </xs:element>
     
+    <xs:element name="getAdminByIdResponse">
+     	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="surname" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+     </xs:element>
     
 </xs:schema>

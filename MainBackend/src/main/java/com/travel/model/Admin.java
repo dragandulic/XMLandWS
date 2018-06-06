@@ -59,7 +59,8 @@ public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/admin")
+    protected long id;
 	
 	
     @XmlElement(name = "Name", namespace = "http://www.travel.com/admin", required = true)
@@ -203,11 +204,11 @@ public class Admin {
     }
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
-	public void setId(Long id) {
-		Id = id;
+	public void setId(Long idd) {
+		id = idd;
 	}
 
 }

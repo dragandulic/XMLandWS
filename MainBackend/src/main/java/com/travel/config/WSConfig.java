@@ -23,7 +23,7 @@ public class WSConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean(servlet, "/*");
 	}
 	@Bean(name = "admin")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema adminSchema) {
+	public DefaultWsdl11Definition wsdlAdmin(XsdSchema adminSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("AdminPort");
 		wsdl11Definition.setLocationUri("/adminws");
@@ -34,5 +34,19 @@ public class WSConfig extends WsConfigurerAdapter {
 	@Bean
 	public XsdSchema adminSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("schemas/Admin.xsd"));
+	}
+	
+	@Bean(name = "regUser")
+	public DefaultWsdl11Definition wsdlRegUser(XsdSchema regUserSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("RegUSerPort");
+		wsdl11Definition.setLocationUri("/reguserws");
+		wsdl11Definition.setTargetNamespace("http://www.travel.com/reguser");
+		wsdl11Definition.setSchema(regUserSchema);
+		return wsdl11Definition;
+	}
+	@Bean
+	public XsdSchema regUserSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("schemas/RegUser.xsd"));
 	}
 }

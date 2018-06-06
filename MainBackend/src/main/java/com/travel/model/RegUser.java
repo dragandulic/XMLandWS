@@ -8,6 +8,11 @@
 
 package com.travel.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -47,17 +52,33 @@ import javax.xml.bind.annotation.XmlType;
     "address"
 })
 @XmlRootElement(name = "RegUser", namespace = "http://www.travel.com/reguser")
+@Entity
 public class RegUser {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlElement(name = "Id", namespace = "http://www.travel.com/reguser")
+    protected long id;
+	
+	
     @XmlElement(name = "Name", namespace = "http://www.travel.com/reguser", required = true)
+    @Column
     protected String name;
+    
     @XmlElement(name = "Surname", namespace = "http://www.travel.com/reguser", required = true)
+    @Column
     protected String surname;
+    
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reguser", required = true)
+    @Column
     protected String email;
+    
     @XmlElement(name = "Password", namespace = "http://www.travel.com/reguser", required = true)
+    @Column
     protected String password;
+    
     @XmlElement(name = "Address", namespace = "http://www.travel.com/reguser", required = true)
+    @Column
     protected String address;
 
     /**
@@ -179,5 +200,13 @@ public class RegUser {
     public void setAddress(String value) {
         this.address = value;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 }

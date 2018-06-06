@@ -13,4 +13,14 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+     <xs:element name="getAdminByIdRequest">
+     	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="adminId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+     </xs:element>
+    
+    
 </xs:schema>

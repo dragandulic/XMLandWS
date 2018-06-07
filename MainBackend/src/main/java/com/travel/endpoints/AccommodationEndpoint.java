@@ -9,6 +9,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.concretepage.gs_ws.AddAccommodationRequest;
 import com.concretepage.gs_ws.AddAccommodationResponse;
+import com.concretepage.gs_ws.SetAccommodationStatusRequest;
+import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
@@ -69,6 +71,22 @@ public class AccommodationEndpoint {
 		Accommodation savedaccomm=accommodationService.saveAccommodation(acc);
 		 
 		response.setMessage("Successfully added accommodation");
+		
+		
+		return response;
+	}
+	
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationStatusRequest")
+	@ResponsePayload
+	public  SetAccommodationStatusResponse addAccommodation(@RequestPayload SetAccommodationStatusRequest request) {
+		
+		SetAccommodationStatusResponse response = new SetAccommodationStatusResponse();
+		
+		Accommodation change=accommodationService.getAccommodationById(request.getAccommodationid());
+		change.setFree(request.isFree());
+		Accommodation s=accommodationService.saveAccommodation(change);
+		response.setMessage("Successfully changed accommodation status");
 		
 		
 		return response;

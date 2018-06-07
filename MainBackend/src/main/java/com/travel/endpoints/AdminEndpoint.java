@@ -10,7 +10,6 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.concretepage.gs_ws.GetAdminByIdRequest;
 import com.concretepage.gs_ws.GetAdminByIdResponse;
-import com.travel.model.Admin;
 import com.travel.services.AdminService;
 
 

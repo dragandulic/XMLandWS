@@ -196,9 +196,7 @@ public class Accommodation {
      *     {@link Location }
      *     
      */
-    public Location getLocation() {
-        return location;
-    }
+   
 
     /**
      * Sets the value of the location property.
@@ -208,9 +206,7 @@ public class Accommodation {
      *     {@link Location }
      *     
      */
-    public void setLocation(Location value) {
-        this.location = value;
-    }
+   
 
     /**
      * Gets the value of the agent property.
@@ -224,7 +220,15 @@ public class Accommodation {
         return agent;
     }
 
-    /**
+    public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	/**
      * Sets the value of the agent property.
      * 
      * @param value

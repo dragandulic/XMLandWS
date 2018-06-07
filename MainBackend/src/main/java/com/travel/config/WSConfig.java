@@ -64,4 +64,24 @@ public class WSConfig extends WsConfigurerAdapter {
 	public XsdSchema accommodationSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("schemas/Accommodation.xsd"));
 	}
+	
+	@Bean(name = "room")
+	public DefaultWsdl11Definition wsdlRoom(XsdSchema roomSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("RoomPort");
+		wsdl11Definition.setLocationUri("/roomws");
+		wsdl11Definition.setTargetNamespace("http://www.travel.com/room");
+		wsdl11Definition.setSchema(roomSchema);
+		return wsdl11Definition;
+	}
+	
+	@Bean
+	public XsdSchema roomSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("schemas/Room.xsd"));
+	}
+	
+	
+	
+	
+	
 }

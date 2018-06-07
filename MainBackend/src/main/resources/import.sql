@@ -1,6 +1,9 @@
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Marko','Juric');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Aleksandra','Grujic');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Damjan','Nicic');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`) VALUES ('Dragan','Dulic');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`) VALUES ('Nikola','Nikolic');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`) VALUES ('Jovana','Jovanic');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Dragan','Dulic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Nikola','Nikolic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Jovana','Jovanic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Milos','Petrovic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Jelena','Antic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Stefan','Ivanovic',1,0);

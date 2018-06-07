@@ -3,6 +3,7 @@ package com.travel.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.model.Location;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 
@@ -17,5 +18,13 @@ public class RegUserService {
 		RegUser regUser = regUserRepository.findByIdEquals(id);
 		
 		return regUser;
+	}
+	
+	
+     public RegUser saveRegUser(RegUser ru){
+		
+		RegUser reg=regUserRepository.save(ru);
+		return reg;
+		
 	}
 }

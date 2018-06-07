@@ -11,6 +11,8 @@
                 <xs:element name="Email" type="xs:string"/>
                 <xs:element name="Password" type="xs:string"/>
                 <xs:element name="Address" type="xs:string"/>
+                <xs:element name="Active" type="xs:boolean"/>
+                <xs:element name="Blocked" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

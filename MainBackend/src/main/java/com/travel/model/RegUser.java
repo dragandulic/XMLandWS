@@ -80,6 +80,11 @@ public class RegUser {
     @XmlElement(name = "Address", namespace = "http://www.travel.com/reguser", required = true)
     @Column
     protected String address;
+    
+    @XmlElement(name = "Active", namespace = "http://www.travel.com/reguser")
+    protected boolean active;
+    @XmlElement(name = "Blocked", namespace = "http://www.travel.com/reguser")
+    protected boolean blocked;
 
     /**
      * Gets the value of the name property.
@@ -208,5 +213,23 @@ public class RegUser {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+	
+	
 
 }

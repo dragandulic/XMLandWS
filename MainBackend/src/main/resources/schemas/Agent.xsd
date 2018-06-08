@@ -11,7 +11,7 @@
                 <xs:element name="Email" type="xs:string"/>
                 <xs:element name="Password" type="xs:string"/>
                 <xs:element name="Address" type="xs:string"/>
-                <xs:element name="BusinessRegNum" type="xs:string"/>
+                <xs:element name="Businessregnum" type="xs:string"/>
                 <xs:element default="false" name="Approved" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>

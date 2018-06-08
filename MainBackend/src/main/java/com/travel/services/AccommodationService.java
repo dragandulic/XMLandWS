@@ -1,10 +1,11 @@
 package com.travel.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travel.model.Accommodation;
-
 import com.travel.repositories.AccommodationRepository;
 
 
@@ -30,6 +31,11 @@ public Accommodation saveAccommodation(Accommodation a) {
 		return acc;
 		
 	}
+
+public List<Accommodation>getAllAccommodations(){
+
+	return accommodationRepository.findAll();
+}
 	
 
 }

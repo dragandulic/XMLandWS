@@ -27,4 +27,10 @@ public class RegUserService {
 		return reg;
 		
 	}
+     
+     
+     public void deleteRegUser(RegUser r){
+    	 
+    	 regUserRepository.delete(r);
+     }
 }

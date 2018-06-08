@@ -74,8 +74,8 @@ public class Agent {
     protected String password;
     @XmlElement(name = "Address", namespace = "http://www.travel.com/agent", required = true)
     protected String address;
-    @XmlElement(name = "BusinessRegNum", namespace = "http://www.travel.com/agent", required = true)
-    protected String businessRegNum;
+    @XmlElement(name = "Businessregnum", namespace = "http://www.travel.com/agent", required = true)
+    protected String businessregnum;
     @XmlElement(name = "Approved", namespace = "http://www.travel.com/agent", defaultValue = "false")
     protected boolean approved;
 
@@ -207,21 +207,7 @@ public class Agent {
      *     {@link String }
      *     
      */
-    public String getBusinessRegNum() {
-        return businessRegNum;
-    }
-
-    /**
-     * Sets the value of the businessRegNum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBusinessRegNum(String value) {
-        this.businessRegNum = value;
-    }
+  
 
     /**
      * Gets the value of the approved property.
@@ -231,7 +217,15 @@ public class Agent {
         return approved;
     }
 
-    /**
+    public String getBusinessregnum() {
+		return businessregnum;
+	}
+
+	public void setBusinessregnum(String businessregnum) {
+		this.businessregnum = businessregnum;
+	}
+
+	/**
      * Sets the value of the approved property.
      * 
      */

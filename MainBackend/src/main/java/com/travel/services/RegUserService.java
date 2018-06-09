@@ -1,8 +1,11 @@
 package com.travel.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.model.Agent;
 import com.travel.model.Location;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
@@ -33,4 +36,14 @@ public class RegUserService {
     	 
     	 regUserRepository.delete(r);
      }
+     
+     public List<RegUser>getAllUsers(){
+
+    		return regUserRepository.findAll();
+    	}
+     
+     
+     
+     
+     
 }

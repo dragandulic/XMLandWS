@@ -91,6 +91,14 @@
                 <xs:element name="fullBoard" type="xs:boolean" default="false"/>
                 <xs:element name="bathroom" type="xs:boolean" default="false"/>
                 <xs:element name="category" type="xs:int"/>
+                <xs:element name="onebadroom" type="xs:int"/>
+                <xs:element name="twobadroom" type="xs:int"/>
+                <xs:element name="threebadroom" type="xs:int"/>
+                <xs:element name="fourbadroom" type="xs:int"/>
+                <xs:element name="fivedbadroom" type="xs:int"/>
+                
+                
+                
                   
             </xs:sequence>
         </xs:complexType>

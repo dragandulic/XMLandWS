@@ -14,9 +14,11 @@ import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
+import com.travel.model.Room;
 import com.travel.services.AccommodationService;
 import com.travel.services.AdditionalServicesService;
 import com.travel.services.LocationService;
+import com.travel.services.RoomService;
 
 
 
@@ -34,6 +36,9 @@ public class AccommodationEndpoint {
 	
 	@Autowired
 	private AdditionalServicesService asService;
+	
+	@Autowired
+	private RoomService roomService;
 	
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addAccommodationRequest")
@@ -69,6 +74,55 @@ public class AccommodationEndpoint {
 		acc.setRating(request.getRating());
 		acc.setCategory(request.getCategory());
 		Accommodation savedaccomm=accommodationService.saveAccommodation(acc);
+		
+		
+		for(int i=0;i<request.getOnebadroom();i++){
+			
+			Room onebad=new Room();
+			onebad.setNumberOfBed(1);
+			onebad.setFree(true);
+			onebad.setAccommodation(savedaccomm);
+			Room savedone= roomService.saveRoom(onebad);
+		}
+		
+
+		for(int i=0;i<request.getTwobadroom();i++){
+			
+			Room twobad=new Room();
+			twobad.setNumberOfBed(2);
+			twobad.setFree(true);
+			twobad.setAccommodation(savedaccomm);
+			Room savedtwo= roomService.saveRoom(twobad);
+		}
+		
+
+		for(int i=0;i<request.getThreebadroom();i++){
+			
+			Room threebad=new Room();
+			threebad.setNumberOfBed(3);
+			threebad.setFree(true);
+			threebad.setAccommodation(savedaccomm);
+			Room savedthree= roomService.saveRoom(threebad);
+		}
+		
+
+		for(int i=0;i<request.getFourbadroom();i++){
+			
+			Room fourbad=new Room();
+			fourbad.setNumberOfBed(4);
+			fourbad.setFree(true);
+			fourbad.setAccommodation(savedaccomm);
+			Room savedfour= roomService.saveRoom(fourbad);
+		}
+		
+        for(int i=0;i<request.getFivedbadroom();i++){
+			
+			Room fivebad=new Room();
+			fivebad.setNumberOfBed(4);
+			fivebad.setFree(true);
+			fivebad.setAccommodation(savedaccomm);
+			Room savedfive= roomService.saveRoom(fivebad);
+		}
 		 
 		response.setMessage("Successfully added accommodation");
 		

@@ -120,7 +120,7 @@ public class AccommodationEndpoint {
         for(int i=0;i<request.getFivedbadroom();i++){
 			
 			Room fivebad=new Room();
-			fivebad.setNumberOfBed(4);
+			fivebad.setNumberOfBed(5);
 			fivebad.setFree(true);
 			fivebad.setAccommodation(savedaccomm);
 			Room savedfive= roomService.saveRoom(fivebad);

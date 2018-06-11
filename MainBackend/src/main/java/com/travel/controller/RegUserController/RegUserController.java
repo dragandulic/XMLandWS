@@ -5,6 +5,7 @@ package com.travel.controller.RegUserController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.RegUser;
+import com.travel.repositories.RegUserRepository;
 import com.travel.services.RegUserService;
 
 
@@ -33,7 +35,7 @@ public class RegUserController {
 	private RegUserService reguserService;
 	
 	
-	
+	@Autowired RegUserRepository reguserRepository;
 	
 	
 	
@@ -68,6 +70,32 @@ public class RegUserController {
 	    	  
 	    	  return new MessageResponse("Failed to block selected user");
 	      }
+	    }
+	    
+	    
+	    @PostMapping("/unblockUser/{userId}")
+	    public  MessageResponse unblockUser(@PathVariable Long userId){
+	        RegUser user = reguserService.getRegUserById(userId);
+	        
+	        user.setBlocked(false);
+	        RegUser unblocked=reguserService.saveRegUser(user);
+	      if(unblocked !=null){
+	        return new MessageResponse("Successfully unblocked selected user");
+	      }else{
+	    	  
+	    	  return new MessageResponse("Failed to unblock selected user");
+	      }
+	    }
+	    
+	    @DeleteMapping("deleteUser/{UserId}")
+	    public MessageResponse deleteUser(@PathVariable Long userId){
+	    	
+	      reguserService.deleteRegUser(reguserRepository.findByIdEquals(userId));
+	    	
+	    	return new MessageResponse("Successfully deleted selected user");
+	    	
+	    	
+	    	
 	    }
 	    
 	    

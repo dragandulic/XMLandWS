@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.travel.model.Agent;
-import com.travel.model.Location;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 
@@ -43,7 +40,16 @@ public class RegUserService {
     	}
      
      
-     
+ 	public boolean checkUniqueEmail(String email) {
+		if (regUserRepository.findOneByEmail(email) != null) {
+			return false;
+		}
+		return true;
+	}
+ 	
+ 	public RegUser findOneUserByEmail(String email) {
+		return regUserRepository.findOneByEmail(email);
+	}
      
      
 }

@@ -85,6 +85,9 @@ public class RegUser {
     protected boolean active;
     @XmlElement(name = "Blocked", namespace = "http://www.travel.com/reguser")
     protected boolean blocked;
+    
+    @XmlElement(name = "Confirmationtoken", namespace = "http://www.travel.com/reguser")
+    protected String confirmationtoken;
 
     /**
      * Gets the value of the name property.
@@ -229,6 +232,16 @@ public class RegUser {
 	public void setBlocked(boolean blocked) {
 		this.blocked = blocked;
 	}
+
+	public String getConfirmationtoken() {
+		return confirmationtoken;
+	}
+
+	public void setConfirmationtoken(String confirmationtoken) {
+		this.confirmationtoken = confirmationtoken;
+	}
+
+	
 	
 	
 

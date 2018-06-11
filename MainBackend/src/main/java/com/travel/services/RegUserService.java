@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 
@@ -51,5 +53,10 @@ public class RegUserService {
 		return regUserRepository.findOneByEmail(email);
 	}
      
+ 	 public RegUser findByConfirmationToken(String confirmationToken){
+     	
+     	return regUserRepository.findByConfirmationtoken(confirmationToken);
+     }
+ 	
      
 }

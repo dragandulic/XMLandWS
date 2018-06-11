@@ -84,14 +84,7 @@ public class ObjectFactory {
         return new Comment();
     }
 
-    /**
-     * Create an instance of {@link AdditionalServices }
-     * 
-     */
-    public AdditionalServices createAdditionalServices() {
-        return new AdditionalServices();
-    }
-
+   
     /**
      * Create an instance of {@link PricePlan }
      * 

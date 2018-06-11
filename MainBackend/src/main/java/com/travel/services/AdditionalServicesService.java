@@ -1,5 +1,7 @@
 package com.travel.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,27 +13,41 @@ import com.travel.repositories.AdditionalServicesRepository;
 
 
 
+
 @Service
 public class AdditionalServicesService {
 
 	@Autowired
-	private AdditionalServicesRepository asRepository; 
+	private AdditionalServicesRepository additionalServicesRepository; 
 	
 	
-	public AdditionalServices getAdditionalServicesById(Long id) {
+	public AdditionalServices getAdditionalServiceById(Long id) {
 		
-		AdditionalServices as = asRepository.findByIdEquals(id);
+		AdditionalServices serv = additionalServicesRepository.findByIdEquals(id);
 		
+		return serv;
+		
+	}
+	
+	
+public AdditionalServices saveAdditionalService(AdditionalServices as){
+		
+		AdditionalServices ass=additionalServicesRepository.save(as);
 		return as;
 		
 	}
+
+public List<AdditionalServices>getAllAdditionalServices(){
+
+	return additionalServicesRepository.findAll();
+}
+
+public List<String>findDistinctServices(){
 	
-	
-	public AdditionalServices saveAS(AdditionalServices ass){
-		
-		AdditionalServices a=asRepository.save(ass);
-		return a;
-		
-	}
+	return additionalServicesRepository.findAdditionalServiceNames();
+}
+
+
+
 	
 }

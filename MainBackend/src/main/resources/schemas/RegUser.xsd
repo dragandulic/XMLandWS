@@ -13,6 +13,7 @@
                 <xs:element name="Address" type="xs:string"/>
                 <xs:element name="Active" type="xs:boolean"/>
                 <xs:element name="Blocked" type="xs:boolean"/>
+                <xs:element name="Confirmationtoken" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

@@ -45,14 +45,9 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Id" type="xs:long"/>
-                <xs:element name="WiFi" type="xs:boolean" default="false"/>
-                <xs:element name="TV" type="xs:boolean" default="false"/>
-                <xs:element name="Parking" type="xs:boolean" default="false"/>
-                <xs:element name="Kitchen" type="xs:boolean" default="false"/>
-                <xs:element name="Breakfast" type="xs:boolean" default="false"/>
-                <xs:element name="HalfBoard" type="xs:boolean" default="false"/>
-                <xs:element name="FullBoard" type="xs:boolean" default="false"/>
-                <xs:element name="Bathroom" type="xs:boolean" default="false"/>
+                <xs:element name="servicename" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+             
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -82,20 +77,13 @@
                 <xs:element name="address" type="xs:string"/>
                 <xs:element name="description" type="xs:string"/>
                 <xs:element name="rating" type="xs:int" default="5"/>
-                <xs:element name="wifi" type="xs:boolean" default="false"/>
-                <xs:element name="tv" type="xs:boolean" default="false"/>
-                <xs:element name="parking" type="xs:boolean" default="false"/>
-                <xs:element name="kitchen" type="xs:boolean" default="false"/>
-                <xs:element name="breakfast" type="xs:boolean" default="false"/>
-                <xs:element name="halfBoard" type="xs:boolean" default="false"/>
-                <xs:element name="fullBoard" type="xs:boolean" default="false"/>
-                <xs:element name="bathroom" type="xs:boolean" default="false"/>
                 <xs:element name="category" type="xs:int"/>
                 <xs:element name="onebadroom" type="xs:int"/>
                 <xs:element name="twobadroom" type="xs:int"/>
                 <xs:element name="threebadroom" type="xs:int"/>
                 <xs:element name="fourbadroom" type="xs:int"/>
                 <xs:element name="fivedbadroom" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
                 
                 
                 
@@ -127,14 +115,6 @@
                 <xs:element name="address" type="xs:string"/>
                 <xs:element name="description" type="xs:string"/>
                 <xs:element name="rating" type="xs:int" default="5"/>
-                <xs:element name="wifi" type="xs:boolean" default="false"/>
-                <xs:element name="tv" type="xs:boolean" default="false"/>
-                <xs:element name="parking" type="xs:boolean" default="false"/>
-                <xs:element name="kitchen" type="xs:boolean" default="false"/>
-                <xs:element name="breakfast" type="xs:boolean" default="false"/>
-                <xs:element name="halfBoard" type="xs:boolean" default="false"/>
-                <xs:element name="fullBoard" type="xs:boolean" default="false"/>
-                <xs:element name="bathroom" type="xs:boolean" default="false"/>
                 <xs:element name="category" type="xs:int"/>
                 
             </xs:sequence>
@@ -175,6 +155,23 @@
                 <xs:element name="message" type="xs:string"/>
                 
                 
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="getDistinctServicesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctServicesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

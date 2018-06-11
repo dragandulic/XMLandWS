@@ -114,10 +114,7 @@ public class Accommodation {
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
     
-    @OneToOne
-    @JoinColumn(name = "additional_services_Id")
-    @XmlElement(name = "AdditionalServices")
-    protected AdditionalServices additionalServices;
+  
     @XmlElement(name = "Category", defaultValue = "0")
     protected int category;
     
@@ -328,21 +325,7 @@ public class Accommodation {
      *     {@link AdditionalServices }
      *     
      */
-    public AdditionalServices getAdditionalServices() {
-        return additionalServices;
-    }
-
-    /**
-     * Sets the value of the additionalServices property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AdditionalServices }
-     *     
-     */
-    public void setAdditionalServices(AdditionalServices value) {
-        this.additionalServices = value;
-    }
+  
 
     /**
      * Gets the value of the category property.

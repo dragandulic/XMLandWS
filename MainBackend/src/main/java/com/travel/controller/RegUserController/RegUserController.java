@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
+import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
@@ -97,6 +98,31 @@ public class RegUserController {
 	    	
 	    	
 	    }
+	    
+	    
+	    @PostMapping("/registration")
+		public MessageResponse registration(@RequestBody RegistrationDTO registrationDTO) {
+			
+			
+			RegUser user = new RegUser();
+	       
+			
+			return new MessageResponse("User is registrated");
+		}
+	    
+	    
+	    @PostMapping("/confirm")
+		public MessageResponse emailConfirm(@RequestParam("token") String token) {
+			
+			RegUser user = reguserService.findByConfirmationToken(token);
+			
+			if(user==null) {
+				return new MessageResponse("Oops! This token is invalid!");
+			}
+			user.setActive(true);
+			reguserService.saveRegUser(user);
+		return new MessageResponse("User is activated");
+		}
 	    
 	    
 

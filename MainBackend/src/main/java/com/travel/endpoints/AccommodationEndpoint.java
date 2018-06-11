@@ -1,5 +1,8 @@
 package com.travel.endpoints;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -11,6 +14,8 @@ import com.concretepage.gs_ws.AddAccommodationRequest;
 import com.concretepage.gs_ws.AddAccommodationResponse;
 import com.concretepage.gs_ws.EditAccommodationRequest;
 import com.concretepage.gs_ws.EditAccommodationResponse;
+import com.concretepage.gs_ws.GetDistinctServicesRequest;
+import com.concretepage.gs_ws.GetDistinctServicesResponse;
 import com.concretepage.gs_ws.SetAccommodationStatusRequest;
 import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
@@ -37,7 +42,9 @@ public class AccommodationEndpoint {
 	private LocationService locationService;
 	
 	@Autowired
-	private AdditionalServicesService asService;
+	private AdditionalServicesService as;
+	
+    
 	
 	@Autowired
 	private RoomService roomService;
@@ -55,27 +62,47 @@ public class AccommodationEndpoint {
 		loc.setCountry(request.getCountry());
 		Location saved=locationService.saveLocation(loc);
 		
+		
+		
+		
+		/*
 		AdditionalServices as=new AdditionalServices();
 		as.setBathroom(request.isBathroom());
 		as.setBreakfast(request.isBreakfast());
 		as.setFullBoard(request.isFullBoard());
 		as.setHalfBoard(request.isHalfBoard());
+		
 		as.setKitchen(request.isKitchen());
 		as.setParking(request.isParking());
 		as.setTV(request.isTv());
 		as.setWiFi(request.isWifi());
 		AdditionalServices savedas=asService.saveAS(as);
-		
+		*/
 		Accommodation acc=new Accommodation();
 		acc.setName(request.getName());
 		acc.setDescription(request.getDescription());
 		acc.setFree(true);
 		acc.setType(request.getType());
 		acc.setLocation(saved);
-		acc.setAdditionalServices(savedas);
+		//acc.setAdditionalServices(savedas);
 		acc.setRating(request.getRating());
 		acc.setCategory(request.getCategory());
 		Accommodation savedaccomm=accommodationService.saveAccommodation(acc);
+		
+		List<String>servicelist=request.getServices();
+		
+
+		int j = 0;
+		while (j < servicelist.size()) {
+			String serv=servicelist.get(j);
+			AdditionalServices service=new AdditionalServices();
+			service.setServicename(serv);
+			service.setAccommodation(savedaccomm);
+			as.saveAdditionalService(service);
+			
+			
+			j++;
+		}
 		
 		
 		for(int i=0;i<request.getOnebadroom();i++){
@@ -145,7 +172,7 @@ public class AccommodationEndpoint {
 		l.setCountry(request.getCountry());
 		Location saved=locationService.saveLocation(l);
 		
-		
+		/*
 		AdditionalServices as=accom.getAdditionalServices();
 		as.setBathroom(request.isBathroom());
 		as.setBreakfast(request.isBreakfast());
@@ -156,14 +183,14 @@ public class AccommodationEndpoint {
 		as.setTV(request.isTv());
 		as.setWiFi(request.isWifi());
 		AdditionalServices savedas=asService.saveAS(as);
-		
+		*/
 		
 		accom.setName(request.getName());
 		accom.setDescription(request.getDescription());
 		accom.setFree(true);
 		accom.setType(request.getType());
 		accom.setLocation(saved);
-		accom.setAdditionalServices(savedas);
+		//accom.setAdditionalServices(savedas);
 		accom.setRating(request.getRating());
 		accom.setCategory(request.getCategory());
 		Accommodation savedaccomm=accommodationService.saveAccommodation(accom);
@@ -192,5 +219,24 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctServicesRequest")
+	@ResponsePayload
+	public  GetDistinctServicesResponse getAddServices(@RequestPayload GetDistinctServicesRequest request) {
+		
+		 GetDistinctServicesResponse response = new  GetDistinctServicesResponse();
+		
+		response.setServices(as.findDistinctServices());
+		
+		
+		return response;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

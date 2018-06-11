@@ -1,9 +1,16 @@
 package com.travel.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.travel.model.AdditionalServices;
+
+
+
+
 
 
 
@@ -13,5 +20,10 @@ public interface AdditionalServicesRepository extends JpaRepository<AdditionalSe
 
 	
 	AdditionalServices findByIdEquals(Long id);
+	List<AdditionalServices> findAll();
+	@Query("SELECT DISTINCT a.servicename FROM AdditionalServices a")
+	List<String> findAdditionalServiceNames();
+
+	
 	
 }

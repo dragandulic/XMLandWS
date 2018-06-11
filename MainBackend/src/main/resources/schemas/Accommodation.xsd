@@ -115,6 +115,47 @@
         </xs:complexType>
     </xs:element>
     
+    
+    <xs:element name="editAccommodationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="address" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="rating" type="xs:int" default="5"/>
+                <xs:element name="wifi" type="xs:boolean" default="false"/>
+                <xs:element name="tv" type="xs:boolean" default="false"/>
+                <xs:element name="parking" type="xs:boolean" default="false"/>
+                <xs:element name="kitchen" type="xs:boolean" default="false"/>
+                <xs:element name="breakfast" type="xs:boolean" default="false"/>
+                <xs:element name="halfBoard" type="xs:boolean" default="false"/>
+                <xs:element name="fullBoard" type="xs:boolean" default="false"/>
+                <xs:element name="bathroom" type="xs:boolean" default="false"/>
+                <xs:element name="category" type="xs:int"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+      <xs:element name="editAccommodationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+    
+    
     <xs:element name="setAccommodationStatusRequest">
         <xs:complexType>
             <xs:sequence>

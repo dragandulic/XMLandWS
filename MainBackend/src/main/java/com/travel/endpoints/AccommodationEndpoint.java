@@ -9,6 +9,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.concretepage.gs_ws.AddAccommodationRequest;
 import com.concretepage.gs_ws.AddAccommodationResponse;
+import com.concretepage.gs_ws.EditAccommodationRequest;
+import com.concretepage.gs_ws.EditAccommodationResponse;
 import com.concretepage.gs_ws.SetAccommodationStatusRequest;
 import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
@@ -125,6 +127,51 @@ public class AccommodationEndpoint {
 		}
 		 
 		response.setMessage("Successfully added accommodation");
+		
+		
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "editAccommodationRequest")
+	@ResponsePayload
+	public  EditAccommodationResponse editAccommodation(@RequestPayload EditAccommodationRequest request) {
+		
+		EditAccommodationResponse response = new EditAccommodationResponse();
+		Accommodation accom=accommodationService.getAccommodationById(request.getId());
+		
+		Location l=accom.getLocation();
+		l.setAddress(request.getAddress());
+		l.setCity(request.getCity());
+		l.setCountry(request.getCountry());
+		Location saved=locationService.saveLocation(l);
+		
+		
+		AdditionalServices as=accom.getAdditionalServices();
+		as.setBathroom(request.isBathroom());
+		as.setBreakfast(request.isBreakfast());
+		as.setFullBoard(request.isFullBoard());
+		as.setHalfBoard(request.isHalfBoard());
+		as.setKitchen(request.isKitchen());
+		as.setParking(request.isParking());
+		as.setTV(request.isTv());
+		as.setWiFi(request.isWifi());
+		AdditionalServices savedas=asService.saveAS(as);
+		
+		
+		accom.setName(request.getName());
+		accom.setDescription(request.getDescription());
+		accom.setFree(true);
+		accom.setType(request.getType());
+		accom.setLocation(saved);
+		accom.setAdditionalServices(savedas);
+		accom.setRating(request.getRating());
+		accom.setCategory(request.getCategory());
+		Accommodation savedaccomm=accommodationService.saveAccommodation(accom);
+		
+		
+		
+		 
+		response.setMessage("Successfully edited accommodation");
 		
 		
 		return response;

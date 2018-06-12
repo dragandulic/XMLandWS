@@ -226,7 +226,9 @@ public class AccommodationEndpoint {
 		
 		 GetDistinctServicesResponse response = new  GetDistinctServicesResponse();
 		
-		response.setServices(as.findDistinctServices());
+		//response.setServices(as.findDistinctServices());
+		
+		response.getServices().addAll(as.findDistinctServices());
 		
 		
 		return response;

@@ -219,7 +219,7 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
-	
+	// komentar
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctServicesRequest")
 	@ResponsePayload
 	public  GetDistinctServicesResponse getAddServices(@RequestPayload GetDistinctServicesRequest request) {

@@ -1,14 +1,32 @@
 package com.travel.controller.RegUserController.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class RegistrationDTO {
 	
-	
+	@NotNull
+	@NotEmpty
 	private String password1;
+	
+	@NotNull
+	@NotEmpty
     private String password2;
+	
+	@NotNull
+	@NotEmpty
     private String email;
+	
+	@NotNull
+	@NotEmpty
     private String name;
+	
+	@NotNull
+	@NotEmpty
     private String surname;
-    private String phonenumber;
+	
+	@NotNull
+	@NotEmpty
     private String address;
     
     
@@ -51,12 +69,7 @@ public class RegistrationDTO {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
-	}
+	
 	public String getAddress() {
 		return address;
 	}

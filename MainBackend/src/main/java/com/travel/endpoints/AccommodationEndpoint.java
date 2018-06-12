@@ -219,14 +219,16 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
-	
+	// komentar
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctServicesRequest")
 	@ResponsePayload
 	public  GetDistinctServicesResponse getAddServices(@RequestPayload GetDistinctServicesRequest request) {
 		
 		 GetDistinctServicesResponse response = new  GetDistinctServicesResponse();
 		
-		response.setServices(as.findDistinctServices());
+		//response.setServices(as.findDistinctServices());
+		
+		response.getServices().addAll(as.findDistinctServices());
 		
 		
 		return response;

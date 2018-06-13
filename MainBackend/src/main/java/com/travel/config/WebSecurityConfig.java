@@ -28,7 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        
     	 
     	
-    	http.csrf().disable().authorizeRequests().antMatchers("/reguser/registration*").permitAll();
+    	http.csrf().disable().authorizeRequests().antMatchers("/reguser/registration*").permitAll()
+    	                                         .antMatchers("/accommodationws").permitAll();
     	
                     
     }

@@ -20,17 +20,36 @@ public class WSConfig extends WsConfigurerAdapter {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/adminws/*");
+		return new ServletRegistrationBean(servlet, "/adminws","/reguserws","/accommodationws","/roomws");
 	}
 	
-	
+	/*
 	@Bean
 	public ServletRegistrationBean messageDispatcherServletUser(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/reguserws/*");
+		return new ServletRegistrationBean(servlet, "/reguserws");
+		
 	}
+	
+	@Bean
+	public ServletRegistrationBean messageDispatcherServletAccommodation(ApplicationContext applicationContext) {
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(applicationContext);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean(servlet, "/accommodationws");
+	}
+	
+	@Bean
+	public ServletRegistrationBean messageDispatcherServletRoom(ApplicationContext applicationContext) {
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(applicationContext);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean(servlet, "/roomws");
+	}
+	
+	*/
 	@Bean(name = "admin")
 	public DefaultWsdl11Definition wsdlAdmin(XsdSchema adminSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -40,23 +59,6 @@ public class WSConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setSchema(adminSchema);
 		return wsdl11Definition;
 	}
-	
-	@Bean
-	public ServletRegistrationBean messageDispatcherServletAccommodation(ApplicationContext applicationContext) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(applicationContext);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/accommodationws/*");
-	}
-	
-	@Bean
-	public ServletRegistrationBean messageDispatcherServletRoom(ApplicationContext applicationContext) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(applicationContext);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/roomws/*");
-	}
-	
 	
 	
 	@Bean

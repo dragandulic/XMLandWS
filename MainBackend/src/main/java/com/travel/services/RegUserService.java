@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
@@ -19,8 +19,8 @@ public class RegUserService {
 	@Autowired
 	private RegUserRepository regUserRepository;
 	
-	
-	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	
 	
@@ -40,9 +40,7 @@ public class RegUserService {
 		newuser.setSurname(userDTO.getSurname());
 		newuser.setEmail(userDTO.getEmail());
 		newuser.setAddress(userDTO.getAddress());
-		//newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
-		newuser.setPassword((userDTO.getPassword1()));
-		
+		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
 		RegUser saved=saveRegUser(newuser);
 		
 		return saved;

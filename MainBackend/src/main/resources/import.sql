@@ -11,4 +11,10 @@ INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`b
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Jovan','Mijic','jmijic@gmail.com','122','P.Pavla','453',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Ivana','Savic','isavic@gmail.com','133','Z.Jovina','355',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Milos','Simic','msimic@gmail.com','323','K.Milosa','445',0);
+INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('wifi');
+INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('tv');
+INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('parking');
+INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('halfBoard');
+INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('fullBoard');
+
 

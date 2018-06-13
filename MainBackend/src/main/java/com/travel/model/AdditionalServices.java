@@ -65,7 +65,7 @@ public class AdditionalServices {
 
  @ManyToOne
  @JoinColumn(name = "accommodation_id")
- @XmlElement(name = "Accommodation", required = true)
+ @XmlElement(name = "Accommodation")
  protected Accommodation accommodation;
 
  /**

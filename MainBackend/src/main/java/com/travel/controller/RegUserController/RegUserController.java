@@ -4,6 +4,8 @@ package com.travel.controller.RegUserController;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 import com.travel.services.RegUserService;
+import com.travel.validation.PasswordMatchesValidator;
 
 
 
@@ -99,12 +102,23 @@ public class RegUserController {
 	    	
 	    }
 	    
-	    
+	    @JsonValue
 	    @PostMapping("/registration")
-		public MessageResponse registration(@RequestBody RegistrationDTO registrationDTO) {
+		public MessageResponse registration(@RequestBody  @Valid RegistrationDTO registrationDTO) {
 			
+	    	
+	    	if(reguserService.checkUniqueEmail(registrationDTO.getEmail())==false){
+	    		
+	    		return new MessageResponse("There is already user with the same email");
+	    	}
+	    	
+	    	
+	    	PasswordMatchesValidator pass=new PasswordMatchesValidator();
+	    	if(pass.isValid(registrationDTO)==false){
+	    		return new MessageResponse("You must retype the same password again");
+	    	}
 			
-			RegUser user = new RegUser();
+			RegUser user = reguserService.registerNewUserAccount(registrationDTO);
 	       
 			
 			return new MessageResponse("User is registrated");

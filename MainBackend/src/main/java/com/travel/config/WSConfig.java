@@ -16,11 +16,20 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 public class WSConfig extends WsConfigurerAdapter {
 	@Bean
-	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+	public ServletRegistrationBean messageDispatcherServletAdmin(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/*");
+		return new ServletRegistrationBean(servlet, "/adminws/*");
+	}
+	
+	
+	@Bean
+	public ServletRegistrationBean messageDispatcherServletUser(ApplicationContext applicationContext) {
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(applicationContext);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean(servlet, "/reguserws/*");
 	}
 	@Bean(name = "admin")
 	public DefaultWsdl11Definition wsdlAdmin(XsdSchema adminSchema) {
@@ -31,6 +40,25 @@ public class WSConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setSchema(adminSchema);
 		return wsdl11Definition;
 	}
+	
+	@Bean
+	public ServletRegistrationBean messageDispatcherServletAccommodation(ApplicationContext applicationContext) {
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(applicationContext);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean(servlet, "/accommodationws/*");
+	}
+	
+	@Bean
+	public ServletRegistrationBean messageDispatcherServletRoom(ApplicationContext applicationContext) {
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(applicationContext);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean(servlet, "/roomws/*");
+	}
+	
+	
+	
 	@Bean
 	public XsdSchema adminSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("schemas/Admin.xsd"));

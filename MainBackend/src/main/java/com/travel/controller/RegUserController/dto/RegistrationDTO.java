@@ -3,18 +3,24 @@ package com.travel.controller.RegUserController.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.travel.validation.ValidEmail;
+import com.travel.validation.ValidPassword;
+
 public class RegistrationDTO {
 	
 	@NotNull
 	@NotEmpty
+	@ValidPassword
 	private String password1;
 	
 	@NotNull
 	@NotEmpty
+	@ValidPassword
     private String password2;
 	
 	@NotNull
 	@NotEmpty
+	@ValidEmail
     private String email;
 	
 	@NotNull

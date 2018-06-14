@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "address"
 })
 @XmlRootElement(name = "Admin", namespace = "http://www.travel.com/admin")
+
 @Entity
 public class Admin {
 

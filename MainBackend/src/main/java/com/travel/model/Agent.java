@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
     "approved"
 })
 @XmlRootElement(name = "Agent", namespace = "http://www.travel.com/agent")
+
 @Entity
 public class Agent {
 	

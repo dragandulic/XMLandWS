@@ -1,9 +1,11 @@
 package com.travel.services;
 
 import java.util.List;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class RegUserService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JavaMailSender sender;
 
 	
 	
@@ -40,7 +45,26 @@ public class RegUserService {
 		newuser.setSurname(userDTO.getSurname());
 		newuser.setEmail(userDTO.getEmail());
 		newuser.setAddress(userDTO.getAddress());
-		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
+		//newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
+		newuser.setPassword((userDTO.getPassword1()));
+		/*
+		newuser.setConfirmationToken(UUID.randomUUID().toString());
+		//user.setPoints(0);
+		
+		String appUrl = "http://localhost:4200/confirmEmail/";//request.getScheme() + "://" + request.getServerName();
+		SimpleMailMessage registrationEmail=new SimpleMailMessage();
+		registrationEmail.setTo(newuser.getEmail());
+		registrationEmail.setSubject("Registration Confirmation");
+		registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
+		+appUrl+ newuser.getConfirmationToken());
+		emailService.sendEmail(registrationEmail);
+		
+		
+		
+		*/
+		
+		
+		
 		RegUser saved=saveRegUser(newuser);
 		
 		return saved;

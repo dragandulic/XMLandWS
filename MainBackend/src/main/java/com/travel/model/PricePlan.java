@@ -51,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     "price"
 })
 @XmlRootElement(name = "PricePlan")
+
 @Entity
 public class PricePlan {
 	

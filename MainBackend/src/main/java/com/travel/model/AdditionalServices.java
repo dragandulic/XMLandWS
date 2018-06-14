@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
+
 /**
 * <p>Java class for anonymous complex type.
 * 
@@ -52,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
  "accommodation"
 })
 @XmlRootElement(name = "AdditionalServices")
+
 @Entity
 public class AdditionalServices {
 

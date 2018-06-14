@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
+
+
 /**
  * <p>Java class for anonymous complex type.
  * 
@@ -61,6 +63,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "regUser"
 })
 @XmlRootElement(name = "Reservation", namespace = "http://www.travel.com/reservation")
+
 @Entity
 public class Reservation {
 	

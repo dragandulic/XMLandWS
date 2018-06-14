@@ -18,3 +18,6 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('halfBoard')
 INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('fullBoard');
 
 
+
+
+

@@ -8,6 +8,8 @@
 
 package com.travel.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
 
 
 /**
@@ -52,8 +55,9 @@ import javax.xml.bind.annotation.XmlType;
     "address"
 })
 @XmlRootElement(name = "RegUser", namespace = "http://www.travel.com/reguser")
+
 @Entity
-public class RegUser {
+public class RegUser implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

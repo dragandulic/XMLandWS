@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "comment"
 })
 @XmlRootElement(name = "Review", namespace = "http://www.travel.com/review")
+
 @Entity
 public class Review {
 	

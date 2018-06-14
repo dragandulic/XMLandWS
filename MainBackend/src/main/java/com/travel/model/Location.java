@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
     "address"
 })
 @XmlRootElement(name = "Location")
+
 @Entity
 public class Location {
 	

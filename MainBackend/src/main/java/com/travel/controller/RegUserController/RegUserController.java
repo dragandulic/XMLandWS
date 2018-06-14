@@ -4,9 +4,12 @@ package com.travel.controller.RegUserController;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
+import com.travel.controller.RegUserController.dto.LoginDTO;
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.RegUser;
@@ -41,7 +47,8 @@ public class RegUserController {
 	
 	@Autowired RegUserRepository reguserRepository;
 	
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	
 	
@@ -123,6 +130,36 @@ public class RegUserController {
 			
 			return new MessageResponse("User is registrated");
 		}
+	    @JsonValue
+	    @PostMapping("/login")
+        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO ,HttpServletRequest  request) {
+		
+	    	RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());
+	    	
+	    	if (temp == null){
+	    		
+				return new MessageResponse("Invalid email address");
+				
+	    	}
+			if (!(temp.getPassword().equals((loginDTO.getPassword())))){
+				return new MessageResponse("Invalid password");
+			}
+        	
+        	request.getSession().setAttribute("reguser", temp);
+        	
+        	
+			
+			return new MessageResponse("User is logged");
+		}
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    
 	    
 	    @PostMapping("/confirm")

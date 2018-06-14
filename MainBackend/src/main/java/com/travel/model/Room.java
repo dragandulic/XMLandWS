@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "accommodation"
 })
 @XmlRootElement(name = "Room", namespace = "http://www.travel.com/room")
+
 @Entity
 public class Room {
 	

@@ -5,11 +5,11 @@ package com.travel.controller.RegUserController;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
@@ -35,7 +34,7 @@ import com.travel.validation.PasswordMatchesValidator;
 
 
 
-
+@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
 @RestController
 @RequestMapping("/reguser")
 public class RegUserController {
@@ -51,7 +50,6 @@ public class RegUserController {
 	private PasswordEncoder passwordEncoder;
 	
 	
-	
 	    @JsonValue
 		@GetMapping("/getUsers")
 		public RegUserResponse getUsers(){
@@ -62,7 +60,7 @@ public class RegUserController {
 		}
 	    
 	    
-	    @PostMapping("/getUser/{userId}")
+	    @GetMapping("/getUser/{userId}")
 	    public  RegUser getUser(@PathVariable Long userId){
 	        RegUser user = reguserService.getRegUserById(userId);
 	      

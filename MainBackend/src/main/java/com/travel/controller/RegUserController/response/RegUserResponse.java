@@ -20,6 +20,18 @@ public class RegUserResponse {
 		
 		this.users=r;
 	}
+
+
+
+	public List<RegUser> getUsers() {
+		return users;
+	}
+
+
+
+	public void setUsers(List<RegUser> users) {
+		this.users = users;
+	}
 	
 	
 }

@@ -141,7 +141,10 @@ public class RegUserController {
 				return new MessageResponse("Invalid email address");
 				
 	    	}
-			if (!(temp.getPassword().equals((loginDTO.getPassword())))){
+	    	
+	    
+	    	
+			if (!(passwordEncoder.matches(loginDTO.getPassword(),temp.getPassword()))){
 				return new MessageResponse("Invalid password");
 			}
         	

@@ -45,8 +45,8 @@ public class RegUserService {
 		newuser.setSurname(userDTO.getSurname());
 		newuser.setEmail(userDTO.getEmail());
 		newuser.setAddress(userDTO.getAddress());
-		//newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
-		newuser.setPassword((userDTO.getPassword1()));
+		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
+		//newuser.setPassword((userDTO.getPassword1()));
 		/*
 		newuser.setConfirmationToken(UUID.randomUUID().toString());
 		//user.setPoints(0);

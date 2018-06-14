@@ -47,6 +47,10 @@ public List<String>findDistinctServices(){
 	return additionalServicesRepository.findAdditionalServiceNames();
 }
 
+public void deleteAdditionalService(String name){
+	
+	additionalServicesRepository.deleteAservice(name);
+}
 
 
 	

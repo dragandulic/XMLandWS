@@ -87,6 +87,8 @@ public class AccommodationEndpoint {
 		//acc.setAdditionalServices(savedas);
 		acc.setRating(request.getRating());
 		acc.setCategory(request.getCategory());
+		acc.setDatefrom(request.getDatefrom());
+		acc.setDateto(request.getDateto());
 		Accommodation savedaccomm=accommodationService.saveAccommodation(acc);
 		
 		List<String>servicelist=request.getServices();

@@ -2,7 +2,10 @@ package com.travel.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +26,11 @@ public interface AdditionalServicesRepository extends JpaRepository<AdditionalSe
 	List<AdditionalServices> findAll();
 	@Query("SELECT DISTINCT a.servicename FROM AdditionalServices a")
 	List<String> findAdditionalServiceNames();
+	
+	@Modifying
+	@Transactional
+	@Query(value="DELETE FROM AdditionalServices a WHERE a.servicename=?1")
+	void deleteAservice(String sname);
 
 	
 	

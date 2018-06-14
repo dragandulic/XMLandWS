@@ -83,6 +83,8 @@
                 <xs:element name="threebadroom" type="xs:int"/>
                 <xs:element name="fourbadroom" type="xs:int"/>
                 <xs:element name="fivedbadroom" type="xs:int"/>
+                <xs:element name="datefrom" type="xs:string"/>
+                <xs:element name="dateto" type="xs:string"/>
                 <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
                 
                 

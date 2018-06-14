@@ -117,6 +117,11 @@ public class Accommodation {
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
     
+    @XmlElement
+    protected String datefrom;
+    @XmlElement
+    protected String dateto;
+    
   
     @XmlElement(name = "Category", defaultValue = "0")
     protected int category;
@@ -354,6 +359,22 @@ public class Accommodation {
 
 	public void setReview(List<Review> review) {
 		this.review = review;
+	}
+
+	public String getDatefrom() {
+		return datefrom;
+	}
+
+	public void setDatefrom(String datefrom) {
+		this.datefrom = datefrom;
+	}
+
+	public String getDateto() {
+		return dateto;
+	}
+
+	public void setDateto(String dateto) {
+		this.dateto = dateto;
 	}
 
 	

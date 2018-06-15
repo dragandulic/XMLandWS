@@ -155,5 +155,12 @@
    </build>
 	
 
+<listener>
+    <description>Servlet listener that exposes the request to the current thread</description>
+    <display-name>RequestContextListener</display-name>  
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
+</listener>
+
+
 
 </project>

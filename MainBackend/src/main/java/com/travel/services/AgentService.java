@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.concretepage.gs_ws.RegistrationAgentRequest;
 import com.travel.model.Agent;
-
 import com.travel.repositories.AgentRepository;
 
 
@@ -96,7 +95,9 @@ public Agent registerNewAgentAccount( RegistrationAgentRequest request){
 }
 
 
-
+public Agent findOneUserByEmail(String email) {
+	return agentRepository.findOneByEmail(email);
+}
 
 
 

@@ -20,7 +20,7 @@ public class WSConfig extends WsConfigurerAdapter {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/adminws","/reguserws","/accommodationws","/roomws");
+		return new ServletRegistrationBean(servlet, "/adminws","/reguserws","/accommodationws","/roomws","/agentws");
 	}
 	
 	
@@ -84,6 +84,20 @@ public class WSConfig extends WsConfigurerAdapter {
 		return new SimpleXsdSchema(new ClassPathResource("schemas/Room.xsd"));
 	}
 	
+	@Bean(name = "agent")
+	public DefaultWsdl11Definition wsdlAgent(XsdSchema agentSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("AgentPort");
+		wsdl11Definition.setLocationUri("/agentws");
+		wsdl11Definition.setTargetNamespace("http://www.travel.com/agent");
+		wsdl11Definition.setSchema(agentSchema);
+		return wsdl11Definition;
+	}
+	
+	@Bean
+	public XsdSchema agentSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("schemas/Agent.xsd"));
+	}
 	
 	
 	

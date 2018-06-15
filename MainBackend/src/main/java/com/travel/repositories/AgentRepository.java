@@ -12,11 +12,13 @@ import com.travel.model.Agent;
 
 
 
+
 @Repository
 public interface AgentRepository extends JpaRepository<Agent, Long> {
 
 	
 	Agent findByIdEquals(Long id);
 	List<Agent> findAll();
+	Agent findOneByEmail(String email);
 	
 }

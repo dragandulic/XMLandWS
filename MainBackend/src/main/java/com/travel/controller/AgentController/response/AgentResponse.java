@@ -19,6 +19,18 @@ public class AgentResponse {
 
 
 
+	public List<Agent> getAgents() {
+		return agents;
+	}
+
+
+
+	public void setAgents(List<Agent> agents) {
+		this.agents = agents;
+	}
+
+
+
 	
 	
 	

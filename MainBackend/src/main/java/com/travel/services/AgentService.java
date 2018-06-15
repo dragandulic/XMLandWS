@@ -25,7 +25,7 @@ public class AgentService {
 	private PasswordEncoder passwordEncoder;
 	
 	
-	public Agent getAdminById(Long id) {
+	public Agent getAgentById(Long id) {
 		
 		Agent agent = agentRepository.findByIdEquals(id);
 		

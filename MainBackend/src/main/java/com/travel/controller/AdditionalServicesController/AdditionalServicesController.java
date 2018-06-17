@@ -40,7 +40,7 @@ public class AdditionalServicesController {
 				
 			}
 	  
-	  @PostMapping("/addService")
+	  @PostMapping("/addService/{serviceName}")
 	    public  MessageResponse addNewService(@PathVariable String serviceName){
 	        AdditionalServices newservice=new AdditionalServices();
 	        

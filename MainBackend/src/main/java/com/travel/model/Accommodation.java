@@ -93,8 +93,7 @@ public class Accommodation {
 
     @XmlElement(name = "Name", required = true)
     protected String name;
-    @XmlElement(name = "Type", required = true)
-    protected String type;
+   
     
     @OneToOne
     @JoinColumn(name = "location_id")
@@ -177,21 +176,7 @@ public class Accommodation {
      *     {@link String }
      *     
      */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+ 
 
     /**
      * Gets the value of the location property.

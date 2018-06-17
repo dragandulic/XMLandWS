@@ -41,13 +41,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	
     	
     	
-    	http.httpBasic()
-    	.and()
-    	.authorizeRequests()
-    	.antMatchers("**/getUsers/**").authenticated()
-    	               .anyRequest().permitAll()
-    	               .and()
-    	               .formLogin().loginPage("/reguser/login").permitAll();
+    	
+    	
+    	               http.authorizeRequests().anyRequest().permitAll();
+    	               
+    	               //.formLogin().loginPage("/reguser/login").permitAll();
     	
                     
     }

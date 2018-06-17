@@ -17,6 +17,18 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('tv');
 INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('parking');
 INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('halfBoard');
 INSERT INTO `xmlback`.`additional_services` (`servicename`) VALUES ('fullBoard');
+INSERT INTO `xmlback`.`accommodation_type` (`typename`) VALUES ('hotel');
+INSERT INTO `xmlback`.`accommodation_type` (`typename`) VALUES ('apartment');
+INSERT INTO `xmlback`.`accommodation_type` (`typename`) VALUES ('bed&breakfast');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('1');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('2');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('3');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('4');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('5');
+INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('Uncathegorized');
+
+
+
 
 
 

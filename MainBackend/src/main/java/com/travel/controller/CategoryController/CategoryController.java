@@ -1,4 +1,4 @@
-package com.travel.controller.AccommodationTypeController;
+package com.travel.controller.CategoryController;
 
 import java.util.List;
 
@@ -18,51 +18,53 @@ import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
+import com.travel.model.Category;
 import com.travel.model.RegUser;
 import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
+import com.travel.services.CategoryService;
 
 
 
 @RestController
-@RequestMapping("/atypes")
-//@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
-public class AccommodationTypeController {
+@RequestMapping("/category")
+@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+public class CategoryController {
 	
 	@Autowired
-	private AccommodationTypeService atService;
+	private CategoryService cService;
 	
 	
 	
 	  @JsonValue
-			@GetMapping("/getATypes")
-			public AccommodationTypeResponse getTypes(){
+			@GetMapping("/getCategories")
+			public Category getCats(){
 				
-				List<String>listtypes=atService.findDistinctTypes();
-				return (AccommodationTypeResponse) listtypes;
+				List<String>listcats=cService.findDistinctCategory();
+				return (Category) listcats;
 				
 			}
 	  
-	  @PostMapping("/addType/{typeName}")
-	    public  MessageResponse addNewType(@PathVariable String typeName){
-	        AccommodationType newtype=new AccommodationType();
+	  @PostMapping("/addCategory/{cName}")
+	    public  MessageResponse addNewCategory(@PathVariable String cName){
+	        Category newcat=new Category();
 	        
-	        newtype.setTypename(typeName);
-	       AccommodationType saved=atService.saveAccommodationType(newtype);
+	        newcat.setCategoryname(cName);
+	        Category saved=cService.saveCategory(newcat);
 	      if(saved !=null){
-	        return new MessageResponse("Successfully added new type");
+	        return new MessageResponse("Successfully added new category");
 	      }else{
 	    	  
-	    	  return new MessageResponse("Failed to add new type");
+	    	  return new MessageResponse("Failed to add category");
 	      }
 	    }
 	    
-	  @DeleteMapping("deleteType/{typeName}")
-	    public MessageResponse deleteType(@PathVariable String typeName){
+	  @DeleteMapping("deleteCategory/{catName}")
+	    public MessageResponse deleteCategory(@PathVariable String catName){
 	    	
-	        atService.deleteAccommodationType(typeName);
+	        cService.deleteCategory(catName);
 	    	
-	    	return new MessageResponse("Successfully deleted accommodation type");
+	    	return new MessageResponse("Successfully deleted category");
 	    	
 	    	
 	    	

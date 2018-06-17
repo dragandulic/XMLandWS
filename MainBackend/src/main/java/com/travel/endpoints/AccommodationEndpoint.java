@@ -82,7 +82,7 @@ public class AccommodationEndpoint {
 		acc.setName(request.getName());
 		acc.setDescription(request.getDescription());
 		acc.setFree(true);
-		acc.setType(request.getType());
+		//acc.setType(request.getType());
 		acc.setLocation(saved);
 		//acc.setAdditionalServices(savedas);
 		acc.setRating(request.getRating());
@@ -190,7 +190,7 @@ public class AccommodationEndpoint {
 		accom.setName(request.getName());
 		accom.setDescription(request.getDescription());
 		accom.setFree(true);
-		accom.setType(request.getType());
+		//accom.setType(request.getType());
 		accom.setLocation(saved);
 		//accom.setAdditionalServices(savedas);
 		accom.setRating(request.getRating());

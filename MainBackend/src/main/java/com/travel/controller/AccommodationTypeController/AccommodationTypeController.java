@@ -1,4 +1,4 @@
-package com.travel.controller.AdditionalServicesController;
+package com.travel.controller.AccommodationTypeController;
 
 import java.util.List;
 
@@ -12,54 +12,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.travel.controller.AccommodationTypeController.response.AccommodationTypeResponse;
 import com.travel.controller.AdditionalServicesController.response.AdditionalServicesResponse;
 import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.response.RegUserResponse;
+import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
 import com.travel.model.RegUser;
+import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
 
 
 
 @RestController
-@RequestMapping("/aservices")
+@RequestMapping("/atypes")
 @CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
-public class AdditionalServicesController {
+public class AccommodationTypeController {
 	
 	@Autowired
-	private AdditionalServicesService aService;
+	private AccommodationTypeService atService;
 	
 	
 	
 	  @JsonValue
-			@GetMapping("/getAServices")
-			public AdditionalServicesResponse getServices(){
+			@GetMapping("/getATypes")
+			public AccommodationTypeResponse getTypes(){
 				
-				List<String>listservices=aService.findDistinctServices();
-				return (AdditionalServicesResponse) listservices;
+				List<String>listtypes=atService.findDistinctTypes();
+				return (AccommodationTypeResponse) listtypes;
 				
 			}
 	  
-	  @PostMapping("/addService")
-	    public  MessageResponse addNewService(@PathVariable String serviceName){
-	        AdditionalServices newservice=new AdditionalServices();
+	  @PostMapping("/addType")
+	    public  MessageResponse addNewType(@PathVariable String typeName){
+	        AccommodationType newtype=new AccommodationType();
 	        
-	        newservice.setServicename(serviceName);
-	       AdditionalServices saved=aService.saveAdditionalService(newservice);
+	        newtype.setTypename(typeName);
+	       AccommodationType saved=atService.saveAccommodationType(newtype);
 	      if(saved !=null){
-	        return new MessageResponse("Successfully added new additional service");
+	        return new MessageResponse("Successfully added new type");
 	      }else{
 	    	  
-	    	  return new MessageResponse("Failed to add new additional service");
+	    	  return new MessageResponse("Failed to add new type");
 	      }
 	    }
 	    
-	  @DeleteMapping("deleteService/{serviceName}")
-	    public MessageResponse deleteUser(@PathVariable String serviceName){
+	  @DeleteMapping("deleteType/{typeName}")
+	    public MessageResponse deleteType(@PathVariable String typeName){
 	    	
-	        aService.deleteAdditionalService(serviceName);
+	        atService.deleteAccommodationType(typeName);
 	    	
-	    	return new MessageResponse("Successfully deleted additional service");
+	    	return new MessageResponse("Successfully deleted accommodation type");
 	    	
 	    	
 	    	

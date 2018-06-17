@@ -103,7 +103,7 @@ public class RegUserController {
 	      }
 	    }
 	    
-	    @DeleteMapping("deleteUser/{UserId}")
+	    @DeleteMapping("deleteUser/{userId}")
 	    public MessageResponse deleteUser(@PathVariable Long userId){
 	    	
 	      reguserService.deleteRegUser(reguserRepository.findByIdEquals(userId));
@@ -136,8 +136,11 @@ public class RegUserController {
 			return new MessageResponse("User is registrated");
 		}
 	    @JsonValue
-	    @PostMapping("/login")
-        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO ) {
+	    @GetMapping("/login")
+        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO) {
+	    	
+	    
+	    	
 		
 	    	RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());
 	    	
@@ -160,7 +163,7 @@ public class RegUserController {
 	    
 	
 	    @PostMapping("/logout")
-        public MessageResponse login(HttpServletRequest  request) {
+        public MessageResponse logout(HttpServletRequest  request) {
 		
 	    	
         	
@@ -173,7 +176,7 @@ public class RegUserController {
         	
         	
 			
-			return new MessageResponse("User is logged");
+			return new MessageResponse("User is logged out");
 		}
 	    
 	    

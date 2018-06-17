@@ -51,6 +51,18 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="AccommodationType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="typename" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+             
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
     <xs:element name="PricePlan">
         <xs:complexType>
             <xs:sequence>

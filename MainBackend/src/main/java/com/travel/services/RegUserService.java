@@ -13,6 +13,7 @@ import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.error.UserAlreadyExistsException;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
+import com.travel.repositories.RoleRepository;
 
 
 @Service
@@ -20,6 +21,9 @@ public class RegUserService {
 
 	@Autowired
 	private RegUserRepository regUserRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -39,13 +43,15 @@ public class RegUserService {
 	
 	public RegUser registerNewUserAccount(RegistrationDTO userDTO){
 		
-		
+		Long num;
+		num=(long) 1;
 		RegUser newuser=new RegUser();
 		newuser.setName(userDTO.getName());
 		newuser.setSurname(userDTO.getSurname());
 		newuser.setEmail(userDTO.getEmail());
 		newuser.setAddress(userDTO.getAddress());
 		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
+		newuser.setRole(roleRepository.findByRoleidEquals(num));
 		//newuser.setPassword((userDTO.getPassword1()));
 		/*
 		newuser.setConfirmationToken(UUID.randomUUID().toString());

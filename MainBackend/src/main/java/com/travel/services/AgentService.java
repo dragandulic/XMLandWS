@@ -87,7 +87,7 @@ public Agent registerNewAgentAccount( RegistrationAgentRequest request){
 	
 	
 	
-	
+	System.out.println(agent.getName() + agent.getSurname()+agent.getEmail()+agent.getPassword());
 	Agent saved=saveAgent(agent);
 	
 	

@@ -8,6 +8,8 @@
 
 package com.travel.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -57,7 +59,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Agent", namespace = "http://www.travel.com/agent")
 
 @Entity
-public class Agent {
+public class Agent implements Serializable {
 	
 	
 	@Id

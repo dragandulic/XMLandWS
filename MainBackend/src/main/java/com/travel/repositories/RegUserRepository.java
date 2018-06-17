@@ -1,6 +1,7 @@
 package com.travel.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,7 @@ public interface RegUserRepository extends JpaRepository<RegUser, Long> {
 	List<RegUser> findAll();
 	RegUser findOneByEmail(String email);
 	RegUser findByConfirmationtoken(String confirmationToken);
+	Optional <RegUser>findByEmail(String email);
 	
 	
 }

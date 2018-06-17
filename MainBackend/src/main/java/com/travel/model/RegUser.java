@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -92,6 +94,10 @@ public class RegUser implements Serializable {
     
     @XmlElement(name = "Confirmationtoken", namespace = "http://www.travel.com/reguser")
     protected String confirmationtoken;
+    
+    @OneToOne
+    @JoinColumn(name="role_roleid")
+    private Role role;
 
     /**
      * Gets the value of the name property.
@@ -100,7 +106,32 @@ public class RegUser implements Serializable {
      *     possible object is
      *     {@link String }
      *     
+     *     
      */
+    
+    
+    public RegUser(){
+    	
+    }
+    
+    public RegUser(RegUser user){
+    	
+    	this.name=user.getName();
+    	this.surname=user.getSurname();
+    	this.active=user.isActive();
+    	this.address=user.getAddress();
+    	this.blocked=user.isBlocked();
+    	this.password=user.getPassword();
+    	this.confirmationtoken=user.getConfirmationtoken();
+    	this.email=user.getEmail();
+    	this.role=user.getRole();
+    	this.id=user.id;
+    }
+    
+    
+    
+    
+    
     public String getName() {
         return name;
     }
@@ -243,6 +274,22 @@ public class RegUser implements Serializable {
 
 	public void setConfirmationtoken(String confirmationtoken) {
 		this.confirmationtoken = confirmationtoken;
+	}
+
+
+
+
+
+	public Role getRole() {
+		return role;
+	}
+
+
+
+
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	

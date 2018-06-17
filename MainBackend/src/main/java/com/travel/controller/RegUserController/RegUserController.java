@@ -4,10 +4,13 @@ package com.travel.controller.RegUserController;
 
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,7 +37,7 @@ import com.travel.validation.PasswordMatchesValidator;
 
 
 
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+//@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
 @RestController
 @RequestMapping("/reguser")
 public class RegUserController {
@@ -49,8 +52,12 @@ public class RegUserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired 
+	 private HttpSession httpSession;
+	
 	
 	    @JsonValue
+	    @PreAuthorize("hasAnyRole('USER')")
 		@GetMapping("/getUsers")
 		public RegUserResponse getUsers(){
 			
@@ -130,7 +137,7 @@ public class RegUserController {
 		}
 	    @JsonValue
 	    @PostMapping("/login")
-        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO ,HttpServletRequest  request) {
+        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO ) {
 		
 	    	RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());
 	    	
@@ -145,15 +152,29 @@ public class RegUserController {
 			if (!(passwordEncoder.matches(loginDTO.getPassword(),temp.getPassword()))){
 				return new MessageResponse("Invalid password");
 			}
-        	
-        	request.getSession().setAttribute("reguser", temp);
-        	
-        	
+        
 			
 			return new MessageResponse("User is logged");
 		}
 	    
 	    
+	
+	    @PostMapping("/logout")
+        public MessageResponse login(HttpServletRequest  request) {
+		
+	    	
+        	
+        	request.getSession().removeAttribute("reguser");
+            request.getSession().invalidate();
+            
+            
+          
+        	
+        	
+        	
+			
+			return new MessageResponse("User is logged");
+		}
 	    
 	    
 	    

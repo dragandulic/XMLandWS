@@ -1,7 +1,8 @@
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Marko','Juric');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Aleksandra','Grujic');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`) VALUES ('Damjan','Nicic');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Dragan','Dulic',1,0);
+INSERT INTO `xmlback`.`role` (`roleid`,`role`) VALUES ('1','USER');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`role_roleid`) VALUES ('Dragan','Dulic',1,0,'1');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Nikola','Nikolic',1,0);
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Jovana','Jovanic',1,0);
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Milos','Petrovic',1,0);

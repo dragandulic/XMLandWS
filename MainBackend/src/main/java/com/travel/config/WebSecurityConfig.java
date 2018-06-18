@@ -18,6 +18,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
@@ -57,10 +58,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
           .and()
     	   .authorizeRequests()
-    	   .antMatchers("/reguser/*").permitAll();
-    	
-    	   
-    	 
+    	   .antMatchers("/reguser/*").permitAll()
+    	   .antMatchers("/atypes/*").permitAll()
+    	   .antMatchers("/aservices/*").permitAll()
+    	   .antMatchers("/agent/*").permitAll()
+    	   .antMatchers("/category/*").permitAll()
+    	   .antMatchers("/comment/*").permitAll()
+    	   .antMatchers("/search/*").permitAll();
            
     	
                                  
@@ -70,7 +74,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     
     }
 
-    @Autowired
+    private ExpressionUrlAuthorizationConfigurer<HttpSecurity>.AuthorizedUrl antMatchers(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }

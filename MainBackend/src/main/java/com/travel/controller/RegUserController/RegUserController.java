@@ -11,7 +11,14 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,6 +35,7 @@ import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.dto.LoginDTO;
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
+import com.travel.model.CustomUserDetails;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 import com.travel.services.RegUserService;
@@ -37,7 +46,7 @@ import com.travel.validation.PasswordMatchesValidator;
 
 
 
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+//@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
 @RestController
 @RequestMapping("/reguser")
 public class RegUserController {
@@ -46,6 +55,7 @@ public class RegUserController {
 	@Autowired
 	private RegUserService reguserService;
 	
+
 	
 	@Autowired RegUserRepository reguserRepository;
 	
@@ -59,10 +69,11 @@ public class RegUserController {
 	    @JsonValue
 	    @PreAuthorize("hasAnyRole('USER')")
 		@GetMapping("/getUsers")
-		public RegUserResponse getUsers(){
+		public /*RegUserResponse*/String getUsers(){
 			
 			List<RegUser>listus=reguserService.getAllUsers();
-			return new RegUserResponse(listus);
+		//	return new RegUserResponse(listus);
+			return "USPEO SAM";
 			
 		}
 	    
@@ -137,27 +148,9 @@ public class RegUserController {
 		}
 	    @JsonValue
 	    @GetMapping("/login")
-        public MessageResponse login(@RequestBody @Valid LoginDTO loginDTO) {
+        public String login(Model model) {
 	    	
-	    
-	    	
-		
-	    	RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());
-	    	
-	    	if (temp == null){
-	    		
-				return new MessageResponse("Invalid email address");
-				
-	    	}
-	    	
-	    
-	    	
-			if (!(passwordEncoder.matches(loginDTO.getPassword(),temp.getPassword()))){
-				return new MessageResponse("Invalid password");
-			}
-        
-			
-			return new MessageResponse("User is logged");
+			return "login";
 		}
 	    
 	    
@@ -167,9 +160,7 @@ public class RegUserController {
 		
 	    	
         	
-        	request.getSession().removeAttribute("reguser");
-            request.getSession().invalidate();
-            
+        
             
           
         	
@@ -201,5 +192,17 @@ public class RegUserController {
 		}
 	    
 	    
+	    @GetMapping("/getActiveUser")
+	    @ResponseBody
+	    public String getActiveUser(){
+	    
+	    	CustomUserDetails customUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    
+	   
+	    
+	    		return customUser.getEmail();	
+
+	    	
+	    }
 
 }

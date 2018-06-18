@@ -202,6 +202,43 @@
         </xs:complexType>
     </xs:element>
     
+     <xs:element name="getDistinctTypesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctTypesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="types" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="getDistinctCategoriesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctCategoriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="categories" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+    
     
     
     

@@ -25,11 +25,21 @@ public class CustomUserDetailsService implements UserDetailsService {
 		// TODO Auto-generated method stub
 		
 		Optional<RegUser> optionaluser=reguserRepository.findByEmail(username);
+		RegUser opt=reguserRepository.findOneByEmail(username);
+		if(opt==null){
+			throw new UsernameNotFoundException("Email not found");
+		}
 		
+		System.out.println(opt.getEmail());
+		
+		/*
 			optionaluser
 			   .orElseThrow(()->new UsernameNotFoundException("Email not found"));
 			return optionaluser
 					.map(CustomUserDetails::new).get();
+					*/
+		
+		return new CustomUserDetails(opt);
 	}
 
 }

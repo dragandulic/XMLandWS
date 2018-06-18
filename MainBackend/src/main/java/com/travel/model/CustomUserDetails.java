@@ -3,6 +3,7 @@ package com.travel.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -14,14 +15,24 @@ public class CustomUserDetails extends RegUser implements UserDetails{
 	
 	  String role;
 	  String ROLE_PREFIX = "ROLE_";
+	private RegUser userr;
 	
 	
 	public CustomUserDetails(final RegUser user){
 		
+		
+	
 		super(user);
+		
+		
 	}
 	
-	
+	public CustomUserDetails(){
+		
+		
+		
+		
+	}
 	
 	
 	
@@ -69,5 +80,18 @@ public class CustomUserDetails extends RegUser implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+
+
+
+
+	public RegUser getUser() {
+		return userr;
+	}
+
+
+
+
+
 
 }

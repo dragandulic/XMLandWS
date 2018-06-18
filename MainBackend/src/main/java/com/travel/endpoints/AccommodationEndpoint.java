@@ -14,8 +14,12 @@ import com.concretepage.gs_ws.AddAccommodationRequest;
 import com.concretepage.gs_ws.AddAccommodationResponse;
 import com.concretepage.gs_ws.EditAccommodationRequest;
 import com.concretepage.gs_ws.EditAccommodationResponse;
+import com.concretepage.gs_ws.GetDistinctCategoriesRequest;
+import com.concretepage.gs_ws.GetDistinctCategoriesResponse;
 import com.concretepage.gs_ws.GetDistinctServicesRequest;
 import com.concretepage.gs_ws.GetDistinctServicesResponse;
+import com.concretepage.gs_ws.GetDistinctTypesRequest;
+import com.concretepage.gs_ws.GetDistinctTypesResponse;
 import com.concretepage.gs_ws.SetAccommodationStatusRequest;
 import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
@@ -228,7 +232,7 @@ public class AccommodationEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctServicesRequest")
 	@ResponsePayload
-	public  GetDistinctServicesResponse getAddServices(@RequestPayload GetDistinctServicesRequest request) {
+	public  GetDistinctServicesResponse getAllServices(@RequestPayload GetDistinctServicesRequest request) {
 		
 		 GetDistinctServicesResponse response = new  GetDistinctServicesResponse();
 		
@@ -239,6 +243,42 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
+	
+	
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctTypesRequest")
+	@ResponsePayload
+	public  GetDistinctTypesResponse getAllTypes(@RequestPayload GetDistinctTypesRequest request) {
+		
+		 GetDistinctTypesResponse response = new  GetDistinctTypesResponse();
+		
+		//response.setServices(as.findDistinctServices());
+		
+		response.getTypes().addAll(atService.findDistinctTypes());
+		
+		
+		return response;
+	}
+	
+	
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctCategoriesRequest")
+	@ResponsePayload
+	public  GetDistinctCategoriesResponse getAllCategories(@RequestPayload GetDistinctCategoriesRequest request) {
+		
+		 GetDistinctCategoriesResponse response = new  GetDistinctCategoriesResponse();
+		
+		//response.setServices(as.findDistinctServices());
+		
+		response.getCategories().addAll(cService.findDistinctCategory());
+		
+		
+		return response;
+	}
+	
+	
+	
+	
 	
 	
 	

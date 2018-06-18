@@ -122,10 +122,6 @@ public class Accommodation {
     protected String dateto;
     
   
-    
-    @OneToMany(mappedBy = "accommodation")
-    @XmlElement(name = "PricePlan")
-    protected List<PricePlan> pricePlan;
 
     /**
      * Gets the value of the name property.

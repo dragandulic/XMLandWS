@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/reguser" xmlns:us="http://www.travel.com/reguser"
+    xmlns:res="http://www.travel.com/reservation">
+    <xs:element name="RegUser">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="Id" type="xs:long"/>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Surname" type="xs:string"/>
+                <xs:element name="Email" type="xs:string"/>
+                <xs:element name="Password" type="xs:string"/>
+                <xs:element name="Address" type="xs:string"/>
+                <xs:element name="Active" type="xs:boolean"/>
+                <xs:element name="Blocked" type="xs:boolean"/>
+                <xs:element name="Confirmationtoken" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="getRegUserByIdRequest">
+     	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="regUserId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+     </xs:element>
+    
+    <xs:element name="getRegUserByIdResponse">
+     	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="surname" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+     </xs:element>
+    
+    
+</xs:schema>

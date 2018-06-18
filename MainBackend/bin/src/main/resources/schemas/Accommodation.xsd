@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/accommodation"
+    xmlns:ac="http://www.travel.com/accommodation" xmlns:us="http://www.travel.com/user"
+    xmlns:revi="http://www.travel.com/review" xmlns:age="http://www.travel.com/agent">
+    <xs:import namespace="http://www.travel.com/review" schemaLocation="Review.xsd"/>
+    <xs:import namespace="http://www.travel.com/agent" schemaLocation="Agent.xsd"/>
+    
+    <xs:element name="Accommodation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Type" type="xs:string"/>
+                <xs:element ref="ac:Location"/>
+                <xs:element ref="age:Agent"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="revi:Review"/>
+                <xs:element name="Description" type="xs:string"/>
+                <xs:element name="Rating" type="xs:int" default="5"/>
+                <xs:element name="Free" type="xs:boolean" default="true"/>               
+                <xs:element ref="ac:AdditionalServices"/>
+                <xs:element name="Category" default="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minInclusive value="0"/>
+                            <xs:maxInclusive value="5"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="ac:PricePlan"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Location">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="Country" type="xs:string"/>
+                <xs:element name="City" type="xs:string"/>
+                <xs:element name="Address" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AdditionalServices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="servicename" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+             
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="AccommodationType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="typename" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+             
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     
+    <xs:element name="Category">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="categoryname" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+             
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="PricePlan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="RoomType" type="xs:int" default="2"/>
+                <xs:element name="Price" type="xs:int"/>
+                <xs:element name="Month" type="xs:int"/>
+                <xs:element ref="ac:Accommodation"/>
+                
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="addAccommodationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="address" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="rating" type="xs:int" default="5"/>
+                <xs:element name="category" type="xs:string"/>
+                <xs:element name="onebadroom" type="xs:int"/>
+                <xs:element name="twobadroom" type="xs:int"/>
+                <xs:element name="threebadroom" type="xs:int"/>
+                <xs:element name="fourbadroom" type="xs:int"/>
+                <xs:element name="fivedbadroom" type="xs:int"/>
+                <xs:element name="datefrom" type="xs:string"/>
+                <xs:element name="dateto" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
+                
+                
+                
+                  
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="addAccommodationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="editAccommodationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="address" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="rating" type="xs:int" default="5"/>
+                <xs:element name="category" type="xs:string"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+      <xs:element name="editAccommodationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+    
+    
+    <xs:element name="setAccommodationStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="free" type="xs:boolean"/>
+                  <xs:element name="accommodationid" type="xs:long"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="setAccommodationStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="message" type="xs:string"/>
+                
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="getDistinctServicesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctServicesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctTypesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctTypesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="types" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="getDistinctCategoriesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getDistinctCategoriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="categories" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+    
+    
+    
+    
+</xs:schema>

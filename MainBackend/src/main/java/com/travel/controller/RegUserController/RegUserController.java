@@ -2,6 +2,7 @@ package com.travel.controller.RegUserController;
 
 
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -46,7 +47,7 @@ import com.travel.validation.PasswordMatchesValidator;
 
 
 
-//@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
 @RestController
 @RequestMapping("/reguser")
 public class RegUserController {
@@ -148,7 +149,7 @@ public class RegUserController {
 		}
 	    @JsonValue
 	    @GetMapping("/login")
-        public String login(Model model) {
+        public String login(Model model, Principal principal) {
 	    	
 			return "login";
 		}

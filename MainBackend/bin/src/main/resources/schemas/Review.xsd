@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.travel.com/review" xmlns:revi="http://www.travel.com/review"
+    xmlns:us="http://www.travel.com/user" xmlns:regu="http://www.travel.com/reguser" xmlns:acc="http://www.travel.com/accommodation"
+    xmlns:com="http://www.travel.com/comment">
+    <xs:import namespace="http://www.travel.com/reguser" schemaLocation="RegUser.xsd"/>
+    <xs:import namespace="http://www.travel.com/comment" schemaLocation="Comment.xsd"/>
+    <xs:import namespace="http://www.travel.com/accommodation" schemaLocation="Accommodation.xsd"/>
+    <xs:element name="Review">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="Rating" type="xs:int" default="5"/>
+                <xs:element ref="regu:RegUser"/>
+                <xs:element ref="com:Comment"/>
+                <xs:element ref="acc:Accommodation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

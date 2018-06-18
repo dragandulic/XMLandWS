@@ -122,8 +122,6 @@ public class Accommodation {
     protected String dateto;
     
   
-    @XmlElement(name = "Category", defaultValue = "0")
-    protected int category;
     
     @OneToMany(mappedBy = "accommodation")
     @XmlElement(name = "PricePlan")
@@ -324,18 +322,7 @@ public class Accommodation {
      * Gets the value of the category property.
      * 
      */
-    public int getCategory() {
-        return category;
-    }
-
-    /**
-     * Sets the value of the category property.
-     * 
-     */
-    public void setCategory(int value) {
-        this.category = value;
-    }
-
+   
 	
 
 	public List<Review> getReview() {

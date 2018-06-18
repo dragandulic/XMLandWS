@@ -53,6 +53,9 @@ public void deleteCategory(String name){
 	 cRepository.deleteCategory(name);
 }
 
-
+public Category findCategoryByAccommodationId(Long accomm){
+	
+	 return cRepository.findCategoryByAccommodation(accomm);
+}
 	
 }

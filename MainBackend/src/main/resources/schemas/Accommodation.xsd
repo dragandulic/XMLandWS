@@ -101,7 +101,7 @@
                 <xs:element name="address" type="xs:string"/>
                 <xs:element name="description" type="xs:string"/>
                 <xs:element name="rating" type="xs:int" default="5"/>
-                <xs:element name="category" type="xs:int"/>
+                <xs:element name="category" type="xs:string"/>
                 <xs:element name="onebadroom" type="xs:int"/>
                 <xs:element name="twobadroom" type="xs:int"/>
                 <xs:element name="threebadroom" type="xs:int"/>
@@ -141,7 +141,7 @@
                 <xs:element name="address" type="xs:string"/>
                 <xs:element name="description" type="xs:string"/>
                 <xs:element name="rating" type="xs:int" default="5"/>
-                <xs:element name="category" type="xs:int"/>
+                <xs:element name="category" type="xs:string"/>
                 
             </xs:sequence>
         </xs:complexType>

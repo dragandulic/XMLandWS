@@ -19,11 +19,15 @@ import com.concretepage.gs_ws.GetDistinctServicesResponse;
 import com.concretepage.gs_ws.SetAccommodationStatusRequest;
 import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
+import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
+import com.travel.model.Category;
 import com.travel.model.Location;
 import com.travel.model.Room;
 import com.travel.services.AccommodationService;
+import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
+import com.travel.services.CategoryService;
 import com.travel.services.LocationService;
 import com.travel.services.RoomService;
 
@@ -44,7 +48,13 @@ public class AccommodationEndpoint {
 	@Autowired
 	private AdditionalServicesService as;
 	
-    
+	@Autowired
+	private CategoryService cService;
+	
+	@Autowired
+	private AccommodationTypeService atService;
+	
+	
 	
 	@Autowired
 	private RoomService roomService;
@@ -62,22 +72,6 @@ public class AccommodationEndpoint {
 		loc.setCountry(request.getCountry());
 		Location saved=locationService.saveLocation(loc);
 		
-		
-		
-		
-		/*
-		AdditionalServices as=new AdditionalServices();
-		as.setBathroom(request.isBathroom());
-		as.setBreakfast(request.isBreakfast());
-		as.setFullBoard(request.isFullBoard());
-		as.setHalfBoard(request.isHalfBoard());
-		
-		as.setKitchen(request.isKitchen());
-		as.setParking(request.isParking());
-		as.setTV(request.isTv());
-		as.setWiFi(request.isWifi());
-		AdditionalServices savedas=asService.saveAS(as);
-		*/
 		Accommodation acc=new Accommodation();
 		acc.setName(request.getName());
 		acc.setDescription(request.getDescription());
@@ -86,10 +80,20 @@ public class AccommodationEndpoint {
 		acc.setLocation(saved);
 		//acc.setAdditionalServices(savedas);
 		acc.setRating(request.getRating());
-		acc.setCategory(request.getCategory());
+		//acc.setCategory(request.getCategory());
 		acc.setDatefrom(request.getDatefrom());
 		acc.setDateto(request.getDateto());
 		Accommodation savedaccomm=accommodationService.saveAccommodation(acc);
+		
+		Category cat=new Category();
+		cat.setCategoryname(request.getCategory());
+		cat.setAccommodation(savedaccomm);
+		Category savedd=cService.saveCategory(cat);
+		
+		AccommodationType type=new AccommodationType();
+		type.setTypename(request.getType());
+		type.setAccommodation(savedaccomm);
+		AccommodationType t=atService.saveAccommodationType(type);
 		
 		List<String>servicelist=request.getServices();
 		
@@ -174,27 +178,27 @@ public class AccommodationEndpoint {
 		l.setCountry(request.getCountry());
 		Location saved=locationService.saveLocation(l);
 		
-		/*
-		AdditionalServices as=accom.getAdditionalServices();
-		as.setBathroom(request.isBathroom());
-		as.setBreakfast(request.isBreakfast());
-		as.setFullBoard(request.isFullBoard());
-		as.setHalfBoard(request.isHalfBoard());
-		as.setKitchen(request.isKitchen());
-		as.setParking(request.isParking());
-		as.setTV(request.isTv());
-		as.setWiFi(request.isWifi());
-		AdditionalServices savedas=asService.saveAS(as);
-		*/
 		
 		accom.setName(request.getName());
 		accom.setDescription(request.getDescription());
 		accom.setFree(true);
-		//accom.setType(request.getType());
+	
 		accom.setLocation(saved);
-		//accom.setAdditionalServices(savedas);
+		
 		accom.setRating(request.getRating());
-		accom.setCategory(request.getCategory());
+		
+		
+		
+		Category c=cService.findCategoryByAccommodationId(accom.getId());
+		c.setCategoryname(request.getCategory());
+		Category edited=cService.saveCategory(c);
+		
+		
+		AccommodationType at=atService.findTypeByAccommodationId(accom.getId());
+		at.setTypename(request.getType());
+		AccommodationType editedd=atService.saveAccommodationType(at);
+		
+		
 		Accommodation savedaccomm=accommodationService.saveAccommodation(accom);
 		
 		
@@ -221,7 +225,7 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
-	// komentar
+	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDistinctServicesRequest")
 	@ResponsePayload
 	public  GetDistinctServicesResponse getAddServices(@RequestPayload GetDistinctServicesRequest request) {

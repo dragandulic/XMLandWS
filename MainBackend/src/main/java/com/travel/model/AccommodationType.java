@@ -62,7 +62,7 @@ public class AccommodationType {
     protected String typename;
     
     @ManyToOne
-    @JoinColumn(name = "accommodation_id")
+    @JoinColumn(name = "accomm")
     @XmlElement(name = "Accommodation")
     protected Accommodation accommodation;
 

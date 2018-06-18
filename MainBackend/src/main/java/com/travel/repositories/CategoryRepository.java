@@ -7,9 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
+import com.travel.model.AccommodationType;
 import com.travel.model.Category;
 
 
@@ -33,6 +34,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 	@Query(value="DELETE FROM Category a WHERE a.categoryname=?1")
 	void deleteCategory(String cname);
 
+	
+	@Query(value="SELECT a FROM Category a WHERE (a.accommodation.id)=(:accomid)")
+	Category findCategoryByAccommodation(@Param("accomid")Long accomid);
 	
 	
 }

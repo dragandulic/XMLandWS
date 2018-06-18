@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.travel.model.AccommodationType;
+import com.travel.model.Category;
 import com.travel.repositories.AccommodationTypeRepository;
 
 
@@ -51,6 +52,15 @@ public void deleteAccommodationType(String name){
 	
 	 accommodationTypeRepository.deleteAccommodationType(name);
 }
+
+
+public AccommodationType findTypeByAccommodationId(Long accomm){
+	
+	 return accommodationTypeRepository.findTypeByAccommodation(accomm);
+}
+
+
+
 
 
 	

@@ -17,6 +17,9 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 
 	
 	Accommodation findByIdEquals(Long id);
+	
 	List<Accommodation> findAll();
+	
+	Accommodation findByLocation_idEquals(Long id);
 	
 }

@@ -1,18 +1,9 @@
 package com.travel.endpoints;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.xml.bind.JAXBElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -26,9 +17,7 @@ import com.concretepage.gs_ws.LoginAgentRequest;
 import com.concretepage.gs_ws.LoginAgentResponse;
 import com.concretepage.gs_ws.RegistrationAgentRequest;
 import com.concretepage.gs_ws.RegistrationAgentResponse;
-import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.model.Agent;
-
 import com.travel.services.AgentService;
 
 @Endpoint
@@ -41,8 +30,8 @@ public class AgentEndpoint {
 	@Autowired
 	private AgentService agentService;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	/*@Autowired
+	private PasswordEncoder passwordEncoder;*/
 	
 	@Autowired
 	private HttpServletRequest r;
@@ -99,10 +88,10 @@ public class AgentEndpoint {
 			
     	}
 		
-		if (!(passwordEncoder.matches(request.getPassword(),temp.getPassword()))){
+	/*	if (!(passwordEncoder.matches(request.getPassword(),temp.getPassword()))){
 			response.setMessage("Invalid password");
     		return response;
-		}
+		}*/
 		
 	
     

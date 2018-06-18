@@ -15,7 +15,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 @EnableWs
 public class WSConfig extends WsConfigurerAdapter {
-	@Bean
+	/*@Bean
 	public ServletRegistrationBean messageDispatcherServletAdmin(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
@@ -99,7 +99,6 @@ public class WSConfig extends WsConfigurerAdapter {
 		return new SimpleXsdSchema(new ClassPathResource("schemas/Agent.xsd"));
 	}
 	
-	
-	
+	*/
 	
 }

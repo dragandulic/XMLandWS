@@ -3,7 +3,7 @@ package com.travel.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.concretepage.gs_ws.RegistrationAgentRequest;
@@ -20,8 +20,8 @@ public class AgentService {
 	@Autowired
 	private AgentRepository agentRepository; 
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	/*@Autowired
+	private PasswordEncoder passwordEncoder;*/
 	
 	
 	public Agent getAgentById(Long id) {
@@ -65,7 +65,8 @@ public Agent registerNewAgentAccount( RegistrationAgentRequest request){
 	agent.setSurname(request.getSurname());
 	agent.setEmail(request.getEmail());
 	agent.setBusinessregnum(request.getBusinessregnum());
-	agent.setPassword(passwordEncoder.encode(request.getPassword1()));
+	//agent.setPassword(passwordEncoder.encode(request.getPassword1()));
+	agent.setPassword(request.getPassword1());
 	agent.setAddress(request.getAddress());
 	agent.setApproved(false);
 	

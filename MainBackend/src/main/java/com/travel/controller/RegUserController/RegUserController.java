@@ -47,7 +47,7 @@ import com.travel.validation.PasswordMatchesValidator;
 
 
 
-//@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
 @RestController
 @RequestMapping("/reguser")
 public class RegUserController {

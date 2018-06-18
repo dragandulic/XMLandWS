@@ -78,12 +78,58 @@
     <xs:element name="PricePlan">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Id" type="xs:long"/>
-                <xs:element name="RoomType" type="xs:int" default="2"/>
-                <xs:element name="Price" type="xs:int"/>
-                <xs:element name="Month" type="xs:int"/>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="roomtype" type="xs:int"/>
                 <xs:element ref="ac:Accommodation"/>
+                <xs:element name="january" type="xs:int"/>
+                <xs:element name="february" type="xs:int"/>
+                <xs:element name="march" type="xs:int"/>
+                <xs:element name="april" type="xs:int"/>
+                <xs:element name="may" type="xs:int"/>
+                <xs:element name="june" type="xs:int"/>
+                <xs:element name="july" type="xs:int"/>
+                <xs:element name="august" type="xs:int"/>
+                <xs:element name="september" type="xs:int"/>
+                <xs:element name="october" type="xs:int"/>
+                <xs:element name="november" type="xs:int"/>
+                <xs:element name="december" type="xs:int"/>
                 
+                
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    <xs:element name="addPricePlanRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="roomtype" type="xs:int"/>
+                <xs:element name="januaryprice" type="xs:int"/>
+                <xs:element name="februaryprice" type="xs:int"/>
+                <xs:element name="marchprice" type="xs:int"/>
+                <xs:element name="aprilprice" type="xs:int"/>
+                <xs:element name="mayprice" type="xs:int"/>
+                <xs:element name="juneprice" type="xs:int"/>
+                <xs:element name="julyprice" type="xs:int"/>
+                <xs:element name="augustprice" type="xs:int"/>
+                <xs:element name="septemberprice" type="xs:int"/>
+                <xs:element name="octoberprice" type="xs:int"/>
+                <xs:element name="novemberprice" type="xs:int"/>
+                <xs:element name="decemberprice" type="xs:int"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="addPricePlanResponse">
+        <xs:complexType>
+            <xs:sequence>
+               
+                <xs:element name="Message" type="xs:string"/>
                 
             </xs:sequence>
         </xs:complexType>

@@ -12,6 +12,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.concretepage.gs_ws.AddAccommodationRequest;
 import com.concretepage.gs_ws.AddAccommodationResponse;
+import com.concretepage.gs_ws.AddPricePlanRequest;
+import com.concretepage.gs_ws.AddPricePlanResponse;
 import com.concretepage.gs_ws.EditAccommodationRequest;
 import com.concretepage.gs_ws.EditAccommodationResponse;
 import com.concretepage.gs_ws.GetDistinctCategoriesRequest;
@@ -27,12 +29,14 @@ import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Category;
 import com.travel.model.Location;
+import com.travel.model.PricePlan;
 import com.travel.model.Room;
 import com.travel.services.AccommodationService;
 import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
 import com.travel.services.CategoryService;
 import com.travel.services.LocationService;
+import com.travel.services.PricePlanService;
 import com.travel.services.RoomService;
 
 
@@ -58,6 +62,8 @@ public class AccommodationEndpoint {
 	@Autowired
 	private AccommodationTypeService atService;
 	
+	@Autowired
+	private PricePlanService ppService;
 	
 	
 	@Autowired
@@ -277,6 +283,39 @@ public class AccommodationEndpoint {
 	}
 	
 	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addPricePlanRequest")
+	@ResponsePayload
+	public  AddPricePlanResponse addPricePlan(@RequestPayload AddPricePlanRequest request) {
+		
+		 AddPricePlanResponse response = new  AddPricePlanResponse();
+		
+		
+		
+	Accommodation a=accommodationService.getAccommodationById(request.getId());
+	
+	PricePlan plan  = new PricePlan();
+	
+	plan.setAccommodation(a);
+	plan.setRoomtype(request.getRoomtype());
+	plan.setJanuary(request.getJanuaryprice());
+	plan.setFebruary(request.getFebruaryprice());
+	plan.setMarch(request.getMarchprice());
+	plan.setApril(request.getAprilprice());
+	plan.setMay(request.getMayprice());
+	plan.setJune(request.getJuneprice());
+	plan.setJuly(request.getJulyprice());
+	plan.setAugust(request.getAugustprice());
+	plan.setSeptember(request.getSeptemberprice());
+	plan.setOctober(request.getOctoberprice());
+	plan.setNovember(request.getNovemberprice());
+	plan.setDecember(request.getDecemberprice());
+	
+	PricePlan saved=ppService.savePlan(plan);
+	
+	response.setMessage("Successfully added price plan to accommodation");
+		
+		return response;
+	}
 	
 	
 	

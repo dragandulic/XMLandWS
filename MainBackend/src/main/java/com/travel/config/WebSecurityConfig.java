@@ -44,8 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        
-    	 http.sessionManagement()
-         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+    	
     	
     	http.headers().frameOptions().disable();
     	
@@ -54,13 +53,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	
     	
     	 http.anonymous().disable();
+    	 http.sessionManagement()
+         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+          .and()
+    	   .authorizeRequests()
+    	   .antMatchers("/reguser/*").permitAll();
+    	
+    	   
     	 
-    	               http.httpBasic()
-    	               .and()
-    	               .authorizeRequests()
-    	               .antMatchers("/reguser/getUsers").hasRole("USER")
-                        .and()    	               
-    	               .formLogin().defaultSuccessUrl("/reguser/login").permitAll();
+           
+    	
+                                 
+    	            
     	               
     	
                     
@@ -95,6 +99,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
-    
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
     
 }

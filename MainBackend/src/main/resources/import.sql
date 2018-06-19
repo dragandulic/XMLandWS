@@ -1,6 +1,6 @@
 INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Marko','Juric','admin1@system.com','admin123','M.Maric');
-INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Aleksandra','Grujic','admin2@system.com','admin123','Detelinara');
-INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Damjan','Nicic','admin3@system.com','admin123','Z.Stanica');
+INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Aleksandra','Grujic','admin2@system.com','admin111','Detelinara');
+INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Damjan','Nicic','admin3@system.com','admin222','Z.Stanica');
 INSERT INTO `xmlback`.`role` (`roleid`,`role`) VALUES ('1','USER');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`role_roleid`) VALUES ('Dragan','Dulic',1,0,'1');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Nikola','Nikolic',1,0);

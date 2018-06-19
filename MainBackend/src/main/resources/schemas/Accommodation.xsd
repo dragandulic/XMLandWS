@@ -282,9 +282,24 @@
     </xs:element>
     
     
+     <xs:element name="setAccommodationOccupationDatesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                 <xs:element name="id" type="xs:long"/>
+                <xs:element name="datefrom" type="xs:string"/>
+                <xs:element name="dateto" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     
-    
-    
+      <xs:element name="setAccommodationOccupationDatesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+               
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     
     
     

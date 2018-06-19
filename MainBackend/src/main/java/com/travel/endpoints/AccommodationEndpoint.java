@@ -22,6 +22,8 @@ import com.concretepage.gs_ws.GetDistinctServicesRequest;
 import com.concretepage.gs_ws.GetDistinctServicesResponse;
 import com.concretepage.gs_ws.GetDistinctTypesRequest;
 import com.concretepage.gs_ws.GetDistinctTypesResponse;
+import com.concretepage.gs_ws.SetAccommodationOccupationDatesRequest;
+import com.concretepage.gs_ws.SetAccommodationOccupationDatesResponse;
 import com.concretepage.gs_ws.SetAccommodationStatusRequest;
 import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
@@ -318,7 +320,23 @@ public class AccommodationEndpoint {
 	}
 	
 	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationOccupationRequest")
+	@ResponsePayload
+	public SetAccommodationOccupationDatesResponse setOccupationRequest(@RequestPayload SetAccommodationOccupationDatesRequest request) {
+		
+		SetAccommodationOccupationDatesResponse response = new  SetAccommodationOccupationDatesResponse();
+		
+		Accommodation changedates=accommodationService.getAccommodationById(request.getId());
+		changedates.setDatefrom(request.getDatefrom());
+		changedates.setDateto(request.getDateto());
+		
+		Accommodation saved=accommodationService.saveAccommodation(changedates);
+		
 	
+		response.setMessage("Successfully set occupation dates ");
+		
+		return response;
+	}
 	
 	
 	

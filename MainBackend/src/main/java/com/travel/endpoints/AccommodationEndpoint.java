@@ -1,5 +1,6 @@
 package com.travel.endpoints;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,6 +34,7 @@ import com.travel.model.Category;
 import com.travel.model.Location;
 import com.travel.model.PricePlan;
 import com.travel.model.Room;
+import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.services.AccommodationService;
 import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
@@ -66,6 +68,9 @@ public class AccommodationEndpoint {
 	
 	@Autowired
 	private PricePlanService ppService;
+	
+	@Autowired
+	private AdditionalServicesRepository asr;
 	
 	
 	@Autowired
@@ -180,10 +185,10 @@ public class AccommodationEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "editAccommodationRequest")
 	@ResponsePayload
 	public  EditAccommodationResponse editAccommodation(@RequestPayload EditAccommodationRequest request) {
-		
+		System.out.println("eeeeeeeeee");
 		EditAccommodationResponse response = new EditAccommodationResponse();
 		Accommodation accom=accommodationService.getAccommodationById(request.getId());
-		
+		System.out.println(accom.getName());
 		Location l=accom.getLocation();
 		l.setAddress(request.getAddress());
 		l.setCity(request.getCity());
@@ -192,6 +197,7 @@ public class AccommodationEndpoint {
 		
 		
 		accom.setName(request.getName());
+		System.out.println(accom.getName());
 		accom.setDescription(request.getDescription());
 		accom.setFree(true);
 	
@@ -209,6 +215,22 @@ public class AccommodationEndpoint {
 		AccommodationType at=atService.findTypeByAccommodationId(accom.getId());
 		at.setTypename(request.getType());
 		AccommodationType editedd=atService.saveAccommodationType(at);
+		
+		List<AdditionalServices> adds = asr.findByAccommodation_idEquals(request.getId());
+		System.out.println(adds.size());
+		for(int i=0; i<adds.size(); i++) {
+			asr.delete(adds.get(i));
+		}
+		
+		List<String> addsA = request.getServices();
+		
+		for(int i=0; i<addsA.size();i++) {
+			AdditionalServices addser = new AdditionalServices();
+			addser.setServicename(addsA.get(i));
+			addser.setAccommodation(accom);
+			asr.save(addser);
+		}
+		
 		
 		
 		Accommodation savedaccomm=accommodationService.saveAccommodation(accom);
@@ -320,7 +342,7 @@ public class AccommodationEndpoint {
 	}
 	
 	
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationOccupationDatesRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationOccupationRequest")
 	@ResponsePayload
 	public SetAccommodationOccupationDatesResponse setOccupationRequest(@RequestPayload SetAccommodationOccupationDatesRequest request) {
 		

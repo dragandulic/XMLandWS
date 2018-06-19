@@ -32,6 +32,6 @@ public interface AdditionalServicesRepository extends JpaRepository<AdditionalSe
 	@Query(value="DELETE FROM AdditionalServices a WHERE a.servicename=?1")
 	void deleteAservice(String sname);
 
-	
+	List<AdditionalServices> findByAccommodation_idEquals(Long id);
 	
 }

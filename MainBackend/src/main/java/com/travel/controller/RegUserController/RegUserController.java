@@ -158,7 +158,7 @@ public class RegUserController {
 	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
 	    	
 	      if (temp == null){
-	    	  return new MessageResponse("There is already user with same email");
+	    	  return new MessageResponse("User with this email doesnt exists");
 				
 	    	}
 	      

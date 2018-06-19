@@ -24,7 +24,7 @@ public class SearchService {
 	public List<Accommodation> searchAcc(SearchDTO searchR){
 		
 		String dest = searchR.getDestination();
-		System.out.println(dest);
+		
 		List<Accommodation> acc = new ArrayList<Accommodation>();
 		
 		List<Location> locations = locationRepository.findByCityEquals(dest);
@@ -36,6 +36,7 @@ public class SearchService {
 				acc.add(accommodation);
 			}
 		}
+		
 		
 		return acc;
 	}

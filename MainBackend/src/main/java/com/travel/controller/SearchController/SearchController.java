@@ -25,7 +25,7 @@ public class SearchController {
 	private SearchService searchService;
 	
 	@PostMapping("/accommodations")
-	public ResponseEntity<SearchDTO> search(@RequestBody SearchDTO searchReq){
+	public ResponseEntity<List<Accommodation>> search(@RequestBody SearchDTO searchReq){
 		
 		List<Accommodation> accommodations = searchService.searchAcc(searchReq);
 		
@@ -33,7 +33,7 @@ public class SearchController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(accommodations,HttpStatus.OK);
 	}
 	
 	

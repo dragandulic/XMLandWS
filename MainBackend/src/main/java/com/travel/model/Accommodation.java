@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -200,10 +202,12 @@ public class Accommodation {
      *     {@link Agent }
      *     
      */
+    @JsonIgnore
     public Agent getAgent() {
         return agent;
     }
 
+    @JsonIgnore
     public Location getLocation() {
 		return location;
 	}
@@ -320,7 +324,7 @@ public class Accommodation {
      */
    
 	
-
+    @JsonIgnore
 	public List<Review> getReview() {
 		return review;
 	}

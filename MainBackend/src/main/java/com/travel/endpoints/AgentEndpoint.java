@@ -102,7 +102,11 @@ public class AgentEndpoint {
 		
 	
     
-		
+		if(temp.isApproved()==false){
+			response.setMessage("Your account is not approved by administrator");
+    		return response;
+			
+		}
       
         
 		

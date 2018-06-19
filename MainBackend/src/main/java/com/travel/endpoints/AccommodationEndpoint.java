@@ -320,7 +320,7 @@ public class AccommodationEndpoint {
 	}
 	
 	
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationOccupationRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "setAccommodationOccupationDatesRequest")
 	@ResponsePayload
 	public SetAccommodationOccupationDatesResponse setOccupationRequest(@RequestPayload SetAccommodationOccupationDatesRequest request) {
 		

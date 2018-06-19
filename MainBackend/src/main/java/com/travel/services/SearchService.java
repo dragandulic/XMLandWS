@@ -47,15 +47,15 @@ public class SearchService {
 			
 			
 			if(datefrom!=null && dateto!=null) {
-				
+
 				LocalDate reservedfrom = LocalDate.parse(datefrom, formatter);
 				LocalDate reservedto = LocalDate.parse(dateto, formatter);
 				if(searchfrom!=null && searchto!=null) {
-					LocalDate searchreservedfrom = LocalDate.parse(datefrom, formatter);
-					LocalDate searchreservedto = LocalDate.parse(dateto, formatter);
-				
-					if((searchreservedfrom.isBefore(reservedfrom) && searchreservedto.isBefore(reservedfrom))||(searchreservedfrom.isAfter(reservedto) && searchreservedto.isAfter(reservedto))) {
-						
+
+					LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
+					LocalDate searchreservedto = LocalDate.parse(searchto, formatter);
+
+					if((searchreservedfrom.isBefore(reservedfrom) && searchreservedto.isBefore(reservedfrom)) ||(searchreservedfrom.isAfter(reservedto) && searchreservedto.isAfter(reservedto))) {
 						
 						acc.add(accommodation);
 					}

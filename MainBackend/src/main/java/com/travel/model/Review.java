@@ -68,7 +68,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
-    @XmlElement(name = "Comment", namespace = "http://www.travel.com/comment", required = true)
+    @XmlElement(name = "Comment", namespace = "http://www.travel.com/comment")
     @OneToOne
     @JoinColumn(name = "comment_id")
     protected Comment comment;

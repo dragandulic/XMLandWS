@@ -1,7 +1,10 @@
 package com.travel.services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,9 +35,40 @@ public class SearchService {
 		for(int i=0; i<locations.size(); i++) {
 			Long id = locations.get(i).getId();
 			Accommodation accommodation = accommodationRepository.findByLocation_idEquals(id);			
-			if(accommodation.isFree()) {
+			
+			String datefrom = accommodation.getDatefrom();
+			String dateto = accommodation.getDateto();
+			
+			String searchfrom = searchR.getCheckIn();
+			String searchto = searchR.getCheckOut();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			
+			
+			
+			if(datefrom!=null && dateto!=null) {
+				
+				LocalDate reservedfrom = LocalDate.parse(datefrom, formatter);
+				LocalDate reservedto = LocalDate.parse(dateto, formatter);
+				if(searchfrom!=null && searchto!=null) {
+					LocalDate searchreservedfrom = LocalDate.parse(datefrom, formatter);
+					LocalDate searchreservedto = LocalDate.parse(dateto, formatter);
+				
+					if((searchreservedfrom.isBefore(reservedfrom) && searchreservedto.isBefore(reservedfrom))||(searchreservedfrom.isAfter(reservedto) && searchreservedto.isAfter(reservedto))) {
+						
+						
+						acc.add(accommodation);
+					}
+				
+				
+				}
+				
+				
+			}else {
 				acc.add(accommodation);
 			}
+			
+			
 		}
 		
 		

@@ -152,7 +152,7 @@ public class RegUserController {
 			return new MessageResponse("User is registrated");
 		}
 	    @JsonValue
-	    @GetMapping("/login")
+	    @PostMapping("/login")
         public MessageResponse loginUser(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
 	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
@@ -180,13 +180,13 @@ public class RegUserController {
 	    
 	    
 	    @JsonValue
-	    @GetMapping("/loginAdmin")
+	    @PostMapping("/loginAdmin")
         public MessageResponse loginAdmin(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
 	     Admin temp=adminService.findOneAdminByEmail(loginDTO.getEmail());	
 	    	
 	      if (temp == null){
-	    	  return new MessageResponse("There is already admin with same email");
+	    	  return new MessageResponse("Invalid email");
 				
 	    	}
 	      

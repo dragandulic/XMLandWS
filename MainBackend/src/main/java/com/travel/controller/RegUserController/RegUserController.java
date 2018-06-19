@@ -32,11 +32,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
+import com.travel.controller.RegUserController.dto.LoginDTO;
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 import com.travel.services.RegUserService;
+import com.travel.validation.PasswordMatchesValidator;
 
 
 
@@ -132,7 +134,7 @@ public class RegUserController {
 	    		return new MessageResponse("There is already user with the same email");
 	    	}
 	    	
-	    /*	
+	    
 	    	PasswordMatchesValidator pass=new PasswordMatchesValidator();
 	    	if(pass.isValid(registrationDTO)==false){
 	    		return new MessageResponse("You must retype the same password again");
@@ -140,14 +142,29 @@ public class RegUserController {
 			
 			RegUser user = reguserService.registerNewUserAccount(registrationDTO);
 	       
-			*/
+			
 			return new MessageResponse("User is registrated");
 		}
 	    @JsonValue
 	    @GetMapping("/login")
-        public String login(Model model, Principal principal) {
+        public MessageResponse loginUser(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
-			return "login";
+	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
+	    	
+	      if (temp == null){
+	    	  return new MessageResponse("There is already user with same email");
+				
+	    	}
+	      
+	      
+	      
+	      if(!(loginDTO.getPassword().equals(temp.getPassword()))){
+	    	  return new MessageResponse("Invalid password");
+				
+				
+			}
+	    	
+			return new MessageResponse("User is logged in");
 		}
 	    
 	    

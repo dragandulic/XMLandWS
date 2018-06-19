@@ -78,7 +78,7 @@ public class AgentEndpoint {
 		
 		LoginAgentResponse response=new LoginAgentResponse();
 		
-		System.out.println(request.getEmail());
+	
 		
 		Agent temp=agentService.findOneUserByEmail(request.getEmail());
 		

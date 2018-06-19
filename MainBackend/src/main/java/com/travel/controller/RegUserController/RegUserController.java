@@ -35,8 +35,10 @@ import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.dto.LoginDTO;
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
+import com.travel.model.Admin;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
+import com.travel.services.AdminService;
 import com.travel.services.RegUserService;
 import com.travel.validation.PasswordMatchesValidator;
 
@@ -53,6 +55,10 @@ public class RegUserController {
 	
 	@Autowired
 	private RegUserService reguserService;
+	
+	
+	@Autowired
+	private AdminService adminService;
 	
 
 	
@@ -169,8 +175,36 @@ public class RegUserController {
 	    
 	    
 	
+	   
+	    
+	    
+	    
+	    @JsonValue
+	    @GetMapping("/loginAdmin")
+        public MessageResponse loginAdmin(@RequestBody @Valid LoginDTO loginDTO) {
+	    	
+	     Admin temp=adminService.findOneAdminByEmail(loginDTO.getEmail());	
+	    	
+	      if (temp == null){
+	    	  return new MessageResponse("There is already admin with same email");
+				
+	    	}
+	      
+	      
+	      
+	      if(!(loginDTO.getPassword().equals(temp.getPassword()))){
+	    	  return new MessageResponse("Invalid password");
+				
+				
+			}
+	    	
+			return new MessageResponse("Admin is logged in");
+		}
+	    
+	    
+	
 	    @PostMapping("/logout")
-        public MessageResponse logout(HttpServletRequest  request) {
+        public MessageResponse logout() {
 		
 	    	
         	
@@ -183,10 +217,6 @@ public class RegUserController {
 			
 			return new MessageResponse("User is logged out");
 		}
-	    
-	    
-	    
-	    
 	    
 	    
 	    

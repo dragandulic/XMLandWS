@@ -74,7 +74,7 @@ public class AgentEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "loginAgentRequest")
 	@ResponsePayload
-	public  LoginAgentResponse loginAgent(@RequestPayload LoginAgentRequest request,ServerWebExchange r) {
+	public  LoginAgentResponse loginAgent(@RequestPayload LoginAgentRequest request) {
 		
 		LoginAgentResponse response=new LoginAgentResponse();
 		
@@ -88,6 +88,13 @@ public class AgentEndpoint {
 			
     	}
 		
+		if(!(request.getPassword().equals(temp.getPassword()))){
+			response.setMessage("Invalid password");
+    		return response;
+			
+			
+		}
+		
 	/*	if (!(passwordEncoder.matches(request.getPassword(),temp.getPassword()))){
 			response.setMessage("Invalid password");
     		return response;
@@ -96,7 +103,7 @@ public class AgentEndpoint {
 	
     
 		
-         httpSession.setAttribute("agent", temp);
+      
         
 		
 	

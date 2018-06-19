@@ -39,7 +39,7 @@ public class AccommodationTypeController {
 			public AccommodationTypeResponse getTypes(){
 				
 				List<String>listtypes=atService.findDistinctTypes();
-				return (AccommodationTypeResponse) listtypes;
+				return new AccommodationTypeResponse (listtypes);
 				
 			}
 	  

@@ -36,7 +36,7 @@ public class AdditionalServicesController {
 			public AdditionalServicesResponse getServices(){
 				
 				List<String>listservices=aService.findDistinctServices();
-				return (AdditionalServicesResponse) listservices;
+				return new AdditionalServicesResponse (listservices);
 				
 			}
 	  

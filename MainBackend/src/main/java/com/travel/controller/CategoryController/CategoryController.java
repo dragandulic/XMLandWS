@@ -38,10 +38,10 @@ public class CategoryController {
 	
 	  @JsonValue
 			@GetMapping("/getCategories")
-			public Category getCats(){
+			public CategoryResponse getCats(){
 				
 				List<String>listcats=cService.findDistinctCategory();
-				return (Category) listcats;
+				return new CategoryResponse (listcats);
 				
 			}
 	  

@@ -186,7 +186,7 @@ public class RegUserController {
 	     Admin temp=adminService.findOneAdminByEmail(loginDTO.getEmail());	
 	    	
 	      if (temp == null){
-	    	  return new MessageResponse("There is already admin with same email");
+	    	  return new MessageResponse("Invalid email");
 				
 	    	}
 	      

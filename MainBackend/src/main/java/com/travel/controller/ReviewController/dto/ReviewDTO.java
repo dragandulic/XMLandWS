@@ -4,20 +4,12 @@ public class ReviewDTO {
 
 	
 	private Long rating;
-	private long userid;
-	private long commentid;
-	private long accommodationid;
+	private Long userid;
+	private Long commentid;
+	private Long accommodationid;
 	
 	
-	
-	
-
-
-
-	
-
-
-	public ReviewDTO(Long rating, long userid, long commentid, long accommodationid) {
+	public ReviewDTO(Long rating, Long userid, Long commentid, Long accommodationid) {
 		super();
 		this.rating = rating;
 		this.userid = userid;
@@ -26,11 +18,9 @@ public class ReviewDTO {
 	}
 
 
-
 	public Long getRating() {
 		return rating;
 	}
-
 
 
 	public void setRating(Long rating) {
@@ -38,45 +28,44 @@ public class ReviewDTO {
 	}
 
 
-
-	public long getUserid() {
+	public Long getUserid() {
 		return userid;
 	}
 
 
-
-	public void setUserid(long userid) {
+	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
 
 
-
-	public long getCommentid() {
+	public Long getCommentid() {
 		return commentid;
 	}
 
 
-
-	public void setCommentid(long commentid) {
+	public void setCommentid(Long commentid) {
 		this.commentid = commentid;
 	}
 
 
-
-	public long getAccommodationid() {
+	public Long getAccommodationid() {
 		return accommodationid;
 	}
 
 
-
-	public void setAccommodationid(long accommodationid) {
+	public void setAccommodationid(Long accommodationid) {
 		this.accommodationid = accommodationid;
 	}
 	
 	
 	
 	
+
+
+
 	
+
+
 	
 	
 	

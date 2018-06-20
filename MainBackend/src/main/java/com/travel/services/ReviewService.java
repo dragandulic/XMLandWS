@@ -52,5 +52,11 @@ public void deleteReview(Review rr){
 	
 }
 
+public List<Review>getAllReviewsWithUnApprovedComments(){
+
+	return reviewRepository.findReviewsWithUnApprovedComments();
+}
+
+
 	
 }

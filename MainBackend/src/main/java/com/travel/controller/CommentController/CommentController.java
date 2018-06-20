@@ -51,7 +51,18 @@ public class CommentController {
 	    	return new MessageResponse("Successfully added comment");
 	    }
 	    	
+	    
+	    @PostMapping("/deleteComment/{id}")
+	    public MessageResponse addComment(@PathVariable Long id){
 	    	
+	    	Comment c=commentService.getCommentById(id);
+	    	c.setApproved(true);
+	    	c.setContent("");
+	    	Comment saved=commentService.saveComment(c);
+	    	
+	    	
+	    	return new MessageResponse("Successfully deleted comment");
+	    }	
 	    
 
 }

@@ -67,6 +67,18 @@ public class ReviewController {
 	    	
 	    	return new MessageResponse("Successfully review");
 	    }
+	    
+	      @JsonValue
+	  		@GetMapping("/getUnApprovedComments")
+	  		public ReviewResponse getReviewsWithUnApproved(){
+	  			
+	  			List<Review>listar=reviewService.getAllReviewsWithUnApprovedComments();
+	  			return new ReviewResponse(listar);
+	  			
+	  		}
+	    
+	    
+	    
 	    	
 }
 	    

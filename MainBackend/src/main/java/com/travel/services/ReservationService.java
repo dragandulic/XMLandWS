@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travel.controller.ReservationController.dto.ReservationDTO;
+import com.travel.model.Accommodation;
 import com.travel.model.RegUser;
 import com.travel.model.Reservation;
 import com.travel.model.Room;
+import com.travel.repositories.AccommodationRepository;
 import com.travel.repositories.RegUserRepository;
 import com.travel.repositories.ReservationRepository;
 import com.travel.repositories.RoomRepository;
@@ -21,7 +23,7 @@ public class ReservationService {
 	private ReservationRepository reservationRepository; 
 	
 	@Autowired
-	private RoomRepository roomRepository;
+	private AccommodationRepository accommodationRepository;
 	
 	@Autowired
 	private RegUserRepository regUserRepository;
@@ -60,6 +62,7 @@ public class ReservationService {
 	
 	public Reservation addReser(ReservationDTO reservation) {
 		
+		System.out.println("eeee");
 		Reservation reser = new Reservation();
 		reser.setPrice(reservation.getPrice());
 		reser.setStartDate(reservation.getStart_date());
@@ -67,10 +70,10 @@ public class ReservationService {
 		reser.setName(reservation.getName());
 		reser.setSurname(reservation.getSurname());
 		reser.setEmail(reservation.getEmail());
+		reser.setRoomType(reservation.getRoom_type());
 		
-		Room room = roomRepository.findByIdEquals(reservation.getRoom_id());		
-		room.setFree(false);				
-		reser.setRoom(room);
+		Accommodation accom = accommodationRepository.findByIdEquals(reservation.getAccommodation_id());
+		reser.setAccommodation(accom);
 		
 		RegUser reguser = regUserRepository.findByIdEquals(reservation.getRegUser());
 		reser.setRegUser(reguser);

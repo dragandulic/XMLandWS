@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
+import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
 import com.travel.repositories.AccommodationRepository;
 import com.travel.repositories.LocationRepository;
+import com.travel.repositories.SearchRepository;
 
 @Service
 public class SearchService {
@@ -23,6 +25,9 @@ public class SearchService {
 	
 	@Autowired
 	private AccommodationRepository accommodationRepository;
+	
+	@Autowired
+	private SearchRepository searchRepository;
 	
 	public List<Accommodation> searchAcc(SearchDTO searchR){
 		
@@ -73,6 +78,46 @@ public class SearchService {
 		
 		
 		return acc;
+	}
+	
+	public List<Accommodation> filterservices(SearchDTO searchdto){
+		
+		List<String> services = searchdto.getFilterServices();
+		
+		List<AdditionalServices> additionalservice;
+		
+		additionalservice  = new ArrayList<>();
+		additionalservice.addAll(searchRepository.findByServicenameEquals(services.get(0)));
+		
+		System.out.println("qqqqqqqqqqq  size " + additionalservice.size());
+		for(int i =0; i<additionalservice.size();i++) {
+			if(additionalservice.get(i).getAccommodation()!=null) {
+				
+				System.out.println("aaaaaaaaa");
+				for(int j=1;j<services.size();j++) {
+					System.out.println("bbbbb");
+					AdditionalServices accpom = searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(j), additionalservice.get(i).getAccommodation().getId());
+					if(accpom==null) {
+						additionalservice.remove(i);
+						j=services.size();
+					}
+				}
+				
+				
+			}
+			
+			
+		}
+		
+		List<Accommodation> accommodations = new ArrayList<>();
+		for(int i =0;i<additionalservice.size();i++) {
+			if(additionalservice.get(i).getAccommodation()!=null) {
+			accommodations.add(accommodationRepository.findByIdEquals(additionalservice.get(i).getAccommodation().getId()));
+		}
+		}
+		
+		
+		return accommodations;
 	}
 
 }

@@ -1,18 +1,23 @@
 package com.travel.controller.SearchController.dto;
 
+import java.util.List;
+
 public class SearchDTO {
 	
-	public SearchDTO() {
+	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices) {
 		
-	}
-	
-	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson) {
-		super();
 		this.destination = destination;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.numPerson = numPerson;
+		this.filterServices = filterServices;
 	}
+
+	public SearchDTO() {
+		
+	}
+	
+	
 
 	private String destination;
 	
@@ -21,6 +26,8 @@ public class SearchDTO {
 	private String checkOut;
 	
 	private int numPerson;
+	
+	private List<String> filterServices;
 
 	public String getDestination() {
 		return destination;
@@ -52,6 +59,14 @@ public class SearchDTO {
 
 	public void setNumPerson(int numPerson) {
 		this.numPerson = numPerson;
+	}
+
+	public List<String> getFilterServices() {
+		return filterServices;
+	}
+
+	public void setFilterServices(List<String> filterServices) {
+		this.filterServices = filterServices;
 	}
 
 }

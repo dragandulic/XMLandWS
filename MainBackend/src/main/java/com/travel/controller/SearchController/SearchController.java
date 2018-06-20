@@ -37,5 +37,18 @@ public class SearchController {
 	}
 	
 	
+	@PostMapping("/filteservices")
+	public ResponseEntity<List<Accommodation>> filterservices(@RequestBody SearchDTO searchDto){
+		
+		List<Accommodation> accommodations = searchService.filterservices(searchDto);
+		
+		if(accommodations==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(accommodations,HttpStatus.OK);
+		
+	}
+	
 
 }

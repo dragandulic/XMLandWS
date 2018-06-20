@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
+import com.travel.model.AdditionalServices;
 import com.travel.services.SearchService;
 
 @CrossOrigin(origins="http://localhost:4201",allowedHeaders="*")
@@ -23,6 +24,8 @@ public class SearchController {
 	
 	@Autowired
 	private SearchService searchService;
+	
+	
 	
 	@PostMapping("/accommodations")
 	public ResponseEntity<List<Accommodation>> search(@RequestBody SearchDTO searchReq){
@@ -48,6 +51,18 @@ public class SearchController {
 		
 		return new ResponseEntity<>(accommodations,HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/getservices")
+	public ResponseEntity<List<String>> findallServices(){
+		
+		List<String> services = searchService.getAllServices();
+		
+		if(services==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 	
 

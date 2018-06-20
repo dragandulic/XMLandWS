@@ -6,6 +6,7 @@
     xmlns:reg="http://www.travel.com/reguser">
     <xs:import namespace="http://www.travel.com/room" schemaLocation="Room.xsd"/>
     <xs:import namespace="http://www.travel.com/reguser" schemaLocation="RegUser.xsd"/>
+    <xs:import namespace="http://www.travel.com/accommodation" schemaLocation="Accommodation.xsd"/>
     <xs:element name="Reservation">
         <xs:complexType>
             <xs:sequence>
@@ -16,8 +17,9 @@
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>
-                <xs:element ref="roo:Room"/>
+                <xs:element ref="ac:Accommodation"/>
                 <xs:element ref="reg:RegUser"/>
+               	<xs:element name="RoomType" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

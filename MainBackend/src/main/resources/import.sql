@@ -2,12 +2,12 @@ INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) 
 INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Aleksandra','Grujic','admin2@gmail.com','admin222','Detelinara');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Damjan','Nicic','admin3@gmail.com','admin333','Z.Stanica');
 INSERT INTO `xmlback`.`role` (`roleid`,`role`) VALUES ('1','USER');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`role_roleid`) VALUES ('Dragan','Dulic',1,0,'1');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Nikola','Nikolic',1,0);
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Jovana','Jovanic',1,0);
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Milos','Petrovic',1,0);
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Jelena','Antic',1,0);
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`) VALUES ('Stefan','Ivanovic',1,0);
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Dragan','Dulic',1,0,'dulke@gmail.com');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Nikola','Nikolic',1,0,'nikola@gmail.com');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Jovana','Jovanic',1,0,'jovana@gmail.com');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Milos','Petrovic',1,0,'milos@gmail.com');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Jelena','Antic',1,0,'jelena@gmail.com');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`) VALUES ('Stefan','Ivanovic',1,0,'stefan@gmail.com');
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Mino','Raiola','mino@gmail.com','123','Bul.Oslobodjenja','455',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Jovan','Mijic','jmijic@gmail.com','122','P.Pavla','453',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Ivana','Savic','isavic@gmail.com','133','Z.Jovina','355',0);

@@ -41,4 +41,6 @@ public interface AccommodationTypeRepository extends JpaRepository<Accommodation
 
 	
 	
+	
+	
 }

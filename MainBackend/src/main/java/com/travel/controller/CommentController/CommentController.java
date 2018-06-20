@@ -51,7 +51,34 @@ public class CommentController {
 	    	return new MessageResponse("Successfully added comment");
 	    }
 	    	
+	    
+	    @PostMapping("/deleteComment/{id}")
+	    public MessageResponse addComment(@PathVariable Long id){
 	    	
+	    	Comment c=commentService.getCommentById(id);
+	    	c.setApproved(true);
+	    	c.setContent("");
+	    	Comment saved=commentService.saveComment(c);
+	    	
+	    	
+	    	return new MessageResponse("Successfully deleted comment");
+	    }	
 	    
 
+	    @PostMapping("/approveComment/{id}")
+	    public MessageResponse approveComment(@PathVariable Long id){
+	    	
+	    	Comment c=commentService.getCommentById(id);
+	    	c.setApproved(true);
+	    	
+	    	Comment saved=commentService.saveComment(c);
+	    	
+	    	
+	    	return new MessageResponse("Successfully approved comment");
+	    }	
+	    
+	    
+	    
+	    
+	    
 }

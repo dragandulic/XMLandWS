@@ -63,7 +63,11 @@ public class ReviewController {
 	    	r.setRating(reviewDTO.getRating());
 	    	r.setRegUser(ruService.getRegUserById(reviewDTO.getUserid()));
 	    	
+	    
+	    	
 	    Review re=reviewService.saveReview(r);
+	    
+		reviewService.calculateAverageRating(reviewDTO.getAccommodationid());
 	    	
 	    	return new MessageResponse("Successfully review");
 	    }

@@ -3,14 +3,21 @@ package com.travel.controller.ReviewController.dto;
 public class ReviewDTO {
 
 	
-	private int rating;
+	private Long rating;
 	private long userid;
 	private long commentid;
 	private long accommodationid;
 	
 	
 	
-	public ReviewDTO(int rating, long userid, long commentid, long accommodationid) {
+	
+
+
+
+	
+
+
+	public ReviewDTO(Long rating, long userid, long commentid, long accommodationid) {
 		super();
 		this.rating = rating;
 		this.userid = userid;
@@ -20,13 +27,13 @@ public class ReviewDTO {
 
 
 
-	public int getRating() {
+	public Long getRating() {
 		return rating;
 	}
 
 
 
-	public void setRating(int rating) {
+	public void setRating(Long rating) {
 		this.rating = rating;
 	}
 

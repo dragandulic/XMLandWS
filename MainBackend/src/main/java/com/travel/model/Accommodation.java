@@ -113,8 +113,8 @@ public class Accommodation {
 
     @XmlElement(name = "Description", required = true)
     protected String description;
-    @XmlElement(name = "Rating", defaultValue = "5")
-    protected int rating;
+    @XmlElement(name = "Rating")
+    protected Long rating;
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
     
@@ -280,17 +280,7 @@ public class Accommodation {
      * Gets the value of the rating property.
      * 
      */
-    public int getRating() {
-        return rating;
-    }
-
-    /**
-     * Sets the value of the rating property.
-     * 
-     */
-    public void setRating(int value) {
-        this.rating = value;
-    }
+   
 
     /**
      * Gets the value of the free property.
@@ -347,6 +337,14 @@ public class Accommodation {
 
 	public void setDateto(String dateto) {
 		this.dateto = dateto;
+	}
+
+	public Long getRating() {
+		return rating;
+	}
+
+	public void setRating(Long rating) {
+		this.rating = rating;
 	}
 
 	

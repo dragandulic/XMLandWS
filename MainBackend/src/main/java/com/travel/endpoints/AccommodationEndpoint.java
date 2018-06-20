@@ -96,7 +96,7 @@ public class AccommodationEndpoint {
 		//acc.setType(request.getType());
 		acc.setLocation(saved);
 		//acc.setAdditionalServices(savedas);
-		acc.setRating(request.getRating());
+		//acc.setRating(request.getRating());
 		//acc.setCategory(request.getCategory());
 		acc.setDatefrom(request.getDatefrom());
 		acc.setDateto(request.getDateto());
@@ -203,7 +203,7 @@ public class AccommodationEndpoint {
 	
 		accom.setLocation(saved);
 		
-		accom.setRating(request.getRating());
+		//accom.setRating(request.getRating());
 		
 		
 		

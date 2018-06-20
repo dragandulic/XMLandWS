@@ -2,22 +2,27 @@ package com.travel.controller.ReservationController.dto;
 
 public class ReservationDTO {
 	
-	public ReservationDTO() {
-		
-	}
 	
-	public ReservationDTO(String name, String surname, String email, String start_date, String end_date,
-			long reg_user_id, int price, long room_id) {
+
+	public ReservationDTO(String name, String surname, String email, String start_date, String end_date, long regUser,
+			int price, long accommodation_id, String room_type) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.start_date = start_date;
 		this.end_date = end_date;
-		this.regUser = reg_user_id;
+		this.regUser = regUser;
 		this.price = price;
-		this.room_id = room_id;
+		this.accommodation_id = accommodation_id;
+		this.room_type = room_type;
 	}
+
+	public ReservationDTO() {
+		
+	}
+	
+	
 
 	private String name;
 	
@@ -33,7 +38,9 @@ public class ReservationDTO {
 	
 	private int price;
 	
-	private long room_id;
+	private long accommodation_id;
+	
+	private String room_type;
 
 	public String getName() {
 		return name;
@@ -85,13 +92,7 @@ public class ReservationDTO {
 		this.price = price;
 	}
 
-	public long getRoom_id() {
-		return room_id;
-	}
-
-	public void setRoom_id(long room_id) {
-		this.room_id = room_id;
-	}
+	
 
 	public long getRegUser() {
 		return regUser;
@@ -99,6 +100,22 @@ public class ReservationDTO {
 
 	public void setRegUser(long regUser) {
 		this.regUser = regUser;
+	}
+
+	public long getAccommodation_id() {
+		return accommodation_id;
+	}
+
+	public void setAccommodation_id(long accommodation_id) {
+		this.accommodation_id = accommodation_id;
+	}
+
+	public String getRoom_type() {
+		return room_type;
+	}
+
+	public void setRoom_type(String room_type) {
+		this.room_type = room_type;
 	}
 
 }

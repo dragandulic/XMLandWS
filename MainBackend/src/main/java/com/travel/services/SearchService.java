@@ -13,8 +13,11 @@ import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
+import com.travel.model.Room;
 import com.travel.repositories.AccommodationRepository;
+import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.repositories.LocationRepository;
+import com.travel.repositories.RoomRepository;
 import com.travel.repositories.SearchRepository;
 
 @Service
@@ -28,6 +31,12 @@ public class SearchService {
 	
 	@Autowired
 	private SearchRepository searchRepository;
+	
+	@Autowired
+	private RoomRepository roomRepository;
+	
+	@Autowired
+	private AdditionalServicesRepository additionalServicesRepository;
 	
 	public List<Accommodation> searchAcc(SearchDTO searchR){
 		
@@ -76,48 +85,83 @@ public class SearchService {
 			
 		}
 		
+		List<Accommodation> acc2 = new ArrayList<Accommodation>();
 		
-		return acc;
+		for(int i=0; i<acc.size();i++) {
+			System.out.println(acc.get(i).getName());
+			List<Room> rooms = roomRepository.findByAccommodation_idEquals(acc.get(i).getId());
+			
+			if(rooms.size()!=0) {
+				for(int j=0; j<rooms.size();j++) {
+					
+					if(rooms.get(j).getNumberOfBed()>=searchR.getNumPerson()) {
+						acc2.add(acc.get(i));
+					}
+				}			
+			}
+		}
+		
+		List<Accommodation> acc3 = new ArrayList<Accommodation>();
+		
+		for(int k=0; k<acc2.size();k++) {
+			if(!acc3.contains(acc2.get(k))) {
+				acc3.add(acc2.get(k));
+			}
+		}
+		
+		
+		return acc3;
 	}
 	
 	public List<Accommodation> filterservices(SearchDTO searchdto){
-		
+		  
 		List<String> services = searchdto.getFilterServices();
-		
+		  
 		List<AdditionalServices> additionalservice;
-		
+		  
 		additionalservice  = new ArrayList<>();
 		additionalservice.addAll(searchRepository.findByServicenameEquals(services.get(0)));
-		
-		System.out.println("qqqqqqqqqqq  size " + additionalservice.size());
-		for(int i =0; i<additionalservice.size();i++) {
-			if(additionalservice.get(i).getAccommodation()!=null) {
-				
-				System.out.println("aaaaaaaaa");
-				for(int j=1;j<services.size();j++) {
-					System.out.println("bbbbb");
-					AdditionalServices accpom = searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(j), additionalservice.get(i).getAccommodation().getId());
-					if(accpom==null) {
-						additionalservice.remove(i);
-						j=services.size();
-					}
-				}
-				
-				
-			}
-			
-			
+		  
+		  
+		  
+		for(int i =0;i<additionalservice.size();i++) {
+			if(additionalservice.get(i).getAccommodation()==null) {
+				additionalservice.remove(i);  
+		    }
 		}
-		
+		  
+		  
+		for(int i =0; i<additionalservice.size();i++) {
+		 
+		    for(int j=1;j<services.size();j++) {
+		     
+		    	AdditionalServices accpom = searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(j), additionalservice.get(i).getAccommodation().getId());
+		    	if(accpom==null) {
+		    		additionalservice.remove(i);
+		    		j=services.size();
+		    		i--;
+		    	}
+		    }
+		}
+		  
 		List<Accommodation> accommodations = new ArrayList<>();
 		for(int i =0;i<additionalservice.size();i++) {
-			if(additionalservice.get(i).getAccommodation()!=null) {
-			accommodations.add(accommodationRepository.findByIdEquals(additionalservice.get(i).getAccommodation().getId()));
+		    
+		   accommodations.add(additionalservice.get(i).getAccommodation());
+		   
 		}
-		}
-		
-		
+		  
+		  
+		  
 		return accommodations;
+	}
+	
+	public List<String> getAllServices(){
+		  
+	List<String> services = additionalServicesRepository.findAdditionalServiceNames();
+		  
+	return services;
+		  
 	}
 
 }

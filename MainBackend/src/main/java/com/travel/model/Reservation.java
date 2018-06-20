@@ -25,6 +25,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 
+
+
 /**
  * <p>Java class for anonymous complex type.
  * 
@@ -86,14 +88,21 @@ public class Reservation {
     protected String surname;
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
-    @XmlElement(name = "Room", namespace = "http://www.travel.com/room", required = true)
+    
+    
+    @XmlElement(name = "Accommodation",namespace = "http://www.travel.com/accommodation", required = true)
     @ManyToOne
-    @JoinColumn(name = "room_id")
-    protected Room room;
+    @JoinColumn(name = "accommodation_id")
+    protected Accommodation accommodation;
+    
+    
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
+    
+    @XmlElement(name = "RoomType", namespace = "http://www.travel.com/reservation", required = true)
+    protected String roomType;
 
     /**
      * Gets the value of the price property.
@@ -236,28 +245,30 @@ public class Reservation {
     }
 
     /**
-     * Gets the value of the room property.
+     * Gets the value of the accommodation property.
      * 
      * @return
      *     possible object is
-     *     {@link Room }
+     *     {@link Accommodation }
      *     
      */
-    public Room getRoom() {
-        return room;
+    public Accommodation getAccommodation() {
+        return accommodation;
     }
 
     /**
-     * Sets the value of the room property.
+     * Sets the value of the accommodation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Room }
+     *     {@link Accommodation }
      *     
      */
-    public void setRoom(Room value) {
-        this.room = value;
+    public void setAccommodation(Accommodation value) {
+        this.accommodation = value;
     }
+
+    
 
     /**
      * Gets the value of the regUser property.
@@ -290,6 +301,30 @@ public class Reservation {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	/**
+     * Gets the value of the roomType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRoomType() {
+        return roomType;
+    }
+
+    /**
+     * Sets the value of the roomType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRoomType(String value) {
+        this.roomType = value;
+    }
     
     
 

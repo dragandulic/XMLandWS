@@ -96,7 +96,7 @@ public class AccommodationEndpoint {
 		//acc.setType(request.getType());
 		acc.setLocation(saved);
 		//acc.setAdditionalServices(savedas);
-		//acc.setRating(request.getRating());
+		acc.setRating(new Long(0));
 		//acc.setCategory(request.getCategory());
 		acc.setDatefrom(request.getDatefrom());
 		acc.setDateto(request.getDateto());

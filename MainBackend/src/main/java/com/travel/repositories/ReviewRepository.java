@@ -21,4 +21,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 	@Query(value="SELECT r FROM Review r WHERE r.comment.approved=false")
 	List<Review> findReviewsWithUnApprovedComments();
 	
+	
+	@Query(value="SELECT r FROM Review r WHERE  (r.accommodation.id)=(:accomid)")
+	List<Review> findReviewsByAccommodation(@Param("accomid")Long accomid);
+	
 }

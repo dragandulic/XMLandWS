@@ -59,11 +59,11 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@XmlElement(name = "Id", namespace = "http://www.travel.com/review")
-    protected long id;
+    protected Long id;
 
 
     @XmlElement(name = "Rating", namespace = "http://www.travel.com/review", defaultValue = "5")
-    protected int rating;
+    protected Long rating;
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
@@ -83,17 +83,7 @@ public class Review {
      * Gets the value of the rating property.
      * 
      */
-    public int getRating() {
-        return rating;
-    }
-
-    /**
-     * Sets the value of the rating property.
-     * 
-     */
-    public void setRating(int value) {
-        this.rating = value;
-    }
+   
 
     /**
      * Gets the value of the regUser property.
@@ -107,7 +97,19 @@ public class Review {
         return regUser;
     }
 
-    /**
+    public Long getRating() {
+		return rating;
+	}
+
+	public void setRating(Long rating) {
+		this.rating = rating;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
      * Sets the value of the regUser property.
      * 
      * @param value

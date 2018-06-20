@@ -95,8 +95,7 @@ public class AccommodationEndpoint {
 		acc.setFree(true);
 		//acc.setType(request.getType());
 		acc.setLocation(saved);
-		//acc.setAdditionalServices(savedas);
-		acc.setRating(new Long(0));
+			acc.setRating(new Long(0)); 
 		//acc.setCategory(request.getCategory());
 		acc.setDatefrom(request.getDatefrom());
 		acc.setDateto(request.getDateto());

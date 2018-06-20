@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.travel.model.Reservation;
 
-
-
-
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 	
 	Reservation findByIdEquals(Long id);
+	
 	List<Reservation> findAll();
+	
+	List<Reservation> findByRegUser_idEquals(Long id);
 	
 }

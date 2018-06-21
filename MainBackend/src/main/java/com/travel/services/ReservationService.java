@@ -70,7 +70,7 @@ public class ReservationService {
 		reser.setName(reservation.getName());
 		reser.setSurname(reservation.getSurname());
 		reser.setEmail(reservation.getEmail());
-		reser.setRoomType(reservation.getRoom_type());
+		reser.setRoomtype(reservation.getRoom_type());
 		
 		Accommodation accom = accommodationRepository.findByIdEquals(reservation.getAccommodation_id());
 		reser.setAccommodation(accom);

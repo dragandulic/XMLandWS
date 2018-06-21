@@ -42,3 +42,4 @@ INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Fruskogor
 
 
 
+

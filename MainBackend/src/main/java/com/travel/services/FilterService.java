@@ -24,10 +24,12 @@ public class FilterService {
 		  
 		List<AdditionalServices> additionalservice;
 		additionalservice  = new ArrayList<AdditionalServices>();
+		if(services.size()!=0) {
+			
+		
 		System.out.println("bbbbb" + searchdto.getListAccommodationid().size());
 		for(int i = 0;i<searchdto.getListAccommodationid().size();i++) {
-			System.out.println("aaaaaaaa " + searchdto.getListAccommodationid().get(i).getName());
-			System.out.println("aaaaaaaa " + searchdto.getListAccommodationid().get(i).getId());
+			
 			
 			AdditionalServices ads=searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(0),searchdto.getListAccommodationid().get(i).getId());
 			if(ads!=null) {
@@ -68,6 +70,12 @@ public class FilterService {
 		  
 		  
 		return accommodations;
+		}
+		else {
+			
+			
+			return searchdto.getListAccommodationid();
+		}
 	}
 	
 	

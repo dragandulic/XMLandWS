@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -93,6 +95,7 @@ public class Review {
      *     {@link RegUser }
      *     
      */
+    @JsonIgnore
     public RegUser getRegUser() {
         return regUser;
     }
@@ -129,6 +132,7 @@ public class Review {
      *     {@link Comment }
      *     
      */
+    @JsonIgnore
     public Comment getComment() {
         return comment;
     }
@@ -145,14 +149,13 @@ public class Review {
         this.comment = value;
     }
 
-	public long getId() {
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	@JsonIgnore
 	public Accommodation getAccommodation() {
 		return accommodation;
 	}

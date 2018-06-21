@@ -57,7 +57,10 @@ public class ReviewController {
 	    @PostMapping("/addReview")
 	    public MessageResponse addComment(@RequestBody ReviewDTO reviewDTO){
 	    	
+	    	System.out.println(reviewDTO.getAccommodationid()+"ACCOM"+reviewDTO.getCommentid()+"COMM"+reviewDTO.getRating()+"RATING"+reviewDTO.getUserid()+"USER");        
 	    	Review r=new Review();
+	   
+	    
 	    	r.setAccommodation(aService.getAccommodationById(reviewDTO.getAccommodationid()));
 	    	r.setComment(cService.getCommentById(reviewDTO.getCommentid()));
 	    	r.setRating(reviewDTO.getRating());

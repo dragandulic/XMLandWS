@@ -37,9 +37,7 @@ INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Fruskogor
 INSERT INTO `xmlback`.`comment` (`content`,`approved`) VALUES ('Dobar smestaj.Doci cemo opet!',0);
 INSERT INTO `xmlback`.`comment` (`content`,`approved`) VALUES ('Kuhinja mi se nije svidela,ostalo okej!',0);
 INSERT INTO `xmlback`.`comment` (`content`,`approved`) VALUES ('Smestaj ima sve sto je potrebno!',0);
-INSERT INTO `xmlback`.`review` (`rating`, `reg_user_id`,`comment_id`, `accommodation`) VALUES ('10','1','1','1');
-INSERT INTO `xmlback`.`review` (`rating`, `reg_user_id`,`comment_id`, `accommodation`) VALUES ('9','2','2','2');
-INSERT INTO `xmlback`.`review` (`rating`, `reg_user_id`,`comment_id`, `accommodation`) VALUES ('8','3','3','3');
+
 
 
 

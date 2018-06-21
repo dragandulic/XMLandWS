@@ -9,12 +9,7 @@ public class ReviewDTO {
 	private Long accommodationid;
 	
 	
-	public ReviewDTO(Long rating, Long userid, Long commentid, Long accommodationid) {
-		super();
-		this.rating = rating;
-		this.userid = userid;
-		this.commentid = commentid;
-		this.accommodationid = accommodationid;
+	public ReviewDTO() {
 	}
 
 

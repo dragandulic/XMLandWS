@@ -40,7 +40,7 @@ public interface AccommodationTypeRepository extends JpaRepository<Accommodation
 	AccommodationType findTypeByAccommodation(@Param("accomid")Long accomid);
 
 	
-	
+	AccommodationType findByTypenameEqualsAndAccommodationEquals(String t, Long id);
 	
 	
 }

@@ -7,19 +7,15 @@ import com.travel.model.Accommodation;
 public class SearchDTO {
 	
 	
-
-	
-
-	
-
 	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices,
-			List<Accommodation> listAccommodationid) {
+			List<String> filterTypes, List<Accommodation> listAccommodationid) {
 		
 		this.destination = destination;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.numPerson = numPerson;
 		this.filterServices = filterServices;
+		this.filterTypes = filterTypes;
 		this.listAccommodationid = listAccommodationid;
 	}
 
@@ -38,6 +34,8 @@ public class SearchDTO {
 	private int numPerson;
 	
 	private List<String> filterServices;
+	
+	private List<String> filterTypes;
 	
 	private List<Accommodation> listAccommodationid;
 
@@ -87,6 +85,14 @@ public class SearchDTO {
 
 	public void setListAccommodationid(List<Accommodation> listAccommodationid) {
 		this.listAccommodationid = listAccommodationid;
+	}
+
+	public List<String> getFilterTypes() {
+		return filterTypes;
+	}
+
+	public void setFilterTypes(List<String> filterTypes) {
+		this.filterTypes = filterTypes;
 	}
 
 	

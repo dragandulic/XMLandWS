@@ -17,6 +17,6 @@ public interface PricePlanRepository extends JpaRepository<PricePlan, Long> {
 	
 	PricePlan findByIdEquals(Long id);
 	
-	List<PricePlan> findByRoomtypeEquals(int roomtype);
+	PricePlan findByRoomtypeEqualsAndAccommodation_idEquals(int roomtype, Long id);
 	
 }

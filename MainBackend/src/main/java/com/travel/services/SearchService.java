@@ -127,8 +127,67 @@ public class SearchService {
 			int month = searchreservedfrom.getMonthValue();
 			System.out.println(month+"eeeeeeeee");
 			
-			List<PricePlan> pricesPlans = pricePlanRepository.findByRoomtypeEquals(searchR.getNumPerson());
-			System.out.println(pricesPlans.size()+"mmmmmmmmm");
+			PricePlan pricesPlans = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(searchR.getNumPerson(),acc3.get(a).getId());
+			
+			if(pricesPlans!=null) {
+			System.out.println(pricesPlans.getJuly());
+			
+			
+			if(month==1) {
+				int price = pricesPlans.getJanuary();
+				accS.setPrice(price);
+			}
+			else if(month==2) {
+				int price = pricesPlans.getFebruary();
+				accS.setPrice(price);
+			}
+			else if(month==3) {
+				int price = pricesPlans.getMarch();
+				accS.setPrice(price);
+			}
+			else if(month==4) {
+				int price = pricesPlans.getApril();
+				accS.setPrice(price);
+			}
+			else if(month==5) {
+				int price = pricesPlans.getMay();
+				accS.setPrice(price);
+			}
+			else if(month==6) {
+				int price = pricesPlans.getJune();
+				accS.setPrice(price);
+			}
+			else if(month==7) {
+				int price = pricesPlans.getJuly();
+				accS.setPrice(price);
+			}
+			else if(month==8) {
+				int price = pricesPlans.getAugust();
+				accS.setPrice(price);
+			}
+			else if(month==9) {
+				int price = pricesPlans.getSeptember();
+				accS.setPrice(price);
+			}
+			else if(month==10) {
+				int price = pricesPlans.getOctober();
+				accS.setPrice(price);
+			}
+			else if(month==11) {
+				int price = pricesPlans.getNovember();
+				accS.setPrice(price);
+			}
+			else if(month==12) {
+				int price = pricesPlans.getDecember();
+				accS.setPrice(price);
+			}
+			
+			}
+			
+
+			
+			
+			
 		}
 		
 		

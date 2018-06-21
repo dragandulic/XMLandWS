@@ -16,6 +16,7 @@ import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
+import com.travel.services.AccommodationTypeService;
 import com.travel.services.FilterService;
 import com.travel.services.SearchService;
 
@@ -29,6 +30,9 @@ public class SearchController {
 	
 	@Autowired
 	private FilterService filterService;
+	
+	@Autowired
+	private AccommodationTypeService accommodationTypeService;
 	
 	@PostMapping("/accommodations")
 	public ResponseEntity<List<AccommodationSearchDTO>> search(@RequestBody SearchDTO searchReq){
@@ -68,5 +72,15 @@ public class SearchController {
 		return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 	
-
+	@GetMapping("/gettypes")
+	public ResponseEntity<List<String>> findallTypes(){
+		
+		List<String> services = accommodationTypeService.findDistinctTypes();
+		
+		if(services==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(services,HttpStatus.OK);
+	}
 }

@@ -9,6 +9,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
@@ -38,7 +39,7 @@ public class SearchService {
 	@Autowired
 	private AdditionalServicesRepository additionalServicesRepository;
 	
-	public List<Accommodation> searchAcc(SearchDTO searchR){
+	public List<AccommodationSearchDTO> searchAcc(SearchDTO searchR){
 		
 		String dest = searchR.getDestination();
 		
@@ -109,8 +110,17 @@ public class SearchService {
 			}
 		}
 		
+		List<AccommodationSearchDTO> accommodations= new ArrayList<AccommodationSearchDTO>();
+		for(int a=0; a<acc3.size(); a++) {
+			AccommodationSearchDTO accS = new AccommodationSearchDTO();
+			accS.setName(acc3.get(a).getName());
+			accS.setDescription(acc3.get(a).getDescription());
+			accS.setRating(acc3.get(a).getRating());
+			accommodations.add(accS);
+		}
 		
-		return acc3;
+		
+		return accommodations;
 	}
 	
 	public List<Accommodation> filterservices(SearchDTO searchdto){

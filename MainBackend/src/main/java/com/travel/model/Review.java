@@ -97,7 +97,7 @@ public class Review {
      *     {@link RegUser }
      *     
      */
-    @JsonIgnore
+    
     public RegUser getRegUser() {
         return regUser;
     }
@@ -140,7 +140,7 @@ public class Review {
      *     {@link Comment }
      *     
      */
-    @JsonIgnore
+  
     public Comment getComment() {
         return comment;
     }
@@ -163,7 +163,7 @@ public class Review {
 		return id;
 	}
 
-	@JsonIgnore
+	
 	public Accommodation getAccommodation() {
 		return accommodation;
 	}

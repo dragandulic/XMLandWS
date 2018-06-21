@@ -6,7 +6,7 @@ public class AccommodationSearchDTO {
 	
 	public AccommodationSearchDTO(long id, String name, String description, long rating, int category, String type,
 			int price) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.description = description;

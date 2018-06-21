@@ -1,5 +1,7 @@
 package com.travel.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +16,7 @@ public interface PricePlanRepository extends JpaRepository<PricePlan, Long> {
 
 	
 	PricePlan findByIdEquals(Long id);
+	
+	List<PricePlan> findByRoomtypeEquals(int roomtype);
 	
 }

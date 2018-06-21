@@ -95,7 +95,7 @@ public class FilterService {
 		
 		
 		
-		
+		System.out.println("aaaaaaaaa " + accommodations.size());
 		
 		return accommodations;
 		

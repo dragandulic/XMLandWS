@@ -9,14 +9,17 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
+import com.travel.model.PricePlan;
 import com.travel.model.Room;
 import com.travel.repositories.AccommodationRepository;
 import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.repositories.LocationRepository;
+import com.travel.repositories.PricePlanRepository;
 import com.travel.repositories.RoomRepository;
 import com.travel.repositories.SearchRepository;
 
@@ -30,7 +33,7 @@ public class SearchService {
 	private AccommodationRepository accommodationRepository;
 	
 	@Autowired
-	private SearchRepository searchRepository;
+	private PricePlanRepository pricePlanRepository;
 	
 	@Autowired
 	private RoomRepository roomRepository;
@@ -38,7 +41,7 @@ public class SearchService {
 	@Autowired
 	private AdditionalServicesRepository additionalServicesRepository;
 	
-	public List<Accommodation> searchAcc(SearchDTO searchR){
+	public List<AccommodationSearchDTO> searchAcc(SearchDTO searchR){
 		
 		String dest = searchR.getDestination();
 		
@@ -109,52 +112,89 @@ public class SearchService {
 			}
 		}
 		
+		List<AccommodationSearchDTO> accommodations= new ArrayList<AccommodationSearchDTO>();
+		for(int a=0; a<acc3.size(); a++) {
+			AccommodationSearchDTO accS = new AccommodationSearchDTO();
+			accS.setName(acc3.get(a).getName());
+			accS.setDescription(acc3.get(a).getDescription());
+			accS.setRating(acc3.get(a).getRating());
+			accS.setId(acc3.get(a).getId());
+			accommodations.add(accS);
+			
+			String searchfrom = searchR.getCheckIn();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
+			int month = searchreservedfrom.getMonthValue();
+			System.out.println(month+"eeeeeeeee");
+			
+			PricePlan pricesPlans = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(searchR.getNumPerson(),acc3.get(a).getId());
+			
+			if(pricesPlans!=null) {
+			System.out.println(pricesPlans.getJuly());
+			
+			
+			if(month==1) {
+				int price = pricesPlans.getJanuary();
+				accS.setPrice(price);
+			}
+			else if(month==2) {
+				int price = pricesPlans.getFebruary();
+				accS.setPrice(price);
+			}
+			else if(month==3) {
+				int price = pricesPlans.getMarch();
+				accS.setPrice(price);
+			}
+			else if(month==4) {
+				int price = pricesPlans.getApril();
+				accS.setPrice(price);
+			}
+			else if(month==5) {
+				int price = pricesPlans.getMay();
+				accS.setPrice(price);
+			}
+			else if(month==6) {
+				int price = pricesPlans.getJune();
+				accS.setPrice(price);
+			}
+			else if(month==7) {
+				int price = pricesPlans.getJuly();
+				accS.setPrice(price);
+			}
+			else if(month==8) {
+				int price = pricesPlans.getAugust();
+				accS.setPrice(price);
+			}
+			else if(month==9) {
+				int price = pricesPlans.getSeptember();
+				accS.setPrice(price);
+			}
+			else if(month==10) {
+				int price = pricesPlans.getOctober();
+				accS.setPrice(price);
+			}
+			else if(month==11) {
+				int price = pricesPlans.getNovember();
+				accS.setPrice(price);
+			}
+			else if(month==12) {
+				int price = pricesPlans.getDecember();
+				accS.setPrice(price);
+			}
+			
+			}
+			
+
+			
+			
+			
+		}
 		
-		return acc3;
-	}
-	
-	public List<Accommodation> filterservices(SearchDTO searchdto){
-		  
-		List<String> services = searchdto.getFilterServices();
-		  
-		List<AdditionalServices> additionalservice;
-		  
-		additionalservice  = new ArrayList<>();
-		additionalservice.addAll(searchRepository.findByServicenameEquals(services.get(0)));
-		  
-		  
-		  
-		for(int i =0;i<additionalservice.size();i++) {
-			if(additionalservice.get(i).getAccommodation()==null) {
-				additionalservice.remove(i);  
-		    }
-		}
-		  
-		  
-		for(int i =0; i<additionalservice.size();i++) {
-		 
-		    for(int j=1;j<services.size();j++) {
-		     
-		    	AdditionalServices accpom = searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(j), additionalservice.get(i).getAccommodation().getId());
-		    	if(accpom==null) {
-		    		additionalservice.remove(i);
-		    		j=services.size();
-		    		i--;
-		    	}
-		    }
-		}
-		  
-		List<Accommodation> accommodations = new ArrayList<>();
-		for(int i =0;i<additionalservice.size();i++) {
-		    
-		   accommodations.add(additionalservice.get(i).getAccommodation());
-		   
-		}
-		  
-		  
-		  
+		
 		return accommodations;
 	}
+	
+	
 	
 	public List<String> getAllServices(){
 		  

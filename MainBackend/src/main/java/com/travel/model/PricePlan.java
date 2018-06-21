@@ -75,7 +75,7 @@ public class PricePlan {
     protected int roomtype;
     @XmlElement(name = "Accommodation", required = true)
     @ManyToOne
-   	@JoinColumn(name="accommodation")
+   	@JoinColumn(name="accommodation_id")
     protected Accommodation accommodation;
     protected int january;
     protected int february;

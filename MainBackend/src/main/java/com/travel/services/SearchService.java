@@ -14,10 +14,12 @@ import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
+import com.travel.model.PricePlan;
 import com.travel.model.Room;
 import com.travel.repositories.AccommodationRepository;
 import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.repositories.LocationRepository;
+import com.travel.repositories.PricePlanRepository;
 import com.travel.repositories.RoomRepository;
 import com.travel.repositories.SearchRepository;
 
@@ -30,7 +32,8 @@ public class SearchService {
 	@Autowired
 	private AccommodationRepository accommodationRepository;
 	
-	
+	@Autowired
+	private PricePlanRepository pricePlanRepository;
 	
 	@Autowired
 	private RoomRepository roomRepository;
@@ -116,6 +119,15 @@ public class SearchService {
 			accS.setDescription(acc3.get(a).getDescription());
 			accS.setRating(acc3.get(a).getRating());
 			accommodations.add(accS);
+			
+			String searchfrom = searchR.getCheckIn();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
+			int month = searchreservedfrom.getMonthValue();
+			System.out.println(month+"eeeeeeeee");
+			
+			List<PricePlan> pricesPlans = pricePlanRepository.findByRoomtypeEquals(searchR.getNumPerson());
+			System.out.println(pricesPlans.size()+"mmmmmmmmm");
 		}
 		
 		

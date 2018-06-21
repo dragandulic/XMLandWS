@@ -5,7 +5,7 @@ public class ReviewDTO {
 	
 	private Long rating;
 	private Long userid;
-	private Long commentid;
+	private String commentcontent;
 	private Long accommodationid;
 	
 	
@@ -33,13 +33,16 @@ public class ReviewDTO {
 	}
 
 
-	public Long getCommentid() {
-		return commentid;
+
+
+
+	public String getCommentcontent() {
+		return commentcontent;
 	}
 
 
-	public void setCommentid(Long commentid) {
-		this.commentid = commentid;
+	public void setCommentcontent(String commentcontent) {
+		this.commentcontent = commentcontent;
 	}
 
 

@@ -57,22 +57,25 @@ public class ReviewController {
 	    @PostMapping("/addReview")
 	    public MessageResponse addComment(@RequestBody ReviewDTO reviewDTO){
 	    	
-	    	System.out.println(reviewDTO.getAccommodationid()+"ACCOM"+reviewDTO.getCommentid()+"COMM"+reviewDTO.getRating()+"RATING"+reviewDTO.getUserid()+"USER");        
+	    	System.out.println(reviewDTO.getAccommodationid()+"ACCOM"+reviewDTO.getCommentcontent()+"COMM"+reviewDTO.getRating()+"RATING"+reviewDTO.getUserid()+"USER");        
 	    	Review r=new Review();
 	   
 	    
 	    	r.setAccommodation(aService.getAccommodationById(reviewDTO.getAccommodationid()));
-	    	r.setComment(cService.getCommentById(reviewDTO.getCommentid()));
+	    
 	    	r.setRating(reviewDTO.getRating());
 	    	r.setRegUser(ruService.getRegUserById(reviewDTO.getUserid()));
 	    	
-	    
-	    	
+	    Comment com=new Comment();
+	    com.setApproved(false);
+	    com.setContent(reviewDTO.getCommentcontent());
+	    Comment saved= cService.saveComment(com);
+		r.setComment(saved);
 	    Review re=reviewService.saveReview(r);
 	    
 		reviewService.calculateAverageRating(reviewDTO.getAccommodationid());
 	    	
-	    	return new MessageResponse("Successfully review");
+	    	return new MessageResponse("Successfully saved review");
 	    }
 	    
 	      @JsonValue

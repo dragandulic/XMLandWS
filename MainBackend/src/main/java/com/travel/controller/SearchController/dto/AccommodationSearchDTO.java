@@ -4,17 +4,7 @@ public class AccommodationSearchDTO {
 	
 	
 	
-	public AccommodationSearchDTO(long id, String name, String description, long rating, int category, String type,
-			int price) {
-		
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.rating = rating;
-		this.category = category;
-		this.type = type;
-		this.price = price;
-	}
+	
 
 	public AccommodationSearchDTO() {
 		
@@ -26,13 +16,28 @@ public class AccommodationSearchDTO {
 	
 	private String description;
 	
-	private long rating;
+	private Double rating;
 	
 	private int category;
 	
 	private String type;
 	
 	private int price;
+	
+	
+	
+
+	public AccommodationSearchDTO(long id, String name, String description, Double rating, int category, String type,
+			int price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.rating = rating;
+		this.category = category;
+		this.type = type;
+		this.price = price;
+	}
 
 	public String getName() {
 		return name;
@@ -50,12 +55,13 @@ public class AccommodationSearchDTO {
 		this.description = description;
 	}
 
-	public long getRating() {
+	
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(Long long1) {
-		this.rating = long1;
+	public void setRating(Double rating) {
+		this.rating = rating;
 	}
 
 	public int getCategory() {
@@ -90,8 +96,6 @@ public class AccommodationSearchDTO {
 		this.id = id;
 	}
 
-	public void setRating(long rating) {
-		this.rating = rating;
-	}
+	
 
 }

@@ -8,6 +8,7 @@
 
 package com.travel.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -64,8 +65,9 @@ public class Review {
     protected Long id;
 
 
-    @XmlElement(name = "Rating", namespace = "http://www.travel.com/review", defaultValue = "5")
-    protected Long rating;
+    @XmlElement(name = "Rating", namespace = "http://www.travel.com/review")
+    @Column(precision=4)
+    protected Double rating;
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
@@ -100,13 +102,19 @@ public class Review {
         return regUser;
     }
 
-    public Long getRating() {
+  
+
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(Long rating) {
+
+
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
+
+
 
 	public void setId(Long id) {
 		this.id = id;

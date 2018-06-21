@@ -77,18 +77,18 @@ public void calculateAverageRating(Long accommid){
 	// argument rating se odnosi na prosecnu ocenu  jednog korisnika koja ce biti izracunata u frontu
 	
 	List<Review>rev=findReviewsByAccommodation(accommid);
-	Long sum=new Long(0);
+	Double sum=new Double(0);
 	
 	int size=rev.size();
 	Long sizelong=new Long(size);
 	for(int i=0;i<size;i++){
 		
 		
-		Long accomrating=rev.get(i).getRating();
+		Double accomrating=rev.get(i).getRating();
 		sum=accomrating+sum;
 	}
 	
-	Long average=sum/sizelong;
+	Double average=sum/sizelong;
 	
 	Accommodation toedit=aService.getAccommodationById(accommid);
 	toedit.setRating(average);

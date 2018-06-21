@@ -11,6 +11,7 @@ package com.travel.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -114,7 +115,8 @@ public class Accommodation {
     @XmlElement(name = "Description", required = true)
     protected String description;
     @XmlElement(name = "Rating")
-    protected Long rating;
+    @Column(precision=4)
+    protected Double rating;
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
     
@@ -339,13 +341,15 @@ public class Accommodation {
 		this.dateto = dateto;
 	}
 
-	public Long getRating() {
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(Long rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
+
+
 
 	
 	

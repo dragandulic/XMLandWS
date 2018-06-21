@@ -26,7 +26,7 @@ INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('3');
 INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('4');
 INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('5');
 INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('Uncathegorized');
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Master','2','1','1');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Master','2.1','1','1');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Novi Sad','Srbija');
 INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('16/06/2018','20/06/2018','Centar',1,'Centar','4','1','2');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Bul. Kralja Petra 4','Beograd','Srbija');

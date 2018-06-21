@@ -19,15 +19,25 @@ public class FilterService {
 	private SearchRepository searchRepository;
 	
 	public List<Accommodation> filterservices(SearchDTO searchdto){
-		  
+		
+		//lista povratnih accommodationa
+		List<Accommodation> accommodations = new ArrayList<>();
+		
+
+		
+		/**
+		 * FILTRIRANJE PO ADDITIONAL SERVICE
+		 */
+		
 		List<String> services = searchdto.getFilterServices();
-		  
+		
 		List<AdditionalServices> additionalservice;
 		additionalservice  = new ArrayList<AdditionalServices>();
+		
 		if(services.size()!=0) {
 			
 		
-		System.out.println("bbbbb" + searchdto.getListAccommodationid().size());
+		
 		for(int i = 0;i<searchdto.getListAccommodationid().size();i++) {
 			
 			
@@ -60,7 +70,7 @@ public class FilterService {
 		    }
 		}
 		  
-		List<Accommodation> accommodations = new ArrayList<>();
+		
 		for(int i =0;i<additionalservice.size();i++) {
 		    
 		   accommodations.add(additionalservice.get(i).getAccommodation());
@@ -69,13 +79,26 @@ public class FilterService {
 		  
 		  
 		  
-		return accommodations;
+		
 		}
 		else {
 			
 			
-			return searchdto.getListAccommodationid();
+			accommodations.addAll(searchdto.getListAccommodationid());
 		}
+		
+		
+		
+		/**
+		 * FILTRIRANJE PO TYPE
+		 */
+		
+		
+		
+		
+		
+		return accommodations;
+		
 	}
 	
 	

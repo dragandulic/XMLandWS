@@ -118,13 +118,16 @@ public class FilterService {
 				for(int i = 0; i<accommodations.size();i++) {
 					
 					for(int j = 0; j<types.size();j++) {
-						System.out.println("PREEEEEEEEEEEEEEE");
-						accommodationtypes.add(accommodationTypeRepository.findByTypenameEqualsAndAccommodationEquals(types.get(j), accommodations.get(i).getId()));
-						System.out.println("POSLEEEEEEEEEEEEEW");
+						//System.out.println("PREEEEEEEEEEEEEEE");
+						AccommodationType pom = accommodationTypeRepository.findByTypenameEqualsAndAccommodationEquals(types.get(j), accommodations.get(i).getId());
+						if(pom!=null)
+						accommodationtypes.add(pom);
+						//System.out.println("POSLEEEEEEEEEEEEEW" + accommodationtypes.get(i).getTypename());
+						//System.out.println("POSLEEEEEEEEEEEEEW" + accommodationtypes.get(i).getAccommodation().getId());
 					}
 				}
 				
-				
+				System.out.println("velicina liste " + accommodationtypes.size());
 				for(int i = 0; i<accommodationtypes.size();i++) {
 					accommodations1.add(accommodationtypes.get(i).getAccommodation());
 				}

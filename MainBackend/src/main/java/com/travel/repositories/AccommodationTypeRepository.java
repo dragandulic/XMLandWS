@@ -39,8 +39,8 @@ public interface AccommodationTypeRepository extends JpaRepository<Accommodation
 	@Query(value="SELECT a FROM AccommodationType a WHERE (a.accommodation.id)=(:accomid)")
 	AccommodationType findTypeByAccommodation(@Param("accomid")Long accomid);
 
-	
-	AccommodationType findByTypenameEqualsAndAccommodationEquals(String t, Long id);
+	@Query(value="SELECT at FROM AccommodationType at WHERE (at.typename)=(:t) AND (at.accommodation.id)=(:id) ")
+	AccommodationType findByTypenameEqualsAndAccommodationEquals(@Param("t")String  t,@Param("id")Long id);
 	
 	
 }

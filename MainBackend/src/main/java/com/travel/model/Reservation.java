@@ -76,17 +76,17 @@ public class Reservation {
 
     @XmlElement(name = "Price", namespace = "http://www.travel.com/reservation", defaultValue = "0")
     protected int price;
-    @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation")
     @XmlSchemaType(name = "date")
     protected String startDate;
-    @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation")
     @XmlSchemaType(name = "date")
     protected String endDate;
-    @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation")
     protected String name;
-    @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation")
     protected String surname;
-    @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation")
     protected String email;
     
     
@@ -96,13 +96,13 @@ public class Reservation {
     protected Accommodation accommodation;
     
     
-    @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
+    @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser")
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
     
     @XmlElement(name = "RoomType", namespace = "http://www.travel.com/reservation", required = true)
-    protected String roomType;
+    protected String roomtype;
 
     /**
      * Gets the value of the price property.
@@ -301,6 +301,14 @@ public class Reservation {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public String getRoomtype() {
+		return roomtype;
+	}
+
+	public void setRoomtype(String roomtype) {
+		this.roomtype = roomtype;
+	}
 	
 	/**
      * Gets the value of the roomType property.
@@ -310,22 +318,6 @@ public class Reservation {
      *     {@link String }
      *     
      */
-    public String getRoomType() {
-        return roomType;
-    }
-
-    /**
-     * Sets the value of the roomType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRoomType(String value) {
-        this.roomType = value;
-    }
-    
-    
+  
 
 }

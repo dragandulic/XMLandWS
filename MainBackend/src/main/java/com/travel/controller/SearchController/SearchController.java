@@ -16,6 +16,7 @@ import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AdditionalServices;
+import com.travel.services.FilterService;
 import com.travel.services.SearchService;
 
 @CrossOrigin(origins="http://localhost:4201",allowedHeaders="*")
@@ -26,7 +27,8 @@ public class SearchController {
 	@Autowired
 	private SearchService searchService;
 	
-	
+	@Autowired
+	private FilterService filterService;
 	
 	@PostMapping("/accommodations")
 	public ResponseEntity<List<AccommodationSearchDTO>> search(@RequestBody SearchDTO searchReq){
@@ -44,7 +46,7 @@ public class SearchController {
 	@PostMapping("/filteservices")
 	public ResponseEntity<List<Accommodation>> filterservices(@RequestBody SearchDTO searchDto){
 		
-		List<Accommodation> accommodations = searchService.filterservices(searchDto);
+		List<Accommodation> accommodations = filterService.filterservices(searchDto);
 		
 		if(accommodations==null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

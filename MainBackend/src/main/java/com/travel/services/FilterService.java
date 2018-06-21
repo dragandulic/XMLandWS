@@ -23,11 +23,20 @@ public class FilterService {
 		List<String> services = searchdto.getFilterServices();
 		  
 		List<AdditionalServices> additionalservice;
-		  
-		additionalservice  = new ArrayList<>();
-		additionalservice.addAll(searchRepository.findByServicenameEquals(services.get(0)));
-		  
-		  
+		additionalservice  = new ArrayList<AdditionalServices>();
+		System.out.println("bbbbb" + searchdto.getListAccommodationid().size());
+		for(int i = 0;i<searchdto.getListAccommodationid().size();i++) {
+			System.out.println("aaaaaaaa " + searchdto.getListAccommodationid().get(i).getName());
+			System.out.println("aaaaaaaa " + searchdto.getListAccommodationid().get(i).getId());
+			
+			AdditionalServices ads=searchRepository.findByServicenameEqualsAndAccommodation_idEquals(services.get(0),searchdto.getListAccommodationid().get(i).getId());
+			if(ads!=null) {
+				additionalservice.add(ads);
+			}
+			
+		}
+		
+	
 		  
 		for(int i =0;i<additionalservice.size();i++) {
 			if(additionalservice.get(i).getAccommodation()==null) {

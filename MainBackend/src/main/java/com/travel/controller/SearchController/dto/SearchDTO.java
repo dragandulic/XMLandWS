@@ -2,15 +2,25 @@ package com.travel.controller.SearchController.dto;
 
 import java.util.List;
 
+import com.travel.model.Accommodation;
+
 public class SearchDTO {
 	
-	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices) {
+	
+
+	
+
+	
+
+	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices,
+			List<Accommodation> listAccommodationid) {
 		
 		this.destination = destination;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.numPerson = numPerson;
 		this.filterServices = filterServices;
+		this.listAccommodationid = listAccommodationid;
 	}
 
 	public SearchDTO() {
@@ -28,6 +38,8 @@ public class SearchDTO {
 	private int numPerson;
 	
 	private List<String> filterServices;
+	
+	private List<Accommodation> listAccommodationid;
 
 	public String getDestination() {
 		return destination;
@@ -68,5 +80,17 @@ public class SearchDTO {
 	public void setFilterServices(List<String> filterServices) {
 		this.filterServices = filterServices;
 	}
+
+	public List<Accommodation> getListAccommodationid() {
+		return listAccommodationid;
+	}
+
+	public void setListAccommodationid(List<Accommodation> listAccommodationid) {
+		this.listAccommodationid = listAccommodationid;
+	}
+
+	
+
+	
 
 }

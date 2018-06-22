@@ -132,7 +132,7 @@ public class RegUserController {
 	    
 	    @JsonValue
 	    @PostMapping("/registration")
-		public MessageResponse registration(@RequestBody  @Valid RegistrationDTO registrationDTO) {
+		public MessageResponse registration(@RequestBody RegistrationDTO registrationDTO) {
 			
 	    	
 	    	if(reguserService.checkUniqueEmail(registrationDTO.getEmail())==false){

@@ -65,9 +65,16 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) V
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('parking','7');
 INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('bed&breakfast','7');
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','7');
-INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('Uncathegorized','7');
+INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('1','7');
 
-
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'AquaLux','2.1','1','8');
+INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
+INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','8');
+INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','8');
+INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('parking','8');
+INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('bed&breakfast','8');
+INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','8');
+INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('3','8');
 
 
 

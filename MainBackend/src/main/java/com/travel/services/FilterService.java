@@ -209,12 +209,13 @@ public class FilterService {
 			
 		}
 		
+		ArrayList<Accommodation> listaccommodaton = new ArrayList<>();
 		for(int i =0;i<listcategory.size();i++) {
-			System.out.println("aaaaaaaaaa " + listcategory.get(i).getCategoryname());
+			listaccommodaton.add(listcategory.get(i).getAccommodation());
 		}
 		
 		
-		return null;
+		return listaccommodaton;
 	}
 	
 	

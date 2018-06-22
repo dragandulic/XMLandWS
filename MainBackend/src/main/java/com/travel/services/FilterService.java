@@ -176,4 +176,46 @@ public class FilterService {
 	}
 	
 	
+	
+	public List<Accommodation> sortAccCategory(SearchDTO searchdto){
+		
+		ArrayList<Category> listcategory = new ArrayList<>();
+		
+		for(int i = 0; i<searchdto.getListAccommodationid().size();i++) {
+			
+			Category cat = categoryRepository.findCategoryByAccommodation(searchdto.getListAccommodationid().get(i).getId());
+			
+			if(cat!=null) {
+				listcategory.add(cat);
+			}
+			
+		}
+		
+		Category pom = new Category();
+		
+		for(int i = 0;i<listcategory.size();i++) {
+			for(int j = i+1; j<listcategory.size();j++) {
+				Integer prvi = Integer.valueOf(listcategory.get(i).getCategoryname());
+				Integer drugi = Integer.valueOf(listcategory.get(j).getCategoryname());
+				if(prvi < drugi) {
+					pom = listcategory.get(i);
+					
+					listcategory.set(i, listcategory.get(j));
+				
+					listcategory.set(j, pom); 
+				}
+			}
+			
+			
+		}
+		
+		for(int i =0;i<listcategory.size();i++) {
+			System.out.println("aaaaaaaaaa " + listcategory.get(i).getCategoryname());
+		}
+		
+		
+		return null;
+	}
+	
+	
 }

@@ -99,4 +99,18 @@ public class SearchController {
 		
 		return new ResponseEntity<>(category,HttpStatus.OK);
 	}
+	
+	
+	@PostMapping("/sortcategory")
+	public ResponseEntity<List<Accommodation>> sortcategory(@RequestBody SearchDTO searchDto){
+		
+		List<Accommodation> accommodation = filterService.sortAccCategory(searchDto);
+		
+		if(accommodation==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(accommodation,HttpStatus.OK);
+	}
+	
 }

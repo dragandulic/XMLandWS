@@ -8,7 +8,7 @@ public class SearchDTO {
 	
 	
 	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices,
-			List<String> filterTypes, List<Accommodation> listAccommodationid) {
+			List<String> filterTypes, List<String> filteCategorys, List<Accommodation> listAccommodationid) {
 		
 		this.destination = destination;
 		this.checkIn = checkIn;
@@ -16,8 +16,11 @@ public class SearchDTO {
 		this.numPerson = numPerson;
 		this.filterServices = filterServices;
 		this.filterTypes = filterTypes;
+		this.filteCategorys = filteCategorys;
 		this.listAccommodationid = listAccommodationid;
 	}
+
+	
 
 	public SearchDTO() {
 		
@@ -37,7 +40,11 @@ public class SearchDTO {
 	
 	private List<String> filterTypes;
 	
+	private List<String> filteCategorys;
+	
 	private List<Accommodation> listAccommodationid;
+	
+	
 
 	public String getDestination() {
 		return destination;
@@ -93,6 +100,14 @@ public class SearchDTO {
 
 	public void setFilterTypes(List<String> filterTypes) {
 		this.filterTypes = filterTypes;
+	}
+
+	public List<String> getFilteCategorys() {
+		return filteCategorys;
+	}
+
+	public void setFilteCategorys(List<String> filteCategorys) {
+		this.filteCategorys = filteCategorys;
 	}
 
 	

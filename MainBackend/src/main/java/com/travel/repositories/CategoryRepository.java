@@ -38,5 +38,21 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 	@Query(value="SELECT a FROM Category a WHERE (a.accommodation.id)=(:accomid)")
 	Category findCategoryByAccommodation(@Param("accomid")Long accomid);
 	
+	@Query(value="SELECT at FROM Category at WHERE (at.categoryname)=(:t) AND (at.accommodation.id)=(:id) ")
+	Category findByCategorynameEqualsAndAccommodationEquals(@Param("t")String  t,@Param("id")Long id);
+	
+	
+	
+	
+	
+	
 	
 }
+
+
+
+
+
+
+
+

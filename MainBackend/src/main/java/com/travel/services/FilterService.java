@@ -10,7 +10,9 @@ import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
+import com.travel.model.Category;
 import com.travel.repositories.AccommodationTypeRepository;
+import com.travel.repositories.CategoryRepository;
 import com.travel.repositories.SearchRepository;
 
 @Service
@@ -22,6 +24,9 @@ public class FilterService {
 	
 	@Autowired
 	private AccommodationTypeRepository accommodationTypeRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	public List<Accommodation> filterservices(SearchDTO searchdto){
 		
@@ -51,17 +56,13 @@ public class FilterService {
 					if(ads!=null) {
 						additionalservice.add(ads);
 					}
-					
 				}
-				
-				
-				  
+				 
 				for(int i =0;i<additionalservice.size();i++) {
 					if(additionalservice.get(i).getAccommodation()==null) {
 						additionalservice.remove(i);  
 				    }
 				}
-				  
 				  
 				for(int i =0; i<additionalservice.size();i++) {
 				 
@@ -75,27 +76,15 @@ public class FilterService {
 				    	}
 				    }
 				}
-				  
-				
 				for(int i =0;i<additionalservice.size();i++) {
-				    
-				   accommodations.add(additionalservice.get(i).getAccommodation());
-				   
+				   accommodations.add(additionalservice.get(i).getAccommodation()); 
 				}
-				  
-				  
-				  
-				
 				}
 				else {
-					
-					System.out.println("Usao u eleseeeeeeeeee1");
 					accommodations.addAll(searchdto.getListAccommodationid());
 				}
 		}
 		else {
-			
-			System.out.println("Usao u eleseeeeeeeeee2");
 			accommodations.addAll(searchdto.getListAccommodationid());
 		}
 		
@@ -141,17 +130,48 @@ public class FilterService {
 		
 		
 		
+		
+		//lista povratnih accommodationa posle filtriranja po category
+		List<Accommodation> accommodations2 = new ArrayList<>();
+		
+		
 		/**
 		 * FILTRIRANJE PO CATEGORIZATION
 		 */
 		
+		List<String> category = searchdto.getFilteCategorys();
+		List<Category> listcategory = new ArrayList<>();
+		if(category!=null) {
+			if(category.size()!=0) {
+				for(int i = 0; i<accommodations1.size();i++) {
+					
+					Category catego = categoryRepository.findByCategorynameEqualsAndAccommodationEquals(searchdto.getFilteCategorys().get(0), accommodations1.get(i).getId());
+					
+					if(catego!=null) {
+						listcategory.add(catego);
+					}
+				}
+				
+				for(int i = 0; i<listcategory.size();i++) {
+					accommodations2.add(listcategory.get(i).getAccommodation());
+				}
+				
+				
+			}
+			else {
+				accommodations2.addAll(accommodations1);
+			}
+		}
+		else
+		{
+			accommodations2.addAll(accommodations1);
+		}
 		
 		
 		
 		
 		
-		
-		return accommodations1;
+		return accommodations2;
 		
 	}
 	

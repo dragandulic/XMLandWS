@@ -30,6 +30,7 @@ import com.concretepage.gs_ws.SetAccommodationStatusResponse;
 import com.travel.model.Accommodation;
 import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
+import com.travel.model.Agent;
 import com.travel.model.Category;
 import com.travel.model.Location;
 import com.travel.model.PricePlan;
@@ -38,6 +39,7 @@ import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.services.AccommodationService;
 import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
+import com.travel.services.AgentService;
 import com.travel.services.CategoryService;
 import com.travel.services.LocationService;
 import com.travel.services.PricePlanService;
@@ -72,6 +74,8 @@ public class AccommodationEndpoint {
 	@Autowired
 	private AdditionalServicesRepository asr;
 	
+	@Autowired
+	private AgentService agentService;
 	
 	@Autowired
 	private RoomService roomService;
@@ -81,8 +85,13 @@ public class AccommodationEndpoint {
 	@ResponsePayload
 	public  AddAccommodationResponse addAccommodation(@RequestPayload AddAccommodationRequest request) {
 		
-		System.out.println("POGODIO");
+	
 		AddAccommodationResponse response = new AddAccommodationResponse();
+		
+		Agent owner=agentService.getAgentById(request.getAgentid());
+		
+		
+		
 		Location loc=new Location();
 		loc.setAddress(request.getAddress());
 		loc.setCity(request.getCity());
@@ -90,6 +99,7 @@ public class AccommodationEndpoint {
 		Location saved=locationService.saveLocation(loc);
 		
 		Accommodation acc=new Accommodation();
+		acc.setAgent(owner);
 		acc.setName(request.getName());
 		acc.setDescription(request.getDescription());
 		acc.setFree(true);

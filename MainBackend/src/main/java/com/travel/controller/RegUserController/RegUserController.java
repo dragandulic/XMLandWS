@@ -153,24 +153,24 @@ public class RegUserController {
 		}
 	    @JsonValue
 	    @PostMapping("/login")
-        public MessageResponse loginUser(@RequestBody @Valid LoginDTO loginDTO) {
+        public RegUser loginUser(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
 	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
 	    	
 	      if (temp == null){
-	    	  return new MessageResponse("User with this email doesnt exists");
+	    	  return null;
 				
 	    	}
 	      
 	      
 	      
 	      if(!(loginDTO.getPassword().equals(temp.getPassword()))){
-	    	  return new MessageResponse("Invalid password");
+	    	  return null;
 				
 				
 			}
 	    	
-			return new MessageResponse("User is logged in");
+			return temp;
 		}
 	    
 	    

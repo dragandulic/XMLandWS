@@ -81,7 +81,20 @@ public class ReservationService {
 		return reservationRepository.save(reser);
 	}
 	
-	
+	public List<Reservation> getReservationsByAgent(Long agentid){
+		
+		
+		
+		
+		return reservationRepository.findReservationsByAgent(agentid);
+		
+		
+		
+		
+		
+	}
+			
+			
 
 	
 }

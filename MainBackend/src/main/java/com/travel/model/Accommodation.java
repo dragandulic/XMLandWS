@@ -206,12 +206,12 @@ public class Accommodation {
      *     {@link Agent }
      *     
      */
-    @JsonIgnore
+   // @JsonIgnore
     public Agent getAgent() {
         return agent;
     }
 
-    @JsonIgnore
+  //  @JsonIgnore
     public Location getLocation() {
 		return location;
 	}

@@ -48,17 +48,18 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) V
 INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('hotel','5');
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','5');
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('2','5');
+INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','5','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000');
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Masterr','2.1','1','6');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Masterr','3.1','1','6');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','6');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','6');
 INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('apartment','6');
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','6');
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('5','6');
+INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','6','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000');
 
-
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Moskvaa','2.1','1','7');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Moskvaa','4.1','1','7');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','7');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','7');
@@ -66,8 +67,9 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) V
 INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('bed&breakfast','7');
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','7');
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('1','7');
+INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','7','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000');
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'AquaLux','2.1','1','8');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'AquaLux','5.0','1','8');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','8');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','8');
@@ -75,6 +77,7 @@ INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) V
 INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('bed&breakfast','8');
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','8');
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('3','8');
+INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','8','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000');
 
 
 

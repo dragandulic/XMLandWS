@@ -125,7 +125,7 @@ public class SearchService {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
 			LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
 			int month = searchreservedfrom.getMonthValue();
-			System.out.println(month+"eeeeeeeee");
+			
 			
 			PricePlan pricesPlans = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(searchR.getNumPerson(),acc3.get(a).getId());
 			

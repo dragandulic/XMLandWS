@@ -6,9 +6,12 @@ import com.travel.model.Accommodation;
 
 public class SearchDTO {
 	
+
 	
+
 	public SearchDTO(String destination, String checkIn, String checkOut, int numPerson, List<String> filterServices,
-			List<String> filterTypes, List<String> filteCategorys, List<Accommodation> listAccommodationid) {
+			List<String> filterTypes, List<String> filteCategorys, List<Accommodation> listAccommodationid,
+			List<AccommodationSearchDTO> listAccommodationsDto, String sortA) {
 		
 		this.destination = destination;
 		this.checkIn = checkIn;
@@ -18,9 +21,10 @@ public class SearchDTO {
 		this.filterTypes = filterTypes;
 		this.filteCategorys = filteCategorys;
 		this.listAccommodationid = listAccommodationid;
+		this.listAccommodationsDto = listAccommodationsDto;
+		this.sortA = sortA;
 	}
 
-	
 
 	public SearchDTO() {
 		
@@ -43,6 +47,11 @@ public class SearchDTO {
 	private List<String> filteCategorys;
 	
 	private List<Accommodation> listAccommodationid;
+	
+	private List<AccommodationSearchDTO> listAccommodationsDto;
+	
+	private String sortA;
+	
 	
 	
 
@@ -108,6 +117,26 @@ public class SearchDTO {
 
 	public void setFilteCategorys(List<String> filteCategorys) {
 		this.filteCategorys = filteCategorys;
+	}
+
+
+
+	public String getSortA() {
+		return sortA;
+	}
+
+
+
+	public void setSortA(String sortA) {
+		this.sortA = sortA;
+	}
+
+	public List<AccommodationSearchDTO> getListAccommodationsDto() {
+		return listAccommodationsDto;
+	}
+
+	public void setListAccommodationsDto(List<AccommodationSearchDTO> listAccommodationsDto) {
+		this.listAccommodationsDto = listAccommodationsDto;
 	}
 
 	

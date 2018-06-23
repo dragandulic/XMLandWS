@@ -1,18 +1,24 @@
 package com.travel.services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
 import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Category;
+import com.travel.model.PricePlan;
 import com.travel.repositories.AccommodationTypeRepository;
 import com.travel.repositories.CategoryRepository;
+import com.travel.repositories.PricePlanRepository;
 import com.travel.repositories.SearchRepository;
 
 @Service
@@ -28,7 +34,10 @@ public class FilterService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public List<Accommodation> filterservices(SearchDTO searchdto){
+	@Autowired
+	private PricePlanRepository pricePlanRepository;
+	
+	public List<AccommodationSearchDTO> filterservices(SearchDTO searchdto){
 		
 		//lista povratnih accommodationa posle filtriranja po dodatnim uslugama
 		List<Accommodation> accommodations = new ArrayList<>();
@@ -168,16 +177,92 @@ public class FilterService {
 		}
 		
 		
+		ArrayList<AccommodationSearchDTO> returnlist = new ArrayList<>();
+		for(int i =0;i<accommodations2.size();i++) {
+			
+			AccommodationSearchDTO accdto = new AccommodationSearchDTO();
+			accdto.setId(accommodations2.get(i).getId());
+			accdto.setName(accommodations2.get(i).getName());
+			accdto.setDescription(accommodations2.get(i).getDescription());
+			accdto.setRating(accommodations2.get(i).getRating());
+			
+			
+			String searchfrom = searchdto.getCheckIn();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
+			int month = searchreservedfrom.getMonthValue();
+			
+			
+			PricePlan pricesPlans = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(searchdto.getNumPerson(),accommodations2.get(i).getId());
+			
+			if(pricesPlans!=null) {
+			System.out.println("USAO U IF " + pricesPlans.getJuly());
+			
+			
+			if(month==1) {
+				int price = pricesPlans.getJanuary();
+				accdto.setPrice(price);
+			}
+			else if(month==2) {
+				int price = pricesPlans.getFebruary();
+				accdto.setPrice(price);
+			}
+			else if(month==3) {
+				int price = pricesPlans.getMarch();
+				accdto.setPrice(price);
+			}
+			else if(month==4) {
+				int price = pricesPlans.getApril();
+				accdto.setPrice(price);
+			}
+			else if(month==5) {
+				int price = pricesPlans.getMay();
+				accdto.setPrice(price);
+			}
+			else if(month==6) {
+				int price = pricesPlans.getJune();
+				accdto.setPrice(price);
+			}
+			else if(month==7) {
+				int price = pricesPlans.getJuly();
+				accdto.setPrice(price);
+				System.out.println("July usao " + returnlist.size());
+			}
+			else if(month==8) {
+				int price = pricesPlans.getAugust();
+				accdto.setPrice(price);
+			}
+			else if(month==9) {
+				int price = pricesPlans.getSeptember();
+				accdto.setPrice(price);
+			}
+			else if(month==10) {
+				int price = pricesPlans.getOctober();
+				accdto.setPrice(price);
+			}
+			else if(month==11) {
+				int price = pricesPlans.getNovember();
+				accdto.setPrice(price);
+			}
+			else if(month==12) {
+				int price = pricesPlans.getDecember();
+				accdto.setPrice(price);
+			}
+			
+			}
+			returnlist.add(accdto);
+			
+		}
 		
 		
 		
-		return accommodations2;
+		return returnlist;
 		
 	}
 	
 	
 	
-	public List<Accommodation> sortAccCategory(SearchDTO searchdto){
+	public List<AccommodationSearchDTO> sortAccCategory(SearchDTO searchdto){
 		
 		ArrayList<Category> listcategory = new ArrayList<>();
 		
@@ -212,11 +297,155 @@ public class FilterService {
 		ArrayList<Accommodation> listaccommodaton = new ArrayList<>();
 		for(int i =0;i<listcategory.size();i++) {
 			listaccommodaton.add(listcategory.get(i).getAccommodation());
+			
 		}
 		
 		
-		return listaccommodaton;
+		ArrayList<AccommodationSearchDTO> returnlist = new ArrayList<>();
+		for(int i =0;i<listaccommodaton.size();i++) {
+			
+			AccommodationSearchDTO accdto = new AccommodationSearchDTO();
+			accdto.setId(listaccommodaton.get(i).getId());
+			accdto.setName(listaccommodaton.get(i).getName());
+			accdto.setDescription(listaccommodaton.get(i).getDescription());
+			accdto.setRating(listaccommodaton.get(i).getRating());
+			
+			
+			String searchfrom = searchdto.getCheckIn();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			LocalDate searchreservedfrom = LocalDate.parse(searchfrom, formatter);
+			int month = searchreservedfrom.getMonthValue();
+			
+			
+			PricePlan pricesPlans = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(searchdto.getNumPerson(),listaccommodaton.get(i).getId());
+			
+			if(pricesPlans!=null) {
+			System.out.println("USAO U IF " + pricesPlans.getJuly());
+			
+			
+			if(month==1) {
+				int price = pricesPlans.getJanuary();
+				accdto.setPrice(price);
+			}
+			else if(month==2) {
+				int price = pricesPlans.getFebruary();
+				accdto.setPrice(price);
+			}
+			else if(month==3) {
+				int price = pricesPlans.getMarch();
+				accdto.setPrice(price);
+			}
+			else if(month==4) {
+				int price = pricesPlans.getApril();
+				accdto.setPrice(price);
+			}
+			else if(month==5) {
+				int price = pricesPlans.getMay();
+				accdto.setPrice(price);
+			}
+			else if(month==6) {
+				int price = pricesPlans.getJune();
+				accdto.setPrice(price);
+			}
+			else if(month==7) {
+				int price = pricesPlans.getJuly();
+				accdto.setPrice(price);
+				System.out.println("July usao " + returnlist.size());
+			}
+			else if(month==8) {
+				int price = pricesPlans.getAugust();
+				accdto.setPrice(price);
+			}
+			else if(month==9) {
+				int price = pricesPlans.getSeptember();
+				accdto.setPrice(price);
+			}
+			else if(month==10) {
+				int price = pricesPlans.getOctober();
+				accdto.setPrice(price);
+			}
+			else if(month==11) {
+				int price = pricesPlans.getNovember();
+				accdto.setPrice(price);
+			}
+			else if(month==12) {
+				int price = pricesPlans.getDecember();
+				accdto.setPrice(price);
+			}
+			
+			}
+			returnlist.add(accdto);
+			
+		}
+		
+		
+		
+		
+		return returnlist;
 	}
 	
+	
+	
+	public ArrayList<AccommodationSearchDTO> sortAccRating(SearchDTO searchdto){
+		
+		AccommodationSearchDTO pom = new AccommodationSearchDTO();
+		for(int i = 0;i<searchdto.getListAccommodationsDto().size();i++) {
+			for(int j = i+1;j<searchdto.getListAccommodationsDto().size();j++) {
+				Double prvi = searchdto.getListAccommodationsDto().get(i).getRating();
+				Double drugi = searchdto.getListAccommodationsDto().get(j).getRating();
+				if(prvi < drugi) {
+					pom = searchdto.getListAccommodationsDto().get(i);
+					
+					searchdto.getListAccommodationsDto().set(i, searchdto.getListAccommodationsDto().get(j));
+				
+					searchdto.getListAccommodationsDto().set(j, pom); 
+				}
+			}
+		}
+		
+		
+		
+		
+		return (ArrayList<AccommodationSearchDTO>) searchdto.getListAccommodationsDto();
+	}
+	
+	public ArrayList<AccommodationSearchDTO> sortAccPriceA(SearchDTO searchdto){
+		
+		AccommodationSearchDTO pom = new AccommodationSearchDTO();
+		for(int i = 0;i<searchdto.getListAccommodationsDto().size();i++) {
+			for(int j = i+1;j<searchdto.getListAccommodationsDto().size();j++) {
+				int prvi = searchdto.getListAccommodationsDto().get(i).getPrice();
+				int drugi = searchdto.getListAccommodationsDto().get(j).getPrice();
+				if(prvi > drugi) {
+					pom = searchdto.getListAccommodationsDto().get(i);
+					
+					searchdto.getListAccommodationsDto().set(i, searchdto.getListAccommodationsDto().get(j));
+				
+					searchdto.getListAccommodationsDto().set(j, pom); 
+				}
+			}
+		}
+		return (ArrayList<AccommodationSearchDTO>) searchdto.getListAccommodationsDto();
+	}
+	
+	
+	public ArrayList<AccommodationSearchDTO> sortAccPriceD(SearchDTO searchdto){
+		
+		AccommodationSearchDTO pom = new AccommodationSearchDTO();
+		for(int i = 0;i<searchdto.getListAccommodationsDto().size();i++) {
+			for(int j = i+1;j<searchdto.getListAccommodationsDto().size();j++) {
+				int prvi = searchdto.getListAccommodationsDto().get(i).getPrice();
+				int drugi = searchdto.getListAccommodationsDto().get(j).getPrice();
+				if(prvi < drugi) {
+					pom = searchdto.getListAccommodationsDto().get(i);
+					
+					searchdto.getListAccommodationsDto().set(i, searchdto.getListAccommodationsDto().get(j));
+				
+					searchdto.getListAccommodationsDto().set(j, pom); 
+				}
+			}
+		}
+		return (ArrayList<AccommodationSearchDTO>) searchdto.getListAccommodationsDto();
+	}
 	
 }

@@ -36,6 +36,7 @@ import com.travel.model.Location;
 import com.travel.model.PricePlan;
 import com.travel.model.Room;
 import com.travel.repositories.AdditionalServicesRepository;
+import com.travel.repositories.PricePlanRepository;
 import com.travel.services.AccommodationService;
 import com.travel.services.AccommodationTypeService;
 import com.travel.services.AdditionalServicesService;
@@ -80,6 +81,8 @@ public class AccommodationEndpoint {
 	@Autowired
 	private RoomService roomService;
 	
+	@Autowired
+	private PricePlanRepository pricepriceRepository;
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addAccommodationRequest")
 	@ResponsePayload
@@ -326,6 +329,10 @@ public class AccommodationEndpoint {
 		
 	Accommodation a=accommodationService.getAccommodationById(request.getId());
 	
+	PricePlan pp = pricepriceRepository.findByRoomtypeEqualsAndAccommodation_idEquals(request.getRoomtype(), a.getId());
+	
+	if(pp==null) {
+	
 	PricePlan plan  = new PricePlan();
 	
 	plan.setAccommodation(a);
@@ -348,6 +355,32 @@ public class AccommodationEndpoint {
 	response.setMessage("Successfully added price plan to accommodation");
 		
 		return response;
+	}
+	else if(pp!=null) {
+		
+		pp.setAccommodation(a);
+		pp.setRoomtype(request.getRoomtype());
+		pp.setJanuary(request.getJanuaryprice());
+		pp.setFebruary(request.getFebruaryprice());
+		pp.setMarch(request.getMarchprice());
+		pp.setApril(request.getAprilprice());
+		pp.setMay(request.getMayprice());
+		pp.setJune(request.getJuneprice());
+		pp.setJuly(request.getJulyprice());
+		pp.setAugust(request.getAugustprice());
+		pp.setSeptember(request.getSeptemberprice());
+		pp.setOctober(request.getOctoberprice());
+		pp.setNovember(request.getNovemberprice());
+		pp.setDecember(request.getDecemberprice());
+		
+		PricePlan saved=ppService.savePlan(pp);
+		
+		response.setMessage("Successfully added price plan to accommodation");
+			
+			return response;
+	}
+	
+	return response;
 	}
 	
 	

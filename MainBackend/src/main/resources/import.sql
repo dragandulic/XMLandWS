@@ -78,8 +78,11 @@ INSERT INTO `xmlback`.`accommodation_type` (`typename`,`accomm`) VALUES ('bed&br
 INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES (1,'5','8');
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('3','8');
 INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','8','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000','4000');
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a63d8cc7bd7dd25093ebf9713adc191ad6e65390
 
 
 

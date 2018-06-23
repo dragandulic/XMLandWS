@@ -1,5 +1,6 @@
 package com.travel.controller.SearchController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,9 @@ public class SearchController {
 	
 	
 	@PostMapping("/filteservices")
-	public ResponseEntity<List<Accommodation>> filterservices(@RequestBody SearchDTO searchDto){
+	public ResponseEntity<List<AccommodationSearchDTO>> filterservices(@RequestBody SearchDTO searchDto){
 		
-		List<Accommodation> accommodations = filterService.filterservices(searchDto);
+		List<AccommodationSearchDTO> accommodations = filterService.filterservices(searchDto);
 		
 		if(accommodations==null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -102,9 +103,31 @@ public class SearchController {
 	
 	
 	@PostMapping("/sortcategory")
-	public ResponseEntity<List<Accommodation>> sortcategory(@RequestBody SearchDTO searchDto){
+	public ResponseEntity<List<AccommodationSearchDTO>> sortcategory(@RequestBody SearchDTO searchDto){
 		
-		List<Accommodation> accommodation = filterService.sortAccCategory(searchDto);
+		List<AccommodationSearchDTO> accommodation = new ArrayList<>();
+		if(searchDto.getSortA().equals("category")) {
+			accommodation.addAll(filterService.sortAccCategory(searchDto));
+		}
+		else if(searchDto.getSortA().equals("rating")) {
+			List<AccommodationSearchDTO> accommodation2 = filterService.sortAccRating(searchDto);
+			if(accommodation2!=null) {
+				accommodation.addAll(accommodation2);
+			}
+		}
+		else if(searchDto.getSortA().equals("Pricea")) {
+			List<AccommodationSearchDTO> accommodation2 = filterService.sortAccPriceA(searchDto);
+			if(accommodation2!=null) {
+				accommodation.addAll(accommodation2);
+			}
+		}
+		else if(searchDto.getSortA().equals("Priced")) {
+			List<AccommodationSearchDTO> accommodation2 = filterService.sortAccPriceD(searchDto);
+			if(accommodation2!=null) {
+				accommodation.addAll(accommodation2);
+			}
+		}
+		
 		
 		if(accommodation==null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

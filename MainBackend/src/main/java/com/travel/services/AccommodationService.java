@@ -37,12 +37,6 @@ public List<Accommodation>getAllAccommodations(){
 	return accommodationRepository.findAll();
 }
 	
-public Accommodation getAccommodation(Long id) {
-	
-	Accommodation acc = accommodationRepository.findByIdEquals(id);
-	
-	return acc;
-	
-}
+
 
 }

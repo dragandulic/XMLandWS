@@ -105,6 +105,7 @@ public class AccommodationEndpoint {
 		acc.setAgent(owner);
 		acc.setName(request.getName());
 		acc.setDescription(request.getDescription());
+	    acc.setPicture(request.getPicture());
 		acc.setFree(true);
 		//acc.setType(request.getType());
 		acc.setLocation(saved);

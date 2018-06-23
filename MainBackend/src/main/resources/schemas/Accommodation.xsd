@@ -12,6 +12,7 @@
                 <xs:element name="Id" type="xs:long"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Type" type="xs:string"/>
+                 <xs:element name="Picture" type="xs:string"/>
                 <xs:element ref="ac:Location"/>
                 <xs:element ref="age:Agent"/>
                 <xs:element maxOccurs="unbounded" minOccurs="0" ref="revi:Review"/>
@@ -141,6 +142,7 @@
             <xs:sequence>
                 <xs:element name="agentid" type="xs:long"/>
                 <xs:element name="name" type="xs:string"/>
+                 <xs:element name="picture" type="xs:string"/>
                 <xs:element name="type" type="xs:string"/>
                 <xs:element name="country" type="xs:string"/>
                 <xs:element name="city" type="xs:string"/>

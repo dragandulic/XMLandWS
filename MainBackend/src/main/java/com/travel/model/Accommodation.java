@@ -97,6 +97,8 @@ public class Accommodation {
     @XmlElement(name = "Name", required = true)
     protected String name;
    
+    @XmlElement(name = "Picture", required = true)
+    protected String picture;
     
     @OneToOne
     @JoinColumn(name = "location_id")
@@ -347,6 +349,14 @@ public class Accommodation {
 
 	public void setRating(Double rating) {
 		this.rating = rating;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 

@@ -139,7 +139,7 @@
     <xs:element name="addAccommodationRequest">
         <xs:complexType>
             <xs:sequence>
-                
+                <xs:element name="agentid" type="xs:long"/>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="type" type="xs:string"/>
                 <xs:element name="country" type="xs:string"/>
@@ -301,6 +301,16 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
     
     
     

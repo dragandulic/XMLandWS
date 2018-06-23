@@ -28,7 +28,7 @@ import com.travel.services.ReviewService;
 
 @RestController
 @RequestMapping("/review")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin(origins="http://localhost:4201",allowedHeaders="*")
 public class ReviewController {
 	
 	

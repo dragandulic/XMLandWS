@@ -2,6 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.travel.com/agent" xmlns:age="http://www.travel.com/agent"
     xmlns:res="http://www.travel.com/reservation">
+     <xs:import namespace="http://www.travel.com/reservation" schemaLocation="Reservation.xsd"/>
     <xs:element name="Agent">
         <xs:complexType>
             <xs:sequence>
@@ -69,6 +70,30 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    
+    
+    
+     <xs:element name="getAgentReservationListRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="agentid" type="xs:long"/>
+            
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="getAgentReservationListResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0"  ref="res:Reservation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
     
     
     

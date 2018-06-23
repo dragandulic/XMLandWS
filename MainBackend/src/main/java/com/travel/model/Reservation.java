@@ -8,6 +8,7 @@
 
 package com.travel.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
-
-
-
-
 
 
 /**
@@ -37,14 +33,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="Price" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
- *         &lt;element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Surname" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element ref="{http://www.travel.com/room}Room"/&gt;
+ *         &lt;element ref="{http://www.travel.com/accommodation}Accommodation"/&gt;
  *         &lt;element ref="{http://www.travel.com/reguser}RegUser"/&gt;
+ *         &lt;element name="RoomType" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -55,54 +53,65 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "id",
     "price",
     "startDate",
     "endDate",
     "name",
     "surname",
     "email",
-    "room",
-    "regUser"
+    "accommodation",
+    "regUser",
+    "roomType"
 })
 @XmlRootElement(name = "Reservation", namespace = "http://www.travel.com/reservation")
-
 @Entity
 public class Reservation {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@XmlElement(name = "Id", namespace = "http://www.travel.com/reservation")
-    protected long id;
 
+    @XmlElement(name = "Id", namespace = "http://www.travel.com/reservation")
+    @Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    protected long id;
     @XmlElement(name = "Price", namespace = "http://www.travel.com/reservation", defaultValue = "0")
     protected int price;
-    @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation")
+    @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
     protected String startDate;
-    @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation")
+    @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
     protected String endDate;
-    @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation")
+    @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
     protected String name;
-    @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation")
+    @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation", required = true)
     protected String surname;
-    @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation")
+    @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
-    
-    
-    @XmlElement(name = "Accommodation",namespace = "http://www.travel.com/accommodation", required = true)
+    @XmlElement(name = "Accommodation", required = true)
     @ManyToOne
     @JoinColumn(name = "accommodation_id")
     protected Accommodation accommodation;
-    
-    
-    @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser")
+    @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     @ManyToOne
     @JoinColumn(name = "reg_user_id")
     protected RegUser regUser;
-    
-    @XmlElement(name = "RoomType", namespace = "http://www.travel.com/reservation", required = true)
+    @XmlElement(name = "roomtype", namespace = "http://www.travel.com/reservation", required = true)
     protected String roomtype;
+
+    /**
+     * Gets the value of the id property.
+     * 
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     */
+    public void setId(long value) {
+        this.id = value;
+    }
 
     /**
      * Gets the value of the price property.
@@ -125,52 +134,48 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-   
+    public String getStartDate() {
+        return startDate;
+    }
 
     /**
      * Sets the value of the startDate property.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    
+    public void setStartDate(String value) {
+        this.startDate = value;
+    }
 
     /**
      * Gets the value of the endDate property.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-   
+    public String getEndDate() {
+        return endDate;
+    }
 
-    public String getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
-
-	/**
+    /**
      * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-  
+    public void setEndDate(String value) {
+        this.endDate = value;
+    }
 
     /**
      * Gets the value of the name property.
@@ -268,8 +273,6 @@ public class Reservation {
         this.accommodation = value;
     }
 
-    
-
     /**
      * Gets the value of the regUser property.
      * 
@@ -294,14 +297,6 @@ public class Reservation {
         this.regUser = value;
     }
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getRoomtype() {
 		return roomtype;
 	}
@@ -309,8 +304,8 @@ public class Reservation {
 	public void setRoomtype(String roomtype) {
 		this.roomtype = roomtype;
 	}
-	
-	/**
+
+    /**
      * Gets the value of the roomType property.
      * 
      * @return
@@ -318,6 +313,13 @@ public class Reservation {
      *     {@link String }
      *     
      */
-  
+ 
 
 }
+
+
+
+
+
+
+

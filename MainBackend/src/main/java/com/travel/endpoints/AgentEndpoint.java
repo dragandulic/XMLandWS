@@ -22,8 +22,11 @@ import com.concretepage.gs_ws.LoginAgentRequest;
 import com.concretepage.gs_ws.LoginAgentResponse;
 import com.concretepage.gs_ws.RegistrationAgentRequest;
 import com.concretepage.gs_ws.RegistrationAgentResponse;
+import com.travel.model.Accommodation;
 import com.travel.model.Agent;
+import com.travel.model.RegUser;
 import com.travel.model.Reservation;
+
 import com.travel.services.AgentService;
 import com.travel.services.ReservationService;
 
@@ -146,7 +149,33 @@ public class AgentEndpoint {
 		List<Reservation>listr=rService.getReservationsByAgent(request.getAgentid());
 		for( int i=0;i<listr.size();i++){
 			
-			response.getReservation().addAll((Collection<? extends com.concretepage.gs_ws.Reservation>) listr.get(i));
+			
+			com.concretepage.gs_ws.Reservation res= new com.concretepage.gs_ws.Reservation();
+			Accommodation mod=listr.get(i).getAccommodation();
+			res.setId(listr.get(i).getId());
+			res.setEmail(listr.get(i).getEmail());
+			res.setStartDate(listr.get(i).getStartDate());
+			res.setEndDate(listr.get(i).getEndDate());
+			res.setRoomType(listr.get(i).getRoomtype());
+			res.setName(listr.get(i).getName());
+			res.setSurname(listr.get(i).getSurname());
+			res.setPrice(listr.get(i).getPrice());
+			
+			com.concretepage.gs_ws.Accommodation a = new com.concretepage.gs_ws.Accommodation();
+			
+			a.setId(mod.getId());
+			
+			res.setAccommodation(a);
+			RegUser rmod=listr.get(i).getRegUser();
+			
+			com.concretepage.gs_ws.RegUser ru = new com.concretepage.gs_ws.RegUser();
+			ru.setId(rmod.getId());
+			ru.setName(rmod.getName());
+			ru.setSurname(rmod.getSurname());
+			ru.setEmail(rmod.getEmail());
+			res.setRegUser(ru);
+			
+			response.getReservation().add(res);
 		}
 		
 		

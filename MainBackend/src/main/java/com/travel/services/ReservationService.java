@@ -65,8 +65,8 @@ public class ReservationService {
 		System.out.println("eeee");
 		Reservation reser = new Reservation();
 		reser.setPrice(reservation.getPrice());
-		reser.setStartDate(reservation.getStart_date());
-		reser.setEndDate(reservation.getEnd_date());
+		reser.setStartdate(reservation.getStart_date());
+		reser.setEnddate(reservation.getEnd_date());
 		reser.setName(reservation.getName());
 		reser.setSurname(reservation.getSurname());
 		reser.setEmail(reservation.getEmail());

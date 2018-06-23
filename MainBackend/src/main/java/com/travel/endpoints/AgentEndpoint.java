@@ -158,8 +158,8 @@ public class AgentEndpoint {
 			Accommodation mod=listr.get(i).getAccommodation();
 			res.setId(listr.get(i).getId());
 			res.setEmail(listr.get(i).getEmail());
-			res.setStartDate(listr.get(i).getStartDate());
-			res.setEndDate(listr.get(i).getEndDate());
+			res.setStartDate(listr.get(i).getStartdate());
+			res.setEndDate(listr.get(i).getEnddate());
 			res.setRoomType(listr.get(i).getRoomtype());
 			res.setName(listr.get(i).getName());
 			res.setSurname(listr.get(i).getSurname());

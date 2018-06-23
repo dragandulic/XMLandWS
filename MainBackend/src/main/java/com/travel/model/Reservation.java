@@ -76,10 +76,10 @@ public class Reservation {
     protected int price;
     @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected String startDate;
+    protected String startdate;
     @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected String endDate;
+    protected String enddate;
     @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
     protected String name;
     @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation", required = true)
@@ -144,45 +144,7 @@ public class Reservation {
      *     {@link String }
      *     
      */
-    public String getStartDate() {
-        return startDate;
-    }
-
-    /**
-     * Sets the value of the startDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStartDate(String value) {
-        this.startDate = value;
-    }
-
-    /**
-     * Gets the value of the endDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEndDate() {
-        return endDate;
-    }
-
-    /**
-     * Sets the value of the endDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEndDate(String value) {
-        this.endDate = value;
-    }
+   
 
     /**
      * Gets the value of the name property.
@@ -196,7 +158,23 @@ public class Reservation {
         return name;
     }
 
-    /**
+    public String getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+
+	public String getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+
+	/**
      * Sets the value of the name property.
      * 
      * @param value

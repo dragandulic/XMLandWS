@@ -100,7 +100,14 @@ public class ReviewController {
 	  			
 	  		}
 	    
-	    
+	      @JsonValue
+	  		@GetMapping("/getReviews/{accommid}")
+	  		public ReviewResponse getReviewsByAccommodation(@PathVariable Long accommid){
+	  			
+	  			List<Review>listar=reviewService.findReviewsByAccommodation(accommid);
+	  			return new ReviewResponse(listar);
+	  			
+	  		}
 	    
 	    	
 }

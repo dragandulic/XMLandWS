@@ -23,7 +23,7 @@ import com.travel.services.AdditionalServicesService;
 
 @RestController
 @RequestMapping("/aservices")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin
 public class AdditionalServicesController {
 	
 	@Autowired
@@ -66,7 +66,16 @@ public class AdditionalServicesController {
 	    }
 	  
 	  
-	  
+	  @GetMapping("getServices/{accommid}")
+	    public List<String> deleteUser(@PathVariable Long accommid){
+	    	
+	       List<String>response=aService.getAllAdditionalServicesForAccommodation(accommid);
+	    	
+	    	return response;
+	    	
+	    	
+	    	
+	    }
 	  
 
 }

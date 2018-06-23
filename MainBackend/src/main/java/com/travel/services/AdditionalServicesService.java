@@ -52,6 +52,14 @@ public void deleteAdditionalService(String name){
 	additionalServicesRepository.deleteAservice(name);
 }
 
+public List<String>getAllAdditionalServicesForAccommodation(Long accommid){
+
+	return additionalServicesRepository.findAdditionalServicesForAccommodation(accommid);
+}
+
+
+
+
 
 	
 }

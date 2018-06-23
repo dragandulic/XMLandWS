@@ -1,5 +1,8 @@
 package com.travel.endpoints;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,12 +16,16 @@ import org.springframework.ws.transport.context.TransportContext;
 import org.springframework.ws.transport.context.TransportContextHolder;
 import org.springframework.ws.transport.http.HttpServletConnection;
 
+import com.concretepage.gs_ws.GetAgentReservationListRequest;
+import com.concretepage.gs_ws.GetAgentReservationListResponse;
 import com.concretepage.gs_ws.LoginAgentRequest;
 import com.concretepage.gs_ws.LoginAgentResponse;
 import com.concretepage.gs_ws.RegistrationAgentRequest;
 import com.concretepage.gs_ws.RegistrationAgentResponse;
 import com.travel.model.Agent;
+import com.travel.model.Reservation;
 import com.travel.services.AgentService;
+import com.travel.services.ReservationService;
 
 @Endpoint
 public class AgentEndpoint {
@@ -39,7 +46,9 @@ public class AgentEndpoint {
 	@Autowired 
 	 private HttpSession httpSession;
 	
-	
+	@Autowired
+	private ReservationService rService;
+
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registrationAgentRequest")
 	@ResponsePayload
@@ -129,7 +138,20 @@ public class AgentEndpoint {
 	    return ( null != httpServletRequest ) ? httpServletRequest.getHeader( headerName ) : null;
 	}
 	
-	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAgentReservationListRequest")
+	@ResponsePayload
+	public  GetAgentReservationListResponse registerAgent(@RequestPayload GetAgentReservationListRequest request) {
+		GetAgentReservationListResponse response=new GetAgentReservationListResponse();
+		
+		List<Reservation>listr=rService.getReservationsByAgent(request.getAgentid());
+		for( int i=0;i<listr.size();i++){
+			
+			response.getReservation().addAll((Collection<? extends com.concretepage.gs_ws.Reservation>) listr.get(i));
+		}
+		
+		
+		return response;
+	}
 	
 	
 	

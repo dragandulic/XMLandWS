@@ -71,6 +71,7 @@ public class ReservationService {
 		reser.setSurname(reservation.getSurname());
 		reser.setEmail(reservation.getEmail());
 		reser.setRoomtype(reservation.getRoom_type());
+		reser.setAccepted(false);
 		
 		Accommodation accom = accommodationRepository.findByIdEquals(reservation.getAccommodation_id());
 		reser.setAccommodation(accom);
@@ -93,8 +94,23 @@ public class ReservationService {
 		
 		
 	}
+	
+	public void acceptReservation(Long resid){
+		
+		Reservation r=reservationRepository.findByIdEquals(resid);
+		r.setAccepted(true);
+		Reservation saved=saveReservation(r);
+		
+	}
 			
-			
+    
+    public void deleteReservation(Long resid){
+		
+		Reservation r=reservationRepository.findByIdEquals(resid);
+		r.setDeleted(true);
+		Reservation saved=saveReservation(r);
+		
+	}
 
 	
 }

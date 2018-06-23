@@ -20,6 +20,8 @@
                 <xs:element ref="ac:Accommodation"/>
                 <xs:element ref="reg:RegUser"/>
                	<xs:element name="RoomType" type="xs:string"/>
+               	<xs:element name="Accepted" type="xs:boolean"/>
+               	<xs:element name="Deleted" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

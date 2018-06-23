@@ -73,6 +73,56 @@
     
     
     
+      <xs:element name="acceptReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                
+               
+                <xs:element name="reservationid" type="xs:long"/>
+            
+             
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="acceptReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+               
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="deleteReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                
+               
+                <xs:element name="reservationid" type="xs:long"/>
+            
+             
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="deleteReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+               
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
     
      <xs:element name="getAgentReservationListRequest">
         <xs:complexType>

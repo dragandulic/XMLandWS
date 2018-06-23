@@ -16,6 +16,10 @@ import org.springframework.ws.transport.context.TransportContext;
 import org.springframework.ws.transport.context.TransportContextHolder;
 import org.springframework.ws.transport.http.HttpServletConnection;
 
+import com.concretepage.gs_ws.AcceptReservationRequest;
+import com.concretepage.gs_ws.AcceptReservationResponse;
+import com.concretepage.gs_ws.DeleteReservationRequest;
+import com.concretepage.gs_ws.DeleteReservationResponse;
 import com.concretepage.gs_ws.GetAgentReservationListRequest;
 import com.concretepage.gs_ws.GetAgentReservationListResponse;
 import com.concretepage.gs_ws.LoginAgentRequest;
@@ -181,6 +185,49 @@ public class AgentEndpoint {
 		
 		return response;
 	}
+	
+	
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "acceptReservationRequest")
+	@ResponsePayload
+	public  AcceptReservationResponse acceptReservation(@RequestPayload AcceptReservationRequest request) {
+		AcceptReservationResponse response=new AcceptReservationResponse();
+		
+		
+		rService.acceptReservation(request.getReservationid());
+		
+		response.setMessage("Successfully accepted reservation");
+		
+		return response;
+	}
+	
+	
+	
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteReservationRequest")
+	@ResponsePayload
+	public  DeleteReservationResponse deleteReservation(@RequestPayload DeleteReservationRequest request) {
+		DeleteReservationResponse response=new DeleteReservationResponse();
+		
+		
+		rService.deleteReservation(request.getReservationid());
+		
+		response.setMessage("Successfully deleted reservation");
+		
+		return response;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

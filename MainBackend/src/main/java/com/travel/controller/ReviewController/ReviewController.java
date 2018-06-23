@@ -17,7 +17,9 @@ import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.CommentController.Response.CommentResponse;
 import com.travel.controller.ReviewController.Response.ReviewResponse;
 import com.travel.controller.ReviewController.dto.ReviewDTO;
+import com.travel.model.Accommodation;
 import com.travel.model.Comment;
+import com.travel.model.RegUser;
 import com.travel.model.Review;
 import com.travel.services.AccommodationService;
 import com.travel.services.CommentService;
@@ -43,6 +45,17 @@ public class ReviewController {
 	
 	@Autowired
 	private RegUserService ruService;
+	
+	
+	 
+    	@GetMapping("/getAccommodation/{accommodationId}")
+    	public  Accommodation getAccommodation(@PathVariable Long accommodationId){
+    	Accommodation acc = aService.getAccommodationById(accommodationId);
+      
+        return acc;
+    }
+	
+	
 	
 	    @JsonValue
 		@GetMapping("/getReviews")

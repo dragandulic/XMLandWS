@@ -3,10 +3,13 @@ package com.travel.controller.AgentController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,15 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.AgentResponse;
 import com.travel.controller.AgentController.response.MessageResponse;
+import com.travel.controller.ReviewController.dto.ReviewDTO;
+import com.travel.model.Accommodation;
 import com.travel.model.Agent;
-
+import com.travel.model.Comment;
+import com.travel.model.RegUser;
+import com.travel.model.Review;
+import com.travel.services.AccommodationService;
 import com.travel.services.AgentService;
+import com.travel.services.RegUserService;
 
 
 
 @RestController
 @RequestMapping("/agent")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin()
 public class AgentController {
 	
 	
@@ -30,10 +39,14 @@ public class AgentController {
 	private AgentService agentService;
 	
 	
+	@Autowired
+	private RegUserService ruService;
 	
+	@Autowired
+	private AccommodationService aService;
 	
-	
-	
+	@Autowired
+	private JavaMailSender sender;
 	
 	
 	    @JsonValue
@@ -60,7 +73,32 @@ public class AgentController {
 	    }
 	    
 	    
-	    
+	    @PostMapping("/sendMessage")
+	    public MessageResponse sendMessage(@RequestBody ReviewDTO reviewDTO){
+	    	
+	    	
+	    	String comment=reviewDTO.getCommentcontent();
+	    	
+	    	RegUser user=ruService.getRegUserById(reviewDTO.getUserid());
+	    	Agent agent=agentService.getAgentById(reviewDTO.getRating().longValue()); // rating =agent id (da bismo iskoristili dto)
+	    	Accommodation acc=aService.getAccommodationById(reviewDTO.getAccommodationid());
+	    	
+		
+	    	
+	    	String appUrl = "http://localhost:4201/messageAgent/"+user.getId();
+			SimpleMailMessage messageEmail=new SimpleMailMessage();
+			messageEmail.setTo(agent.getEmail());
+			messageEmail.setSubject("Message from "+user.getName()+" "+user.getSurname()+" " +" for accommodation " + acc.getName());
+			messageEmail.setText( comment+"\n, Please reply on this link below:\n"
+			+appUrl);
+			sender.send(messageEmail);
+	    	
+	    	
+	    	
+	   
+	    	
+	    	return new MessageResponse("Successfully sent message");
+	    }
 	    
 	    
 	    

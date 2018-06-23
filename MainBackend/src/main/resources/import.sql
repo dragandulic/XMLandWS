@@ -34,10 +34,10 @@ INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Bul. Evrope 34','Novi Sad','Srbija');
 INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('23/06/2018','27/06/2018','Odlicna usluga',1,'Putnik','5','1','4');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Fruskogorska 54','Novi Sad','Srbija');
-INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`) VALUES ('100','dulke@gmail.com',1,2,'1');
-INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`) VALUES ('200','dulke@gmail.com',1,2,'1');
-INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`) VALUES ('300','dulke@gmail.com',1,2,'1');
-INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`) VALUES ('400','nikola@gmail.com',1,2,'2');
+INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`) VALUES ('100','dulke@gmail.com',1,2,'1',0,0);
+INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`) VALUES ('200','dulke@gmail.com',1,2,'1',0,0);
+INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`) VALUES ('300','dulke@gmail.com',1,2,'1',0,0);
+INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`) VALUES ('400','nikola@gmail.com',1,2,'2',0,0);
 
 
 

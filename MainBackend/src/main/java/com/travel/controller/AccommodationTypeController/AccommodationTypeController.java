@@ -26,7 +26,7 @@ import com.travel.services.AdditionalServicesService;
 
 @RestController
 @RequestMapping("/atypes")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin
 public class AccommodationTypeController {
 	
 	@Autowired

@@ -21,7 +21,7 @@ import com.travel.services.CommentService;
 
 @RestController
 @RequestMapping("/comment")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin
 public class CommentController {
 	
 	

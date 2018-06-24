@@ -35,7 +35,7 @@ INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype
 
 
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Pansion sa uslugom doručka se nalazi na 4 km od centra Novog Sada. Objekat poseduje restoran i bar sa terasom. Bežični internet se može besplatno koristiti.',1,'Meridiana','2.1','1','1','https://lh4.googleusercontent.com/0WgGnINAhN9ZBFTJce-wE-MT9TI26q82umgBMyvO7rHRYMPFowD30tkGkXm_SSQ9wN64vcaHY6_nhROLkUJP=w1920-h948');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Pansion sa uslugom doručka se nalazi na 4 km od centra Novog Sada. Objekat poseduje restoran i bar sa terasom. Bežični internet se može besplatno koristiti.',1,'Meridiana','2.1','1','1','http://www.lifeofrubin.com/wp-content/uploads/2016/07/5.jpg');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Stojana Novakovića 2,','Novi Sad','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','1');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','1');

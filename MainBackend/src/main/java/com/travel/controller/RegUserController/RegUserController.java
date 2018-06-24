@@ -200,7 +200,7 @@ public class RegUserController {
 	    	LocalDate reservedfrom = LocalDate.parse(listr.get(i).getEnddate(), formatter);
 	    	
 	    	
-	    	if(reservedfrom.isAfter(localdate)){
+	    	if(!reservedfrom.isAfter(localdate)){
 	    		
 	    		
 	    		

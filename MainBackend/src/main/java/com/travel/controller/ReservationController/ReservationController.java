@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.ReservationController.dto.ReservationDTO;
 import com.travel.model.Reservation;
 import com.travel.services.ReservationService;
@@ -59,6 +60,15 @@ public class ReservationController {
 		return reservation;
 	}
 	
+	@PostMapping(value="/deleteReservation/{id}")
+	public MessageResponse deleteReservation(@PathVariable Long id){
+		
+		Reservation reser = reservationService.getReservationById(id);
+		reser.setDeleted(true);
+		Reservation deleted=reservationService.saveReservation(reser);
+		return new MessageResponse("Successfully deleted reservation");
+		
+	}
 	
 	
 

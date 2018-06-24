@@ -22,7 +22,7 @@ import com.travel.services.CategoryService;
 import com.travel.services.FilterService;
 import com.travel.services.SearchService;
 
-@CrossOrigin(origins="http://localhost:4201",allowedHeaders="*")
+@CrossOrigin
 @RestController
 @RequestMapping(value="/search")
 public class SearchController {

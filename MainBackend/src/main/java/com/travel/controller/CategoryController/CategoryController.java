@@ -28,7 +28,7 @@ import com.travel.services.CategoryService;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin
 public class CategoryController {
 	
 	@Autowired

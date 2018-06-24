@@ -3,13 +3,18 @@ package com.travel.controller.RegUserController;
 
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 /*import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,9 +42,11 @@ import com.travel.controller.RegUserController.dto.RegistrationDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.Admin;
 import com.travel.model.RegUser;
+import com.travel.model.Reservation;
 import com.travel.repositories.RegUserRepository;
 import com.travel.services.AdminService;
 import com.travel.services.RegUserService;
+import com.travel.services.ReservationService;
 import com.travel.validation.PasswordMatchesValidator;
 
 
@@ -60,6 +67,13 @@ public class RegUserController {
 	@Autowired
 	private AdminService adminService;
 	
+	
+	@Autowired
+	private ReservationService rService;
+	
+	
+	@Autowired
+	private JavaMailSender sender;
 
 	
 	@Autowired RegUserRepository reguserRepository;
@@ -169,6 +183,45 @@ public class RegUserController {
 				
 				
 			}
+	      
+	      List<Reservation> listr=rService.getAllReserOfRegUser(temp.getId());
+	      
+	      
+	      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+	     
+	      LocalDate localdate = LocalDate.now();
+	      
+	      
+	      for(int i=0;i<listr.size();i++){
+	    	  
+	    	 
+	    	LocalDate reservedfrom = LocalDate.parse(listr.get(i).getEnddate(), formatter);
+	    	
+	    	
+	    	if(reservedfrom.isAfter(localdate)){
+	    		
+	    		
+	    		
+	    		String appUrl = "http://localhost:4201/review/"+listr.get(i).getAccommodation().getId();
+				SimpleMailMessage messageEmail=new SimpleMailMessage();
+				messageEmail.setTo(temp.getEmail());
+				messageEmail.setSubject("Please rate "+listr.get(i).getAccommodation().getName());
+				messageEmail.setText("Please rate on this link below:\n"
+				+appUrl);
+				
+				
+			sender.send(messageEmail);
+	    		
+	    		
+	    		
+	    		
+	    	}
+	    	  
+	      }
+	      
+	      
+	      
+	      
 	    	
 			return temp;
 		}

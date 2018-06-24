@@ -87,7 +87,7 @@ public class AgentController {
 	    	
 		
 	    	
-	    	String appUrl = "http://localhost:4201/messageAgent/"+user.getId();
+	    	String appUrl = "http://localhost:4200/dashboard/message/"+user.getId();
 			SimpleMailMessage messageEmail=new SimpleMailMessage();
 			messageEmail.setTo(agent.getEmail());
 			messageEmail.setSubject("Message from "+user.getName()+" "+user.getSurname()+" " +" for accommodation " + acc.getName());

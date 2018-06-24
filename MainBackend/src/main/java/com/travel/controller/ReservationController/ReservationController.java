@@ -17,7 +17,7 @@ import com.travel.controller.ReservationController.dto.ReservationDTO;
 import com.travel.model.Reservation;
 import com.travel.services.ReservationService;
 
-@CrossOrigin(origins="http://localhost:4201",allowedHeaders="*")
+@CrossOrigin
 @RestController
 @RequestMapping(value="/reservation")
 public class ReservationController {
@@ -48,5 +48,18 @@ public class ReservationController {
 		
 		return new ResponseEntity<>(reser, HttpStatus.OK);
 	}
+	
+	
+	
+	@GetMapping("/getReservationById/{id}")
+	public Reservation getReservation(@PathVariable Long id){
+		
+		Reservation reservation = reservationService.getReservationById(id);
+		
+		return reservation;
+	}
+	
+	
+	
 
 }

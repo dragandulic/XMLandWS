@@ -76,7 +76,7 @@ public class AgentController {
 	    @PostMapping("/sendMessage")
 	    public MessageResponse sendMessage(@RequestBody ReviewDTO reviewDTO){
 	    	
-	    	
+	    	 System.out.println("PROSAOO");
 	    	String comment=reviewDTO.getCommentcontent();
 	    	
 	    	RegUser user=ruService.getRegUserById(reviewDTO.getUserid());
@@ -87,12 +87,14 @@ public class AgentController {
 	    	
 	    	String appUrl = "http://localhost:4201/messageAgent/"+user.getId();
 			SimpleMailMessage messageEmail=new SimpleMailMessage();
-			messageEmail.setTo(agent.getEmail());
+			messageEmail.setTo("markivicius@hotmail.com");
 			messageEmail.setSubject("Message from "+user.getName()+" "+user.getSurname()+" " +" for accommodation " + acc.getName());
 			messageEmail.setText( comment+"\n, Please reply on this link below:\n"
 			+appUrl);
+			
+			 System.out.println("PROSAOO do senda");
 			sender.send(messageEmail);
-	    	
+			 System.out.println("ako ovo prodje super");
 	    	
 	    	
 	   

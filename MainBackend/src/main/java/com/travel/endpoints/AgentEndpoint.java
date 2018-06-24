@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -63,6 +65,9 @@ public class AgentEndpoint {
 	@Autowired
 	private RegUserService ruService;
 
+	
+	@Autowired
+	private JavaMailSender sender;
 	
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registrationAgentRequest")
@@ -152,6 +157,14 @@ public class AgentEndpoint {
 		String text=request.getContent();
 		
 		
+		
+		SimpleMailMessage messageEmail=new SimpleMailMessage();
+		messageEmail.setTo(ru.getEmail());
+		messageEmail.setSubject("Message from Accommodation");
+		messageEmail.setText("Message: "+ text);
+		
+		
+	sender.send(messageEmail);
 		
 	
 		

@@ -185,7 +185,7 @@ public class FilterService {
 			accdto.setName(accommodations2.get(i).getName());
 			accdto.setDescription(accommodations2.get(i).getDescription());
 			accdto.setRating(accommodations2.get(i).getRating());
-			
+			accdto.setPicture(accommodations2.get(i).getPicture());
 			
 			String searchfrom = searchdto.getCheckIn();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
@@ -309,7 +309,7 @@ public class FilterService {
 			accdto.setName(listaccommodaton.get(i).getName());
 			accdto.setDescription(listaccommodaton.get(i).getDescription());
 			accdto.setRating(listaccommodaton.get(i).getRating());
-			
+			accdto.setPicture(listaccommodaton.get(i).getPicture());
 			
 			String searchfrom = searchdto.getCheckIn();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);

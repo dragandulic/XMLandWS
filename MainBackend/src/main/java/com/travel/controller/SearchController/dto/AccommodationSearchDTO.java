@@ -6,6 +6,19 @@ public class AccommodationSearchDTO {
 	
 	
 
+	public AccommodationSearchDTO(long id, String name, String description, Double rating, int category, String type,
+			int price, String picture) {
+		
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.rating = rating;
+		this.category = category;
+		this.type = type;
+		this.price = price;
+		this.picture = picture;
+	}
+
 	public AccommodationSearchDTO() {
 		
 	}
@@ -24,21 +37,10 @@ public class AccommodationSearchDTO {
 	
 	private int price;
 	
-	
+	private String picture;
 	
 
-	public AccommodationSearchDTO(long id, String name, String description, Double rating, int category, String type,
-			int price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.rating = rating;
-		this.category = category;
-		this.type = type;
-		this.price = price;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -94,6 +96,14 @@ public class AccommodationSearchDTO {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	

@@ -119,6 +119,7 @@ public class SearchService {
 			accS.setDescription(acc3.get(a).getDescription());
 			accS.setRating(acc3.get(a).getRating());
 			accS.setId(acc3.get(a).getId());
+			accS.setPicture(acc3.get(a).getPicture());
 			accommodations.add(accS);
 			
 			String searchfrom = searchR.getCheckIn();

@@ -42,7 +42,7 @@ INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype
 
 
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Putnikk','2.1','1','5');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Putnikk','2.1','1','5','https://lh4.googleusercontent.com/0WgGnINAhN9ZBFTJce-wE-MT9TI26q82umgBMyvO7rHRYMPFowD30tkGkXm_SSQ9wN64vcaHY6_nhROLkUJP=w1920-h948');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','5');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','5');
@@ -51,7 +51,7 @@ INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES 
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('2','5');
 INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','5','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000','1000');
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Masterr','3.1','1','6');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Masterr','3.1','1','6','https://lh6.googleusercontent.com/8Spgc3-xCrcL45_NfZepQav5KSk-3Tk5saYZ2YhEKOIWPZF__q19wWHH2L022D30wFmLVgiIAAzh6g7_25PA=w1920-h948');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','6');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','6');
@@ -60,7 +60,7 @@ INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES 
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('5','6');
 INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','6','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000','2000');
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Moskvaa','4.1','1','7');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'Moskvaa','4.1','1','7','https://lh3.googleusercontent.com/qOrLTyWRozW-RCa0yVU7zqFLsENQQsuvd4IP5Tx6OuWR76ACGoX_wyg27ScSTPvUgKpwohPFIjpm3p2c-_Sz=w1920-h948-rw');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','7');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','7');
@@ -70,7 +70,7 @@ INSERT INTO `xmlback`.`room` (`free`,`number_of_bed`,`accommodation_id`) VALUES 
 INSERT INTO `xmlback`.`category` (`categoryname`,`accommodation_id`) VALUES ('1','7');
 INSERT INTO `xmlback`.`price_plan` (`roomtype`,`accommodation_id`,`january`,`february`,`march`,`april`,`may`,`june`,`july`,`august`,`september`,`october`,`november`,`december`) VALUES ('2','7','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000','3000');
 
-INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'AquaLux','5.0','1','8');
+INSERT INTO `xmlback`.`accommodation` (`datefrom`,`dateto`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`picture`) VALUES ('01/07/2018','07/07/2018','Kod sajma',1,'AquaLux','5.0','1','8','https://lh3.googleusercontent.com/HcFnkPVIeZ2RTxDFRUQX4WeQBNGb-l4dMvoL7L02Vyp6Z9QfLyPQC8o5HV01AguxhwF5fhN9mgAaqiYUA0SS=w1920-h948-rw');
 INSERT INTO `xmlback`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Subotica','Srbija');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('wifi','8');
 INSERT INTO `xmlback`.`additional_services` (`servicename`,`accommodation_id`) VALUES ('tv','8');

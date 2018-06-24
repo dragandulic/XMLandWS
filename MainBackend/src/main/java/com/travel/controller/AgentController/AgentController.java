@@ -2,6 +2,8 @@ package com.travel.controller.AgentController;
 
 import java.util.List;
 
+import javax.mail.Transport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -76,7 +78,7 @@ public class AgentController {
 	    @PostMapping("/sendMessage")
 	    public MessageResponse sendMessage(@RequestBody ReviewDTO reviewDTO){
 	    	
-	    	 System.out.println("PROSAOO");
+	    	
 	    	String comment=reviewDTO.getCommentcontent();
 	    	
 	    	RegUser user=ruService.getRegUserById(reviewDTO.getUserid());
@@ -87,14 +89,14 @@ public class AgentController {
 	    	
 	    	String appUrl = "http://localhost:4201/messageAgent/"+user.getId();
 			SimpleMailMessage messageEmail=new SimpleMailMessage();
-			messageEmail.setTo("markivicius@hotmail.com");
+			messageEmail.setTo(agent.getEmail());
 			messageEmail.setSubject("Message from "+user.getName()+" "+user.getSurname()+" " +" for accommodation " + acc.getName());
-			messageEmail.setText( comment+"\n, Please reply on this link below:\n"
+			messageEmail.setText("Message: "+ comment+"\n\n\n Please reply on this link below:\n"
 			+appUrl);
 			
-			 System.out.println("PROSAOO do senda");
-			sender.send(messageEmail);
-			 System.out.println("ako ovo prodje super");
+			
+		sender.send(messageEmail);
+			
 	    	
 	    	
 	   

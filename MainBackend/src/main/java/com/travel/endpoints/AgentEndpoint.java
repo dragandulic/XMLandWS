@@ -18,6 +18,8 @@ import org.springframework.ws.transport.http.HttpServletConnection;
 
 import com.concretepage.gs_ws.AcceptReservationRequest;
 import com.concretepage.gs_ws.AcceptReservationResponse;
+import com.concretepage.gs_ws.AnswerAgentRequest;
+import com.concretepage.gs_ws.AnswerAgentResponse;
 import com.concretepage.gs_ws.DeleteReservationRequest;
 import com.concretepage.gs_ws.DeleteReservationResponse;
 import com.concretepage.gs_ws.GetAgentReservationListRequest;
@@ -32,6 +34,7 @@ import com.travel.model.RegUser;
 import com.travel.model.Reservation;
 
 import com.travel.services.AgentService;
+import com.travel.services.RegUserService;
 import com.travel.services.ReservationService;
 
 @Endpoint
@@ -56,6 +59,11 @@ public class AgentEndpoint {
 	@Autowired
 	private ReservationService rService;
 
+	
+	@Autowired
+	private RegUserService ruService;
+
+	
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registrationAgentRequest")
 	@ResponsePayload
@@ -131,6 +139,31 @@ public class AgentEndpoint {
 		
 		return response;
 	}
+	
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "answerAgentRequest")
+	@ResponsePayload
+	public  AnswerAgentResponse answerAgent(@RequestPayload AnswerAgentRequest request) {
+		
+		AnswerAgentResponse response=new AnswerAgentResponse();
+		
+	
+		RegUser ru=ruService.getRegUserById(request.getReguserid());
+		String text=request.getContent();
+		
+		
+		
+	
+		
+		response.setMessage("Successfully answered");
+		
+		return response;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

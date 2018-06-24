@@ -72,6 +72,33 @@
     </xs:element>
     
     
+     <xs:element name="AnswerAgentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                
+               
+                <xs:element name="content" type="xs:string"/>
+                <xs:element name="reguserid" type="xs:long"/>
+             
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="AnswerAgentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="Message" type="xs:string"/>
+               
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
     
       <xs:element name="acceptReservationRequest">
         <xs:complexType>

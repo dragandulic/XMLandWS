@@ -164,7 +164,8 @@ public class AgentEndpoint {
 			res.setName(listr.get(i).getName());
 			res.setSurname(listr.get(i).getSurname());
 			res.setPrice(listr.get(i).getPrice());
-			
+			res.setDeleted(listr.get(i).isDeleted());
+			res.setAccepted(listr.get(i).isAccepted());
 			com.concretepage.gs_ws.Accommodation a = new com.concretepage.gs_ws.Accommodation();
 			
 			a.setId(mod.getId());

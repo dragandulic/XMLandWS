@@ -24,4 +24,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	@Query(value="SELECT r FROM Reservation r WHERE  (r.accommodation.agent.id)=(:agentid)")
 	List<Reservation> findReservationsByAgent(@Param("agentid")Long agentid);
 	
+	
+	
+	
 }

@@ -170,6 +170,11 @@ public class RegUserController {
         public RegUser loginUser(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
 	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
+	      if(temp.isBlocked()==true){
+	    	  
+	    	  return null;
+	      }
+	      
 	    	
 	      if (temp == null){
 	    	  System.out.println("privi");
@@ -239,6 +244,9 @@ public class RegUserController {
         public MessageResponse loginAdmin(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
 	     Admin temp=adminService.findOneAdminByEmail(loginDTO.getEmail());	
+	     
+	     
+	    
 	    	
 	      if (temp == null){
 	    	  return new MessageResponse("Invalid email");

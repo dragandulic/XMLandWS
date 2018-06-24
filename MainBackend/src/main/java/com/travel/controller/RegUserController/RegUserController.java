@@ -172,6 +172,7 @@ public class RegUserController {
 	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
 	    	
 	      if (temp == null){
+	    	  System.out.println("privi");
 	    	  return null;
 				
 	    	}
@@ -179,6 +180,7 @@ public class RegUserController {
 	      
 	      
 	      if(!(loginDTO.getPassword().equals(temp.getPassword()))){
+	    	  System.out.println("drugi");
 	    	  return null;
 				
 				

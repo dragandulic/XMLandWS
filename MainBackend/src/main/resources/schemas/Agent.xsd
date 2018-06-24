@@ -72,7 +72,7 @@
     </xs:element>
     
     
-     <xs:element name="AnswerAgentRequest">
+     <xs:element name="answerAgentRequest">
         <xs:complexType>
             <xs:sequence>
                 

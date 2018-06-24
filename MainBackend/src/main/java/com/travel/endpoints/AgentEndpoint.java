@@ -149,7 +149,7 @@ public class AgentEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "answerAgentRequest")
 	@ResponsePayload
 	public  AnswerAgentResponse answerAgent(@RequestPayload AnswerAgentRequest request) {
-		
+		System.out.println("DOSAO BAKI KO D JURKETA");
 		AnswerAgentResponse response=new AnswerAgentResponse();
 		
 	

@@ -2,13 +2,13 @@ INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) 
 INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Aleksandra','Grujic','admin2@gmail.com','admin222','Detelinara');
 INSERT INTO `xmlback`.`admin` (`name`, `surname`,`email`, `password`,`address`) VALUES ('Damjan','Nicic','admin3@gmail.com','admin333','Z.Stanica');
 INSERT INTO `xmlback`.`role` (`roleid`,`role`) VALUES ('1','USER');
-INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Dragan','Dulic',1,0,'dragan.dulic1@gmail','123');
+INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Dragan','Dulic',1,0,'dragan.dulic1@gmail.com','123');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Nikola','Nikolic',1,0,'nikola@gmail.com','123');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Jovana','Jovanic',1,0,'jovana@gmail.com','123');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Milos','Petrovic',1,0,'milos@gmail.com','123');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Jelena','Antic',1,0,'jelena@gmail.com','123');
 INSERT INTO `xmlback`.`reg_user` (`name`, `surname`,`active`,`blocked`,`email`,`password`) VALUES ('Stefan','Ivanovic',1,0,'stefan@gmail.com','123');
-INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Mino','Raiola','dragan.dulic1@gmail','123','Bul.Oslobodjenja','455',0);
+INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Mino','Raiola','dragan.dulic1@gmail.com','123','Bul.Oslobodjenja','455',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Jovan','Mijic','jmijic@gmail.com','122','P.Pavla','453',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Ivana','Savic','isavic@gmail.com','133','Z.Jovina','355',0);
 INSERT INTO `xmlback`.`agent` (`name`, `surname`,`email`,`password`,`address`,`businessregnum`,`approved`) VALUES ('Milos','Simic','msimic@gmail.com','323','K.Milosa','445',0);
@@ -27,7 +27,7 @@ INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('4');
 INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('5');
 INSERT INTO `xmlback`.`category` (`categoryname`) VALUES ('Uncathegorized');
 
-INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`,`startdate`,`enddate`) VALUES ('100','dulke@gmail.com',1,2,'1',0,0,'01/07/2018','05/07/2018');
+INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`,`startdate`,`enddate`) VALUES ('100','dragan.dulic1@gmail.com',1,2,'1',0,0,'01/06/2018','05/06/2018');
 INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`,`startdate`,`enddate`) VALUES ('200','dulke@gmail.com',1,2,'1',0,0,'02/07/2018','04/07/2018');
 INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`,`startdate`,`enddate`) VALUES ('300','dulke@gmail.com',2,2,'1',0,0,'04/07/2018','08/07/2018');
 INSERT INTO `xmlback`.`reservation`(`price`,`email`,`accommodation_id`,`roomtype`,`reg_user_id`,`accepted`,`deleted`,`startdate`,`enddate`) VALUES ('400','nikola@gmail.com',3,2,'2',0,0,'05/07/2018','09/07/2018');

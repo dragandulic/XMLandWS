@@ -37,6 +37,8 @@ public class FilterService {
 	@Autowired
 	private PricePlanRepository pricePlanRepository;
 	
+	
+	
 	public List<AccommodationSearchDTO> filterservices(SearchDTO searchdto){
 		
 		//lista povratnih accommodationa posle filtriranja po dodatnim uslugama
@@ -186,6 +188,9 @@ public class FilterService {
 			accdto.setDescription(accommodations2.get(i).getDescription());
 			accdto.setRating(accommodations2.get(i).getRating());
 			accdto.setPicture(accommodations2.get(i).getPicture());
+			
+			AccommodationType act = accommodationTypeRepository.findTypeByAccommodation(accommodations2.get(i).getId());
+			accdto.setType(act.getTypename());
 			
 			String searchfrom = searchdto.getCheckIn();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);

@@ -12,11 +12,13 @@ import org.springframework.stereotype.Service;
 import com.travel.controller.SearchController.dto.AccommodationSearchDTO;
 import com.travel.controller.SearchController.dto.SearchDTO;
 import com.travel.model.Accommodation;
+import com.travel.model.AccommodationType;
 import com.travel.model.AdditionalServices;
 import com.travel.model.Location;
 import com.travel.model.PricePlan;
 import com.travel.model.Room;
 import com.travel.repositories.AccommodationRepository;
+import com.travel.repositories.AccommodationTypeRepository;
 import com.travel.repositories.AdditionalServicesRepository;
 import com.travel.repositories.LocationRepository;
 import com.travel.repositories.PricePlanRepository;
@@ -37,6 +39,9 @@ public class SearchService {
 	
 	@Autowired
 	private RoomRepository roomRepository;
+	
+	@Autowired
+	private AccommodationTypeRepository accommodationTypeRepository;
 	
 	@Autowired
 	private AdditionalServicesRepository additionalServicesRepository;
@@ -120,6 +125,8 @@ public class SearchService {
 			accS.setRating(acc3.get(a).getRating());
 			accS.setId(acc3.get(a).getId());
 			accS.setPicture(acc3.get(a).getPicture());
+			AccommodationType act = accommodationTypeRepository.findTypeByAccommodation(acc3.get(a).getId());
+			accS.setType(act.getTypename());
 			accommodations.add(accS);
 			
 			String searchfrom = searchR.getCheckIn();

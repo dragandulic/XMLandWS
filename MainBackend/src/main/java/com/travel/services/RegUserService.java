@@ -1,16 +1,14 @@
 package com.travel.services;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
-import com.travel.error.UserAlreadyExistsException;
 import com.travel.model.RegUser;
 import com.travel.repositories.RegUserRepository;
 import com.travel.repositories.RoleRepository;
@@ -25,8 +23,8 @@ public class RegUserService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-/*	@Autowired
-	private PasswordEncoder passwordEncoder;*/
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private JavaMailSender sender;
@@ -50,9 +48,9 @@ public class RegUserService {
 		newuser.setSurname(userDTO.getSurname());
 		newuser.setEmail(userDTO.getEmail());
 		newuser.setAddress(userDTO.getAddress());
-		//newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
+		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
 		newuser.setRole(roleRepository.findByRoleidEquals(num));
-		newuser.setPassword((userDTO.getPassword1()));
+//		newuser.setPassword((userDTO.getPassword1()));
 		/*
 		newuser.setConfirmationToken(UUID.randomUUID().toString());
 		//user.setPoints(0);

@@ -2,28 +2,26 @@ package com.travel.controller.RegUserController;
 
 
 
-import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-/*import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.password.PasswordEncoder;*/
-import org.springframework.ui.Model;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,11 +37,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.travel.controller.AgentController.response.MessageResponse;
 import com.travel.controller.RegUserController.dto.LoginDTO;
 import com.travel.controller.RegUserController.dto.RegistrationDTO;
+import com.travel.controller.RegUserController.response.LoginTokenResponseDTO;
 import com.travel.controller.RegUserController.response.RegUserResponse;
 import com.travel.model.Admin;
 import com.travel.model.RegUser;
 import com.travel.model.Reservation;
 import com.travel.repositories.RegUserRepository;
+import com.travel.security.TokenProvider;
+import com.travel.security.UserDetailsServiceImpl;
 import com.travel.services.AdminService;
 import com.travel.services.RegUserService;
 import com.travel.services.ReservationService;
@@ -59,6 +60,20 @@ import com.travel.validation.PasswordMatchesValidator;
 @RequestMapping("/reguser")
 public class RegUserController {
 	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	
+	@Autowired
+	private TokenProvider tokenProvider;
+
+	@Autowired
+	private UserDetailsServiceImpl userDetailsServiceImpl;
+
 	
 	@Autowired
 	private RegUserService reguserService;
@@ -167,9 +182,10 @@ public class RegUserController {
 		}
 	    @JsonValue
 	    @PostMapping("/login")
-        public RegUser loginUser(@RequestBody @Valid LoginDTO loginDTO) {
+        public LoginTokenResponseDTO loginUser(@RequestBody @Valid LoginDTO loginDTO) {
 	    	
-	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());	
+	      RegUser temp=reguserService.findOneUserByEmail(loginDTO.getEmail());
+	      System.out.println(temp);
 	      if(temp.isBlocked()==true){
 	    	  
 	    	  return null;
@@ -178,8 +194,7 @@ public class RegUserController {
 	    	
 	      if (temp == null){
 	    	  System.out.println("privi");
-	    	  return null;
-				
+	    	  return null;	
 	    	}
 	      
 	      
@@ -226,11 +241,20 @@ public class RegUserController {
 	    	  
 	      }
 	      
-	      
-	      
-	      
-	    	
-			return temp;
+	      //SECURITY
+	      UserDetails details = userDetailsServiceImpl.loadUserByUsername(loginDTO.getEmail());
+			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+					loginDTO.getEmail(), loginDTO.getPassword());
+			
+			Authentication authentication = authenticationManager.authenticate(authenticationToken);
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+					
+			String jwt = tokenProvider.generateToken(details);
+			
+			String role = details.getAuthorities().stream().findFirst().get().getAuthority();
+			
+			return new LoginTokenResponseDTO(temp,jwt);
+
 		}
 	    
 	    
@@ -267,17 +291,14 @@ public class RegUserController {
 	    
 	
 	    @PostMapping("/logout")
-        public MessageResponse logout() {
+        public MessageResponse logout(HttpServletRequest request, HttpServletResponse response) {
 		
-	    	
+	    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			SecurityContextHolder.getContext().setAuthentication(null);
+			if (auth != null) {
+				new SecurityContextLogoutHandler().logout(request, response, auth);
+			}
         	
-        
-            
-          
-        	
-        	
-        	
-			
 			return new MessageResponse("User is logged out");
 		}
 	    

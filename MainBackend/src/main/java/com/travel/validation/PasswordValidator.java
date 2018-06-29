@@ -10,7 +10,7 @@ public class PasswordValidator implements ConstraintValidator<ValidPassword, Str
 	
 	
 	public static final Pattern VALID_PASSWORD_REGEX = 
-		    Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", Pattern.CASE_INSENSITIVE);
+		    Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$.%^&+=])(?=\\S+$).{8,}$", Pattern.CASE_INSENSITIVE);
 
 		
 

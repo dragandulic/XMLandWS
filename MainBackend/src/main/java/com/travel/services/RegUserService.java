@@ -50,6 +50,7 @@ public class RegUserService {
 		newuser.setAddress(userDTO.getAddress());
 		newuser.setPassword(passwordEncoder.encode(userDTO.getPassword1()));
 		newuser.setRole(roleRepository.findByRoleidEquals(num));
+		newuser.setActive(true);
 //		newuser.setPassword((userDTO.getPassword1()));
 		/*
 		newuser.setConfirmationToken(UUID.randomUUID().toString());

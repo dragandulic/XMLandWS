@@ -292,6 +292,13 @@ public class RegUser implements Serializable {
 		this.role = role;
 	}
 
+	@Override
+	public String toString() {
+		return "RegUser [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + ", password="
+				+ password + ", address=" + address + ", active=" + active + ", blocked=" + blocked
+				+ ", confirmationtoken=" + confirmationtoken + ", role=" + role + "]";
+	}
+
 	
 	
 	

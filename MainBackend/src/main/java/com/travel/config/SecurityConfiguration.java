@@ -70,6 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers("/reguser/registration").permitAll()
 			.antMatchers("/reguser/login").permitAll()
+			.antMatchers("/search/**").hasAnyAuthority(AuthoritiesConstants.USER,AuthoritiesConstants.ADMIN)
 			.antMatchers(HttpMethod.POST, "/reguser/**").hasAnyAuthority(AuthoritiesConstants.USER,AuthoritiesConstants.ADMIN)
 //			.antMatchers("/api/upload/**").hasAnyAuthority(AuthoritiesConstants.USER,AuthoritiesConstants.ADMIN)
 			

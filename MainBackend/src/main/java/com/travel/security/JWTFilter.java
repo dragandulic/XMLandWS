@@ -41,6 +41,8 @@ public class JWTFilter extends UsernamePasswordAuthenticationFilter{
                         .buildDetails(httpRequest));
                 SecurityContextHolder.getContext().setAuthentication(
                         authentication);
+                
+//                SecurityContextHolder.getContext().getAuthentication().getCredentials()
             }
         }
 

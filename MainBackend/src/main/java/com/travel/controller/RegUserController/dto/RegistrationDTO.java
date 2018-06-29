@@ -2,6 +2,7 @@ package com.travel.controller.RegUserController.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.travel.validation.ValidEmail;
 import com.travel.validation.ValidPassword;
